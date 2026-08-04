@@ -31,8 +31,7 @@ effects in the presence of missing data.
 
 Before Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics,
 Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with
-Duke, UC San Diego, and previously Stanford University Schools of Medicine — which keeps me
-honest about what messy, real clinical data actually looks like.
+Duke, UC San Diego, and previously Stanford University Schools of Medicine.
 
 I am highly passionate about teaching. In Summer 2026 I was instructor of record for
 [STA 199: Introduction to Data Science and Statistical Thinking](https://sta199-su26-2.github.io/).

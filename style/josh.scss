@@ -210,6 +210,17 @@ main a:not(.btn):not(.nav-link) {
   white-space: nowrap;
 }
 
+// Larger variant, used for the Positions list where each entry is only a
+// title and an institution — dense small type isn't buying anything there.
+.entries-lg .entry {
+  padding-top: 1.05rem;
+  padding-bottom: 1.05rem;
+
+  .entry-title { font-size: 1.12rem; }
+  .entry-meta  { font-size: 1rem; margin-top: 0.2rem; }
+  .entry-date  { font-size: 0.95rem; }
+}
+
 // --------------------------------------------------------------- highlight
 .callout-highlight {
   background: rgba($duke-royal, 0.06);

@@ -6,6 +6,8 @@ toc-title: "On this page"
 
 ## Positions
 
+::::: {.entries-lg}
+
 ::: {.entry}
 [Research Assistant]{.entry-title} [May 2025 – present]{.entry-date}
 [Duke University, Department of Statistical Science]{.entry-meta}
@@ -35,6 +37,8 @@ toc-title: "On this page"
 [Biostatistics Researcher]{.entry-title} [Jun 2022 – May 2023]{.entry-date}
 [Stanford University School of Medicine]{.entry-meta}
 :::
+
+:::::
 
 ## Publications
 
