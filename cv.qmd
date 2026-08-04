@@ -14,25 +14,3 @@ toc: false
   Your browser can't display embedded PDFs.
   [Download the CV instead](files/Lim_Joshua_CV.pdf).
 </iframe>
-
-## Awards
-
-::: {.entry}
-[Dean's Graduate Fellowship]{.entry-title} [Aug 2024]{.entry-date}
-[Duke University · awarded to incoming Ph.D. students with a track record of excellent leadership]{.entry-meta}
-:::
-
-::: {.entry}
-[Summa Cum Laude]{.entry-title} [Jun 2024]{.entry-date}
-[UCLA · awarded to students earning above a 3.985 cumulative GPA]{.entry-meta}
-:::
-
-::: {.entry}
-[Dean's Honor List]{.entry-title} [Fall 2020 – Spring 2024]{.entry-date}
-[UCLA · every quarter of undergraduate study]{.entry-meta}
-:::
-
-## Technical skills
-
-[R]{.tag} [Rcpp]{.tag} [Python]{.tag} [C++]{.tag} [MATLAB]{.tag} [Java]{.tag} [Git]{.tag}
-[Cloud computing]{.tag}

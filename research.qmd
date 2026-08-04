@@ -1,40 +1,40 @@
 ---
 title: "Research"
-subtitle: "Causal inference when the data doesn't cooperate."
 toc: true
 toc-title: "On this page"
 ---
 
-## Current work
+## Positions
 
-### Heterogeneous treatment effects with missing treatments
-
-Some ICU patients receive a right-heart catheter and some don't. Did it help — and for whom?
-The quantity of interest is the *heterogeneous* treatment effect,
-
-$$\tau(x) = \mathbb{E}\big[Y(1) - Y(0) \mid X = x\big],$$
-
-the causal effect for different kinds of patients rather than one population average. Estimating
-it normally requires knowing each unit's treatment assignment. In practice that assignment is
-often partly missing: a health hazard recorded only for a subpopulation, an ad exposure that was
-never logged, a survey item nobody answered.
-
-Standard practice splits the problem in two — impute the missing treatments, *then* estimate
-effects — which throws away the outcome's information about who was likely treated and
-understates uncertainty in the result.
-
-**Gibbs-OMIT** does both at once. A single Gibbs sampler alternates between fitting a flexible
-tree model (Bayesian Additive Regression Trees) for $\tau(x)$, and re-imputing who was treated
-using the outcome as evidence.
-
-::: {.callout-highlight}
-The result is **one posterior** over both the effects and the missing treatments, so uncertainty
-about *who was treated* propagates into the final intervals rather than disappearing.
+::: {.entry}
+[Research Assistant]{.entry-title} [May 2025 – present]{.entry-date}
+[Duke University, Department of Statistical Science]{.entry-meta}
 :::
 
-In simulation the method matches an oracle that observes every treatment (MSE 2.33 vs. 2.43), a
-67% reduction against complete-case analysis (7.04), while MICE does worse than simply dropping
-incomplete rows (9.69). Interval coverage is 95%, against 79% for complete case and 88% for MICE.
+::: {.entry}
+[Biostatistician]{.entry-title} [Dec 2025 – present]{.entry-date}
+[UC San Diego School of Medicine]{.entry-meta}
+:::
+
+::: {.entry}
+[Biostatistician]{.entry-title} [May 2025 – present]{.entry-date}
+[Duke University School of Medicine]{.entry-meta}
+:::
+
+::: {.entry}
+[Biostatistician and Data Manager]{.entry-title} [Jun 2024 – Mar 2025]{.entry-date}
+[Stanford University School of Medicine]{.entry-meta}
+:::
+
+::: {.entry}
+[Undergraduate Researcher]{.entry-title} [Feb 2023 – Jun 2024]{.entry-date}
+[Qing Zhou Research Group, UCLA]{.entry-meta}
+:::
+
+::: {.entry}
+[Biostatistics Researcher]{.entry-title} [Jun 2022 – May 2023]{.entry-date}
+[Stanford University School of Medicine]{.entry-meta}
+:::
 
 ## Publications
 
@@ -84,56 +84,4 @@ incomplete rows (9.69). Interval coverage is 95%, against 79% for complete case 
 ::: {.entry}
 [The impact of persistent gastrointestinal symptoms on completion of oral immunotherapy in clinical trials]{.entry-title} [Sep 2022]{.entry-date}
 [GALEN Anacare GAFA 2022]{.entry-meta}
-:::
-
-## Positions
-
-::: {.entry}
-[Research Assistant]{.entry-title} [May 2025 – present]{.entry-date}
-[Duke University, Department of Statistical Science]{.entry-meta}
-
-Developing causal inference methodology and applications under Jerry Reiter and Fan Li,
-including work on integrating LLMs and modern ML into causal discovery.
-:::
-
-::: {.entry}
-[Biostatistician]{.entry-title} [Dec 2025 – present]{.entry-date}
-[UC San Diego School of Medicine, Moores Cancer Center]{.entry-meta}
-
-Statistical modeling comparing treatment-related complications between patients receiving
-immunotherapy with radiation versus concurrent chemoradiation with cisplatin.
-:::
-
-::: {.entry}
-[Biostatistician]{.entry-title} [May 2025 – present]{.entry-date}
-[Duke University School of Medicine, Department of Radiology]{.entry-meta}
-
-Investigating how contrast density and image acquisition timing affect CSF-venous fistula
-visibility, using ordinal regression and related methods to support neuroradiology research.
-:::
-
-::: {.entry}
-[Biostatistician and Data Manager]{.entry-title} [Jun 2024 – Mar 2025]{.entry-date}
-[Stanford School of Medicine, Pulmonary, Allergy and Critical Care Medicine]{.entry-meta}
-
-Identified environmental factors driving asthma and COPD emergency visits and hospitalizations,
-tracking regional and county-wide differences with attention to vulnerable populations.
-:::
-
-::: {.entry}
-[Undergraduate Researcher]{.entry-title} [Feb 2023 – Jun 2024]{.entry-date}
-[Qing Zhou Research Group, UCLA]{.entry-meta}
-
-Structure learning of causal DAGs. Extended the CML algorithm with conditional independence
-tests and other procedures for discrete data, validated through simulation studies on the
-Hoffman2 cluster. Implemented in R, Rcpp, and RcppArmadillo.
-:::
-
-::: {.entry}
-[Biostatistics Researcher]{.entry-title} [Jun 2022 – May 2023]{.entry-date}
-[Stanford School of Medicine, Sean N. Parker Center for Allergy and Asthma Research]{.entry-meta}
-
-Analyzed patients with chronic GI symptoms in oral immunotherapy clinical trials, built ML
-models to harmonize allergic reaction grading scales, and developed an R Shiny application for
-enrollment, demographic, and forecast data used in NIH reporting.
 :::
