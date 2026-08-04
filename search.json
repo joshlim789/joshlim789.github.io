@@ -4,42 +4,42 @@
     "href": "index.html",
     "title": "Joshua Lim",
     "section": "",
-    "text": "I’m a Ph.D. student in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits where causal inference meets missing data. Most methods for asking “did this treatment help, and for whom?” quietly assume you know who was treated. Often you don’t — an exposure that was never logged, a hazard recorded for only part of a population, a survey nobody answered. I build Bayesian methods that estimate heterogeneous effects anyway, and that carry the uncertainty about who was treated all the way through to the final intervals.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke Radiology, UC San Diego’s Moores Cancer Center, and previously Stanford Medicine — which keeps me honest about what messy, real clinical data actually looks like.\nI also care a great deal about teaching: in Summer 2026 I was instructor of record for STA 199: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
+    "text": "I’m a third year Ph.D. candidate in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits at the intersection of causal inference and missing data. Specifically, I seek to develop Bayesian methodology that can estimate heterogeneous treatment effects in the presence of missing data.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke, UC San Diego, and previously Stanford University Schools of Medicine — which keeps me honest about what messy, real clinical data actually looks like.\nI am highly passionate about teaching. In Summer 2026 I was instructor of record for STA 199: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
   },
   {
     "objectID": "index.html#hi-im-josh",
     "href": "index.html#hi-im-josh",
     "title": "Joshua Lim",
     "section": "",
-    "text": "I’m a Ph.D. student in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits where causal inference meets missing data. Most methods for asking “did this treatment help, and for whom?” quietly assume you know who was treated. Often you don’t — an exposure that was never logged, a hazard recorded for only part of a population, a survey nobody answered. I build Bayesian methods that estimate heterogeneous effects anyway, and that carry the uncertainty about who was treated all the way through to the final intervals.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke Radiology, UC San Diego’s Moores Cancer Center, and previously Stanford Medicine — which keeps me honest about what messy, real clinical data actually looks like.\nI also care a great deal about teaching: in Summer 2026 I was instructor of record for STA 199: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
+    "text": "I’m a third year Ph.D. candidate in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits at the intersection of causal inference and missing data. Specifically, I seek to develop Bayesian methodology that can estimate heterogeneous treatment effects in the presence of missing data.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke, UC San Diego, and previously Stanford University Schools of Medicine — which keeps me honest about what messy, real clinical data actually looks like.\nI am highly passionate about teaching. In Summer 2026 I was instructor of record for STA 199: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
   },
   {
     "objectID": "index.html#research-interests",
     "href": "index.html#research-interests",
     "title": "Joshua Lim",
     "section": "Research interests",
-    "text": "Research interests\nCausal inference Missing data Bayesian machine learning Biostatistics Monte Carlo methods"
+    "text": "Research interests\nCausal inference Missing data Biostatistics"
   },
   {
     "objectID": "index.html#education",
     "href": "index.html#education",
     "title": "Joshua Lim",
     "section": "Education",
-    "text": "Education\n\nPh.D. Statistical Science Expected 2029 Duke University · also M.S. Computer Science and a Certificate in College Teaching\n\n\nB.S. Applied Mathematics, Statistics and Data Science 2024 University of California, Los Angeles · summa cum laude"
+    "text": "Education\n\nPh.D. Statistical Science Expected 2029 Duke University · also a Certificate in College Teaching\n\n\nB.S. Applied Mathematics, Statistics and Data Science 2024 University of California, Los Angeles"
   },
   {
     "objectID": "research.html",
     "href": "research.html",
     "title": "Research",
     "section": "",
-    "text": "Some ICU patients receive a right-heart catheter and some don’t. Did it help — and for whom? The quantity of interest is the heterogeneous treatment effect,\n\\[\\tau(x) = \\mathbb{E}\\big[Y(1) - Y(0) \\mid X = x\\big],\\]\nthe causal effect for different kinds of patients rather than one population average. Estimating it normally requires knowing each unit’s treatment assignment. In practice that assignment is often partly missing: a health hazard recorded only for a subpopulation, an ad exposure that was never logged, a survey item nobody answered.\nStandard practice splits the problem in two — impute the missing treatments, then estimate effects — which throws away the outcome’s information about who was likely treated and understates uncertainty in the result.\nGibbs-OMIT does both at once. A single Gibbs sampler alternates between fitting a flexible tree model (Bayesian Additive Regression Trees) for \\(\\tau(x)\\), and re-imputing who was treated using the outcome as evidence.\n\nThe result is one posterior over both the effects and the missing treatments, so uncertainty about who was treated propagates into the final intervals rather than disappearing.\n\nIn simulation the method matches an oracle that observes every treatment (MSE 2.33 vs. 2.43), a 67% reduction against complete-case analysis (7.04), while MICE does worse than simply dropping incomplete rows (9.69). Interval coverage is 95%, against 79% for complete case and 88% for MICE."
+    "text": "Research Assistant May 2025 – present Duke University, Department of Statistical Science\n\n\nBiostatistician Dec 2025 – present UC San Diego School of Medicine\n\n\nBiostatistician May 2025 – present Duke University School of Medicine\n\n\nBiostatistician and Data Manager Jun 2024 – Mar 2025 Stanford University School of Medicine\n\n\nUndergraduate Researcher Feb 2023 – Jun 2024 Qing Zhou Research Group, UCLA\n\n\nBiostatistics Researcher Jun 2022 – May 2023 Stanford University School of Medicine"
   },
   {
-    "objectID": "research.html#current-work",
-    "href": "research.html#current-work",
+    "objectID": "research.html#positions",
+    "href": "research.html#positions",
     "title": "Research",
     "section": "",
-    "text": "Some ICU patients receive a right-heart catheter and some don’t. Did it help — and for whom? The quantity of interest is the heterogeneous treatment effect,\n\\[\\tau(x) = \\mathbb{E}\\big[Y(1) - Y(0) \\mid X = x\\big],\\]\nthe causal effect for different kinds of patients rather than one population average. Estimating it normally requires knowing each unit’s treatment assignment. In practice that assignment is often partly missing: a health hazard recorded only for a subpopulation, an ad exposure that was never logged, a survey item nobody answered.\nStandard practice splits the problem in two — impute the missing treatments, then estimate effects — which throws away the outcome’s information about who was likely treated and understates uncertainty in the result.\nGibbs-OMIT does both at once. A single Gibbs sampler alternates between fitting a flexible tree model (Bayesian Additive Regression Trees) for \\(\\tau(x)\\), and re-imputing who was treated using the outcome as evidence.\n\nThe result is one posterior over both the effects and the missing treatments, so uncertainty about who was treated propagates into the final intervals rather than disappearing.\n\nIn simulation the method matches an oracle that observes every treatment (MSE 2.33 vs. 2.43), a 67% reduction against complete-case analysis (7.04), while MICE does worse than simply dropping incomplete rows (9.69). Interval coverage is 95%, against 79% for complete case and 88% for MICE."
+    "text": "Research Assistant May 2025 – present Duke University, Department of Statistical Science\n\n\nBiostatistician Dec 2025 – present UC San Diego School of Medicine\n\n\nBiostatistician May 2025 – present Duke University School of Medicine\n\n\nBiostatistician and Data Manager Jun 2024 – Mar 2025 Stanford University School of Medicine\n\n\nUndergraduate Researcher Feb 2023 – Jun 2024 Qing Zhou Research Group, UCLA\n\n\nBiostatistics Researcher Jun 2022 – May 2023 Stanford University School of Medicine"
   },
   {
     "objectID": "research.html#publications",
@@ -56,46 +56,25 @@
     "text": "Posters and presentations\n\nMaximizing the Conspicuity of CSF-Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects Nov–Dec 2025 Radiological Society of North America Annual Meeting\n\n\nEnhancing Conspicuity of CSF-Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects Jun 2025 2025 Intracranial Hypotension Conference\n\n\nAssociations of Air Pollution and Heat with Asthma Healthcare Visits in California Counties – An Ecological Study Mar 2025 2025 AAAAI/WAO Joint Congress\n\n\nPersistent gastrointestinal symptoms do not impact oral immunotherapy completion Feb 2023 2023 AAAAI Annual Meeting\n\n\nThe impact of persistent gastrointestinal symptoms on completion of oral immunotherapy in clinical trials Sep 2022 GALEN Anacare GAFA 2022"
   },
   {
-    "objectID": "research.html#positions",
-    "href": "research.html#positions",
-    "title": "Research",
-    "section": "Positions",
-    "text": "Positions\n\nResearch Assistant May 2025 – present Duke University, Department of Statistical Science\nDeveloping causal inference methodology and applications under Jerry Reiter and Fan Li, including work on integrating LLMs and modern ML into causal discovery.\n\n\nBiostatistician Dec 2025 – present UC San Diego School of Medicine, Moores Cancer Center\nStatistical modeling comparing treatment-related complications between patients receiving immunotherapy with radiation versus concurrent chemoradiation with cisplatin.\n\n\nBiostatistician May 2025 – present Duke University School of Medicine, Department of Radiology\nInvestigating how contrast density and image acquisition timing affect CSF-venous fistula visibility, using ordinal regression and related methods to support neuroradiology research.\n\n\nBiostatistician and Data Manager Jun 2024 – Mar 2025 Stanford School of Medicine, Pulmonary, Allergy and Critical Care Medicine\nIdentified environmental factors driving asthma and COPD emergency visits and hospitalizations, tracking regional and county-wide differences with attention to vulnerable populations.\n\n\nUndergraduate Researcher Feb 2023 – Jun 2024 Qing Zhou Research Group, UCLA\nStructure learning of causal DAGs. Extended the CML algorithm with conditional independence tests and other procedures for discrete data, validated through simulation studies on the Hoffman2 cluster. Implemented in R, Rcpp, and RcppArmadillo.\n\n\nBiostatistics Researcher Jun 2022 – May 2023 Stanford School of Medicine, Sean N. Parker Center for Allergy and Asthma Research\nAnalyzed patients with chronic GI symptoms in oral immunotherapy clinical trials, built ML models to harmonize allergic reaction grading scales, and developed an R Shiny application for enrollment, demographic, and forecast data used in NIH reporting."
-  },
-  {
     "objectID": "cv.html",
     "href": "cv.html",
     "title": "Curriculum Vitae",
     "section": "",
-    "text": "Download PDF    Last updated April 2026."
-  },
-  {
-    "objectID": "cv.html#awards",
-    "href": "cv.html#awards",
-    "title": "Curriculum Vitae",
-    "section": "Awards",
-    "text": "Awards\n\nDean’s Graduate Fellowship Aug 2024 Duke University · awarded to incoming Ph.D. students with a track record of excellent leadership\n\n\nSumma Cum Laude Jun 2024 UCLA · awarded to students earning above a 3.985 cumulative GPA\n\n\nDean’s Honor List Fall 2020 – Spring 2024 UCLA · every quarter of undergraduate study"
-  },
-  {
-    "objectID": "cv.html#technical-skills",
-    "href": "cv.html#technical-skills",
-    "title": "Curriculum Vitae",
-    "section": "Technical skills",
-    "text": "Technical skills\nR Rcpp Python C++ MATLAB Java Git Cloud computing"
+    "text": "Download PDF    Last updated April 2026.\n\n\nYour browser can’t display embedded PDFs. &lt;a href=\"files/Lim_Joshua_CV.pdf\"&gt;Download the CV instead&lt;/a&gt;."
   },
   {
     "objectID": "teaching.html",
     "href": "teaching.html",
     "title": "Teaching",
     "section": "",
-    "text": "Teaching has been part of my work since high school, and it’s the reason I’m pursuing a Certificate in College Teaching alongside the Ph.D. I’ve built two courses from nothing, taught sections of 180+ students, and now run a course of my own."
+    "text": "STA 199: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site\n\n\nPh.D. Bootcamp Summer 2026 Department of Statistical Science · Instructor\n\n\nSTA 199: Introduction to Data Science and Statistical Thinking Department of Statistical Science · Teaching Assistant\n\n\nM.S.S. Bootcamp Department of Statistical Science · Teaching Assistant"
   },
   {
     "objectID": "teaching.html#duke-university",
     "href": "teaching.html#duke-university",
     "title": "Teaching",
-    "section": "Duke University",
-    "text": "Duke University\n\nSTA 199: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site"
+    "section": "",
+    "text": "STA 199: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site\n\n\nPh.D. Bootcamp Summer 2026 Department of Statistical Science · Instructor\n\n\nSTA 199: Introduction to Data Science and Statistical Thinking Department of Statistical Science · Teaching Assistant\n\n\nM.S.S. Bootcamp Department of Statistical Science · Teaching Assistant"
   },
   {
     "objectID": "teaching.html#ucla",
@@ -105,24 +84,17 @@
     "text": "UCLA\n\nTeaching Assistant, Department of Statistics and Data Science Jan – Jun 2024 STATS 13: Introduction to Statistical Methods for Life and Health Sciences STATS 102B: Introduction to Computation and Optimization for Statistics\nWrote original homework assignments and practice exams, led office hours and review sessions, and graded for sections of over 180 students."
   },
   {
-    "objectID": "teaching.html#courses-i-built",
-    "href": "teaching.html#courses-i-built",
+    "objectID": "teaching.html#mentoring-and-service",
+    "href": "teaching.html#mentoring-and-service",
     "title": "Teaching",
-    "section": "Courses I built",
-    "text": "Courses I built\n\nMath Speeder Upper Course — Introduction to Multivariable Calculus Summer 2021 Instructor and Curriculum Designer\nA fully online introductory multivariable calculus course: 22 lectures, homework with solutions, quizzes, two midterms, three projects, and a final exam. Ten students in the first cohort, and new students still work through the now fully asynchronous material every year. Built to be accessible to any student regardless of background or socioeconomic status.\n\n\nPhysics Catcher Upper Course — Selected Topics from AP Physics Summer 2020 Instructor and Curriculum Designer\nA fully online introductory physics course: 17 lectures, homework assignments and answer keys, a midterm, and a final exam."
+    "section": "Mentoring and service",
+    "text": "Mentoring and service\n\nIntroduction to Statistics for Health Science Using R May 2026 Johnson C. Smith University · Workshop Instructor\nDesigned and taught a one-day workshop introducing statistics and R to undergraduates with no prior programming experience, built around a public-health case study.\n\n\nIntroduction to Undergraduate Research Workshop Mentor May 2025 Duke University, Department of Statistical Science\nMentored a team of six undergraduates through a full applied statistical analysis of perceived quality of life in Durham, NC, and ran mini-workshops on research practice, coding, and collaboration for all 20+ participants. Completed additional mentoring training under Dr. Joan Combs Durso.\n\n\nGraduate Consultative Committee Aug 2024 – present Duke University, Department of Statistical Science\nWorking with the director of graduate studies and department chair on the academic and personal needs of more than 50 Ph.D. students; organizing admitted-student open houses and department community events."
   },
   {
     "objectID": "teaching.html#earlier-teaching",
     "href": "teaching.html#earlier-teaching",
     "title": "Teaching",
     "section": "Earlier teaching",
-    "text": "Earlier teaching\n\nTeaching Assistant, Menlo School Aug 2020 – Jun 2021 AP Statistics · AP Calculus BC · Advanced Topics in Probability and Statistics\nSupported online, hybrid, and in-person formats. Wrote test questions, held help hours, led classroom activities, and ran problem-solving sessions with immediate feedback.\n\n\nPrivate Tutor 2019 – present Mathematics, statistics, and physics\nDozens of students from middle school through college over seven years."
-  },
-  {
-    "objectID": "teaching.html#mentoring-and-service",
-    "href": "teaching.html#mentoring-and-service",
-    "title": "Teaching",
-    "section": "Mentoring and service",
-    "text": "Mentoring and service\n\nIntroduction to Undergraduate Research Workshop Mentor May 2025 Duke University, Department of Statistical Science\nMentored a team of six undergraduates through a full applied statistical analysis of perceived quality of life in Durham, NC, and ran mini-workshops on research practice, coding, and collaboration for all 20+ participants. Completed additional mentoring training under Dr. Joan Combs Durso.\n\n\nGraduate Consultative Committee Aug 2024 – present Duke University, Department of Statistical Science\nWorking with the director of graduate studies and department chair on the academic and personal needs of more than 50 Ph.D. students; organizing admitted-student open houses and department community events.\n\n\nPresident, UCLA Club Gymnastics 2022 – 2024 University of California, Los Angeles\nLed a nationally ranked club team of over 60 members — meets, travel, governing-body communication, and fundraising."
+    "text": "Earlier teaching\n\nMath Speeder Upper Course — Introduction to Multivariable Calculus Summer 2021 Instructor and Curriculum Designer\nA fully online introductory multivariable calculus course: 22 lectures, homework with solutions, quizzes, two midterms, three projects, and a final exam. Ten students in the first cohort, and new students still work through the now fully asynchronous material every year. Built to be accessible to any student regardless of background or socioeconomic status.\n\n\nPhysics Catcher Upper Course — Selected Topics from AP Physics Summer 2020 Instructor and Curriculum Designer\nA fully online introductory physics course: 17 lectures, homework assignments and answer keys, a midterm, and a final exam.\n\n\nTeaching Assistant, Menlo School Aug 2020 – Jun 2021 AP Statistics · AP Calculus BC · Advanced Topics in Probability and Statistics\nSupported online, hybrid, and in-person formats. Wrote test questions, held help hours, led classroom activities, and ran problem-solving sessions with immediate feedback.\n\n\nPrivate Tutor 2019 – present Mathematics, statistics, and physics\nDozens of students from middle school through college over seven years."
   }
 ]

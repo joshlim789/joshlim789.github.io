@@ -69,38 +69,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <meta property="og:title" content="Research – Joshua Lim">
-<meta property="og:description" content="Causal inference when the data doesn’t cooperate.">
 <meta property="og:site_name" content="Joshua Lim">
 </head>
 
@@ -171,13 +141,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#current-work" id="toc-current-work" class="nav-link active" data-scroll-target="#current-work">Current work</a>
-  <ul class="collapse">
-  <li><a href="#heterogeneous-treatment-effects-with-missing-treatments" id="toc-heterogeneous-treatment-effects-with-missing-treatments" class="nav-link" data-scroll-target="#heterogeneous-treatment-effects-with-missing-treatments">Heterogeneous treatment effects with missing treatments</a></li>
-  </ul></li>
+  <li><a href="#positions" id="toc-positions" class="nav-link active" data-scroll-target="#positions">Positions</a></li>
   <li><a href="#publications" id="toc-publications" class="nav-link" data-scroll-target="#publications">Publications</a></li>
   <li><a href="#posters-and-presentations" id="toc-posters-and-presentations" class="nav-link" data-scroll-target="#posters-and-presentations">Posters and presentations</a></li>
-  <li><a href="#positions" id="toc-positions" class="nav-link" data-scroll-target="#positions">Positions</a></li>
   </ul>
 </nav>
     </div>
@@ -187,7 +153,6 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Research</h1>
-<p class="subtitle lead">Causal inference when the data doesn’t cooperate.</p>
 </div>
 
 
@@ -204,20 +169,26 @@ window.Quarto = {
 </header>
 
 
-<section id="current-work" class="level2">
-<h2 class="anchored" data-anchor-id="current-work">Current work</h2>
-<section id="heterogeneous-treatment-effects-with-missing-treatments" class="level3">
-<h3 class="anchored" data-anchor-id="heterogeneous-treatment-effects-with-missing-treatments">Heterogeneous treatment effects with missing treatments</h3>
-<p>Some ICU patients receive a right-heart catheter and some don’t. Did it help — and for whom? The quantity of interest is the <em>heterogeneous</em> treatment effect,</p>
-<p><span class="math display">\[\tau(x) = \mathbb{E}\big[Y(1) - Y(0) \mid X = x\big],\]</span></p>
-<p>the causal effect for different kinds of patients rather than one population average. Estimating it normally requires knowing each unit’s treatment assignment. In practice that assignment is often partly missing: a health hazard recorded only for a subpopulation, an ad exposure that was never logged, a survey item nobody answered.</p>
-<p>Standard practice splits the problem in two — impute the missing treatments, <em>then</em> estimate effects — which throws away the outcome’s information about who was likely treated and understates uncertainty in the result.</p>
-<p><strong>Gibbs-OMIT</strong> does both at once. A single Gibbs sampler alternates between fitting a flexible tree model (Bayesian Additive Regression Trees) for <span class="math inline">\(\tau(x)\)</span>, and re-imputing who was treated using the outcome as evidence.</p>
-<div class="callout-highlight">
-<p>The result is <strong>one posterior</strong> over both the effects and the missing treatments, so uncertainty about <em>who was treated</em> propagates into the final intervals rather than disappearing.</p>
+<section id="positions" class="level2">
+<h2 class="anchored" data-anchor-id="positions">Positions</h2>
+<div class="entry">
+<p><span class="entry-title">Research Assistant</span> <span class="entry-date">May 2025 – present</span> <span class="entry-meta">Duke University, Department of Statistical Science</span></p>
 </div>
-<p>In simulation the method matches an oracle that observes every treatment (MSE 2.33 vs.&nbsp;2.43), a 67% reduction against complete-case analysis (7.04), while MICE does worse than simply dropping incomplete rows (9.69). Interval coverage is 95%, against 79% for complete case and 88% for MICE.</p>
-</section>
+<div class="entry">
+<p><span class="entry-title">Biostatistician</span> <span class="entry-date">Dec 2025 – present</span> <span class="entry-meta">UC San Diego School of Medicine</span></p>
+</div>
+<div class="entry">
+<p><span class="entry-title">Biostatistician</span> <span class="entry-date">May 2025 – present</span> <span class="entry-meta">Duke University School of Medicine</span></p>
+</div>
+<div class="entry">
+<p><span class="entry-title">Biostatistician and Data Manager</span> <span class="entry-date">Jun 2024 – Mar 2025</span> <span class="entry-meta">Stanford University School of Medicine</span></p>
+</div>
+<div class="entry">
+<p><span class="entry-title">Undergraduate Researcher</span> <span class="entry-date">Feb 2023 – Jun 2024</span> <span class="entry-meta">Qing Zhou Research Group, UCLA</span></p>
+</div>
+<div class="entry">
+<p><span class="entry-title">Biostatistics Researcher</span> <span class="entry-date">Jun 2022 – May 2023</span> <span class="entry-meta">Stanford University School of Medicine</span></p>
+</div>
 </section>
 <section id="publications" class="level2">
 <h2 class="anchored" data-anchor-id="publications">Publications</h2>
@@ -250,33 +221,6 @@ window.Quarto = {
 </div>
 <div class="entry">
 <p><span class="entry-title">The impact of persistent gastrointestinal symptoms on completion of oral immunotherapy in clinical trials</span> <span class="entry-date">Sep 2022</span> <span class="entry-meta">GALEN Anacare GAFA 2022</span></p>
-</div>
-</section>
-<section id="positions" class="level2">
-<h2 class="anchored" data-anchor-id="positions">Positions</h2>
-<div class="entry">
-<p><span class="entry-title">Research Assistant</span> <span class="entry-date">May 2025 – present</span> <span class="entry-meta">Duke University, Department of Statistical Science</span></p>
-<p>Developing causal inference methodology and applications under Jerry Reiter and Fan Li, including work on integrating LLMs and modern ML into causal discovery.</p>
-</div>
-<div class="entry">
-<p><span class="entry-title">Biostatistician</span> <span class="entry-date">Dec 2025 – present</span> <span class="entry-meta">UC San Diego School of Medicine, Moores Cancer Center</span></p>
-<p>Statistical modeling comparing treatment-related complications between patients receiving immunotherapy with radiation versus concurrent chemoradiation with cisplatin.</p>
-</div>
-<div class="entry">
-<p><span class="entry-title">Biostatistician</span> <span class="entry-date">May 2025 – present</span> <span class="entry-meta">Duke University School of Medicine, Department of Radiology</span></p>
-<p>Investigating how contrast density and image acquisition timing affect CSF-venous fistula visibility, using ordinal regression and related methods to support neuroradiology research.</p>
-</div>
-<div class="entry">
-<p><span class="entry-title">Biostatistician and Data Manager</span> <span class="entry-date">Jun 2024 – Mar 2025</span> <span class="entry-meta">Stanford School of Medicine, Pulmonary, Allergy and Critical Care Medicine</span></p>
-<p>Identified environmental factors driving asthma and COPD emergency visits and hospitalizations, tracking regional and county-wide differences with attention to vulnerable populations.</p>
-</div>
-<div class="entry">
-<p><span class="entry-title">Undergraduate Researcher</span> <span class="entry-date">Feb 2023 – Jun 2024</span> <span class="entry-meta">Qing Zhou Research Group, UCLA</span></p>
-<p>Structure learning of causal DAGs. Extended the CML algorithm with conditional independence tests and other procedures for discrete data, validated through simulation studies on the Hoffman2 cluster. Implemented in R, Rcpp, and RcppArmadillo.</p>
-</div>
-<div class="entry">
-<p><span class="entry-title">Biostatistics Researcher</span> <span class="entry-date">Jun 2022 – May 2023</span> <span class="entry-meta">Stanford School of Medicine, Sean N. Parker Center for Allergy and Asthma Research</span></p>
-<p>Analyzed patients with chronic GI symptoms in oral immunotherapy clinical trials, built ML models to harmonize allergic reaction grading scales, and developed an R Shiny application for enrollment, demographic, and forecast data used in NIH reporting.</p>
 </div>
 
 
