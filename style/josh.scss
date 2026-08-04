@@ -181,7 +181,10 @@ main a:not(.btn):not(.nav-link) {
   }
 
   .entry-title {
+    // min-width:0 lets a long title wrap *within* its own column rather than
+    // pushing the date onto a line of its own
     flex: 1 1 auto;
+    min-width: 0;
     font-weight: 600;
     color: $duke-navy;
   }

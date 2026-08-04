@@ -167,6 +167,7 @@ main a:not(.btn):not(.nav-link) {
 
   .entry-title {
     flex: 1 1 auto;
+    min-width: 0;
     font-weight: 600;
     color: #f2f5f8;
   }
