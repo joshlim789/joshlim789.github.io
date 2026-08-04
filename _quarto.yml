@@ -7,8 +7,8 @@ project:
 website:
   title: "Joshua Lim"
   description: "Joshua Lim — Ph.D. student in Statistical Science at Duke University, working on causal inference, missing data, and Bayesian machine learning."
-  site-url: "https://joshlim789.github.io/test-website/"
-  repo-url: "https://github.com/joshlim789/test-website"
+  site-url: "https://joshlim789.github.io/"
+  repo-url: "https://github.com/joshlim789/joshlim789.github.io"
 
   open-graph: true
   page-navigation: false
