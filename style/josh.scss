@@ -1,0 +1,252 @@
+/*-- scss:defaults --*/
+
+// Duke brand palette
+$duke-navy:     #012169;
+$duke-royal:    #00539B;
+$duke-copper:   #C84E00;
+$duke-graphite: #666666;
+$duke-limestone:#F3F2F1;
+
+$body-bg:    #ffffff;
+$body-color: #1c2024;
+$link-color: $duke-royal;
+
+$primary:   $duke-navy;
+$secondary: $duke-graphite;
+
+$font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$headings-font-family:   "Source Serif 4", Georgia, "Times New Roman", serif;
+$font-size-root: 17px;
+$headings-font-weight: 600;
+$headings-color: $duke-navy;
+
+$navbar-bg: $duke-navy;
+$navbar-fg: #ffffff;
+$footer-bg: $duke-navy;
+$footer-fg: #ffffff;
+
+$toc-color: $duke-navy;
+$border-radius: 6px;
+
+/*-- scss:rules --*/
+
+// ---------------------------------------------------------------- typography
+body {
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  p { margin-bottom: 1.05rem; }
+}
+
+h1, .h1 { letter-spacing: -0.015em; }
+
+// Section headings get a copper rule, echoing the research slides
+main h2 {
+  margin-top: 2.4rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.35rem;
+  font-size: 1.55rem;
+  border-bottom: 1px solid rgba($duke-navy, 0.14);
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 0.85em;
+    margin-right: 0.55rem;
+    vertical-align: -0.05em;
+    background: $duke-copper;
+    border-radius: 2px;
+  }
+}
+
+main h3 {
+  margin-top: 1.6rem;
+  font-size: 1.15rem;
+  color: $duke-royal;
+}
+
+// ---------------------------------------------------------------------- links
+main a:not(.btn):not(.nav-link) {
+  color: $duke-royal;
+  text-decoration: none;
+  border-bottom: 1px solid rgba($duke-royal, 0.32);
+  transition: color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    color: $duke-copper;
+    border-bottom-color: $duke-copper;
+  }
+}
+
+// -------------------------------------------------------------------- navbar
+.navbar {
+  border-bottom: 3px solid $duke-copper;
+
+  .navbar-brand { font-weight: 600; letter-spacing: 0.01em; }
+
+  .nav-link {
+    position: relative;
+    opacity: 0.88;
+    transition: opacity 0.15s ease;
+
+    &:hover, &.active { opacity: 1; }
+
+    &.active::after {
+      content: "";
+      position: absolute;
+      left: 0.5rem;
+      right: 0.5rem;
+      bottom: 0.1rem;
+      height: 2px;
+      background: $duke-copper;
+      border-radius: 1px;
+    }
+  }
+}
+
+// ------------------------------------------------------------- about / hero
+.quarto-about-trestles {
+  // Top-align the columns so the identity card can stick while you scroll
+  align-items: flex-start;
+
+  .about-entity {
+    flex: 0 0 32%;
+    position: sticky;
+    top: 4.5rem;
+
+    .about-image {
+      box-shadow: 0 6px 22px rgba($duke-navy, 0.18);
+    }
+
+    .about-link {
+      color: $duke-navy;
+      border: 1px solid rgba($duke-navy, 0.25);
+      border-radius: 999px;
+      padding: 0.32rem 0.9rem;
+      margin: 0.2rem 0.25rem;
+      font-size: 0.9rem;
+      transition: all 0.15s ease;
+
+      &:hover {
+        background: $duke-navy;
+        border-color: $duke-navy;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .about-contents {
+    flex: 1 1 auto;
+    padding-left: 2.4rem;
+
+    h2:first-of-type { margin-top: 0.6rem; }
+  }
+}
+
+// Below 992px Quarto stacks trestles into one column — drop the sticky there,
+// otherwise the identity card pins itself above the prose it should introduce.
+@media (max-width: 991.98px) {
+  .quarto-about-trestles {
+    .about-entity { position: static; flex: 1 1 100%; }
+    .about-contents { padding-left: 0; }
+  }
+}
+
+.subtitle {
+  color: $duke-graphite;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+// ------------------------------------------------------------------ entries
+// Used on Research / Teaching for each position, paper, or course.
+.entry {
+  padding: 0.9rem 0 0.9rem 1.1rem;
+  border-left: 2px solid rgba($duke-navy, 0.12);
+  margin-bottom: 0.2rem;
+  transition: border-color 0.15s ease;
+
+  &:hover { border-left-color: $duke-copper; }
+
+  // Title and date share the first line; each meta line wraps below it.
+  // Flex rather than float, so a long title can't push the date off its line.
+  > p:first-of-type {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 1rem;
+  }
+
+  .entry-title {
+    flex: 1 1 auto;
+    font-weight: 600;
+    color: $duke-navy;
+  }
+
+  .entry-meta {
+    flex: 1 1 100%;
+    font-size: 0.88rem;
+    color: $duke-graphite;
+    margin-top: 0.1rem;
+  }
+
+  p, ul { margin-top: 0.45rem; margin-bottom: 0; }
+  ul { padding-left: 1.1rem; }
+}
+
+.entry-date {
+  flex: 0 0 auto;
+  margin-left: auto;
+  font-size: 0.86rem;
+  color: $duke-graphite;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+// --------------------------------------------------------------- highlight
+.callout-highlight {
+  background: rgba($duke-royal, 0.06);
+  border-left: 3px solid $duke-royal;
+  border-radius: 0 $border-radius $border-radius 0;
+  padding: 1rem 1.2rem;
+  margin: 1.4rem 0;
+
+  p:last-child { margin-bottom: 0; }
+}
+
+// ------------------------------------------------------------------- badges
+.tag {
+  display: inline-block;
+  background: rgba($duke-navy, 0.07);
+  color: $duke-navy;
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  margin: 0.15rem 0.2rem 0.15rem 0;
+  font-size: 0.83rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+// --------------------------------------------------------------- CV embed
+.cv-embed {
+  width: 100%;
+  height: 85vh;
+  min-height: 500px;
+  border: 1px solid rgba($duke-navy, 0.18);
+  border-radius: $border-radius;
+}
+
+// --------------------------------------------------------------- footer
+.nav-footer {
+  border-top: 3px solid $duke-copper;
+  font-size: 0.88rem;
+
+  a { color: #ffffff; text-decoration: underline; }
+}
+
+// Wide content should scroll inside itself, never the page
+.table-responsive, pre { overflow-x: auto; }

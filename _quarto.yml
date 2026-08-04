@@ -1,26 +1,61 @@
 project:
   type: website
+  output-dir: _site
+  resources:
+    - files/**
 
 website:
   title: "Joshua Lim"
+  description: "Joshua Lim — Ph.D. student in Statistical Science at Duke University, working on causal inference, missing data, and Bayesian machine learning."
+  site-url: "https://joshlim789.github.io/test-website/"
+  repo-url: "https://github.com/joshlim789/test-website"
+
+  open-graph: true
+  page-navigation: false
+
   navbar:
+    background: "#012169"
+    foreground: "#ffffff"
+    pinned: true
+    title: "Joshua Lim"
     left:
       - href: index.qmd
         text: Home
-      - href: about.qmd  
-        text: Experience
+      - href: research.qmd
+        text: Research
+      - href: teaching.qmd
+        text: Teaching
+      - href: cv.qmd
+        text: CV
+    right:
+      - icon: github
+        href: https://github.com/joshlim789
+        aria-label: GitHub
+      - icon: linkedin
+        href: https://www.linkedin.com/in/joshua-lim-47619a229/
+        aria-label: LinkedIn
+      - icon: envelope
+        href: mailto:josh.lim@duke.edu
+        aria-label: Email
 
   page-footer:
-    right: "&copy; 2024, Joshua Lim"
+    background: "#012169"
+    foreground: "#ffffff"
+    left: "&copy; 2026 Joshua Lim"
+    center: "Department of Statistical Science · Duke University"
+    right: "Built with [Quarto](https://quarto.org/)"
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
-    toc: true
-
-
+    theme:
+      light: [cosmo, style/josh.scss]
+      dark: [cosmo, style/josh-dark.scss]
+    toc: false
+    grid:
+      body-width: 980px
+    smooth-scroll: true
+    link-external-newwindow: true
+    link-external-icon: false
 
 execute:
   freeze: auto
-

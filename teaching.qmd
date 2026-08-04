@@ -1,0 +1,97 @@
+---
+title: "Teaching"
+subtitle: "Statistics should be learnable by anyone willing to sit with it."
+toc: true
+toc-title: "On this page"
+---
+
+Teaching has been part of my work since high school, and it's the reason I'm pursuing a
+Certificate in College Teaching alongside the Ph.D. I've built two courses from nothing,
+taught sections of 180+ students, and now run a course of my own.
+
+## Duke University
+
+::: {.entry}
+[STA 199: Introduction to Data Science and Statistical Thinking]{.entry-title} [Summer 2026]{.entry-date}
+[Department of Statistical Science · *Instructor of Record*]{.entry-meta}
+
+Full responsibility for a core statistics course carrying Duke credit — hand-crafted lectures,
+labs, homework, and exams. [Course site](https://sta199-su26-2.github.io/)
+:::
+
+## UCLA
+
+::: {.entry}
+[Teaching Assistant, Department of Statistics and Data Science]{.entry-title} [Jan – Jun 2024]{.entry-date}
+[STATS 13: Introduction to Statistical Methods for Life and Health Sciences]{.entry-meta}
+[STATS 102B: Introduction to Computation and Optimization for Statistics]{.entry-meta}
+
+Wrote original homework assignments and practice exams, led office hours and review sessions,
+and graded for sections of over 180 students.
+:::
+
+## Courses I built
+
+::: {.entry}
+[Math Speeder Upper Course — Introduction to Multivariable Calculus]{.entry-title} [Summer 2021]{.entry-date}
+[*Instructor and Curriculum Designer*]{.entry-meta}
+
+A fully online introductory multivariable calculus course: 22 lectures, homework with
+solutions, quizzes, two midterms, three projects, and a final exam. Ten students in the first
+cohort, and new students still work through the now fully asynchronous material every year.
+Built to be accessible to any student regardless of background or socioeconomic status.
+:::
+
+::: {.entry}
+[Physics Catcher Upper Course — Selected Topics from AP Physics]{.entry-title} [Summer 2020]{.entry-date}
+[*Instructor and Curriculum Designer*]{.entry-meta}
+
+A fully online introductory physics course: 17 lectures, homework assignments and answer keys,
+a midterm, and a final exam.
+:::
+
+## Earlier teaching
+
+::: {.entry}
+[Teaching Assistant, Menlo School]{.entry-title} [Aug 2020 – Jun 2021]{.entry-date}
+[AP Statistics · AP Calculus BC · Advanced Topics in Probability and Statistics]{.entry-meta}
+
+Supported online, hybrid, and in-person formats. Wrote test questions, held help hours, led
+classroom activities, and ran problem-solving sessions with immediate feedback.
+:::
+
+::: {.entry}
+[Private Tutor]{.entry-title} [2019 – present]{.entry-date}
+[Mathematics, statistics, and physics]{.entry-meta}
+
+Dozens of students from middle school through college over seven years.
+:::
+
+## Mentoring and service
+
+::: {.entry}
+[Introduction to Undergraduate Research Workshop Mentor]{.entry-title} [May 2025]{.entry-date}
+[Duke University, Department of Statistical Science]{.entry-meta}
+
+Mentored a team of six undergraduates through a full applied statistical analysis of perceived
+quality of life in Durham, NC, and ran mini-workshops on research practice, coding, and
+collaboration for all 20+ participants. Completed additional mentoring training under
+Dr. Joan Combs Durso.
+:::
+
+::: {.entry}
+[Graduate Consultative Committee]{.entry-title} [Aug 2024 – present]{.entry-date}
+[Duke University, Department of Statistical Science]{.entry-meta}
+
+Working with the director of graduate studies and department chair on the academic and personal
+needs of more than 50 Ph.D. students; organizing admitted-student open houses and department
+community events.
+:::
+
+::: {.entry}
+[President, UCLA Club Gymnastics]{.entry-title} [2022 – 2024]{.entry-date}
+[University of California, Los Angeles]{.entry-meta}
+
+Led a nationally ranked club team of over 60 members — meets, travel, governing-body
+communication, and fundraising.
+:::
