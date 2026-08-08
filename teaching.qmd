@@ -17,6 +17,11 @@ labs, homework, and exams. [Course site](https://sta199-su26-2.github.io/)
 ::: {.entry}
 [Ph.D. Bootcamp]{.entry-title} [Summer 2026]{.entry-date}
 [Department of Statistical Science · *Instructor*]{.entry-meta}
+
+A one-day linear algebra review preparing incoming Ph.D. students for STA 721: Linear Models,
+built around the geometry behind projection, the spectral theorem, and the SVD, with practice
+problems and worked solutions throughout.
+[Slides](slides/linear-algebra-bootcamp.html)
 :::
 
 ::: {.entry}

@@ -1,0 +1,327 @@
+/*-- scss:defaults --*/
+
+// ---- UCLA brand palette ------------------------------------------------
+$ucla-blue:          #2774AE;  // primary
+$ucla-gold:          #FFD100;  // primary
+$ucla-darkest-blue:  #003B5C;
+$ucla-darker-blue:   #005587;
+$ucla-lighter-blue:  #8BB8E8;
+$ucla-lightest-blue: #DAEBFE;
+$ucla-darkest-gold:  #FFB81C;
+$ucla-darker-gold:   #FFC72C;
+$ucla-lightest-gold: #FFE800;
+$ucla-gray:          #4A5C6A;
+$ucla-light-gray:    #F4F7FA;
+
+// ---- fonts -------------------------------------------------------------
+// Atkinson Hyperlegible: the Braille Institute's legibility face, and the same
+// font the STA 199 site loads. Letterforms are wider than Source Sans, so the
+// root size below is set smaller to compensate.
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+$font-family-sans-serif: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !default;
+$font-family-monospace: "JetBrains Mono", "Fira Mono", monospace !default;
+
+// 35px root with `.smaller` on the content slides lands body text at ~28px --
+// the same size last year's Beamer deck ran at in this canvas. Overflow scrolls,
+// so this is safe to nudge: effective body size is this number x 0.8.
+$presentation-font-size-root: 35px;
+$presentation-h1-font-size: 1.75em;
+$presentation-h2-font-size: 1.25em;
+$presentation-h3-font-size: 1.05em;
+$presentation-heading-font: $font-family-sans-serif;
+$presentation-heading-color: $ucla-darkest-blue;
+$presentation-heading-font-weight: 700;
+$presentation-line-height: 1.25;
+
+// ---- core colors -------------------------------------------------------
+$body-bg: #FFFFFF;
+$body-color: #1C2B36;
+$link-color: $ucla-darker-blue;
+$link-color-hover: $ucla-blue;
+$selection-bg: $ucla-lightest-gold;
+$selection-color: #1C2B36;
+
+$code-block-bg: $ucla-light-gray;
+$code-block-border-color: $ucla-lighter-blue;
+$code-color: $ucla-darkest-blue;
+$code-block-font-size: 0.72em;
+
+/*-- scss:mixins --*/
+
+@mixin ucla-panel($accent, $bg) {
+  border-left: 0.28rem solid $accent;
+  background-color: $bg;
+  border-radius: 0.25rem;
+  padding: 0.45em 0.8em;
+  margin: 0.4em 0;
+
+  // panels are the main overflow culprit: kill the leading/trailing margins
+  // their first and last children would otherwise contribute
+  > :first-child { margin-top: 0; }
+  > :last-child  { margin-bottom: 0; }
+
+  ul, ol { margin-top: 0.15em; margin-bottom: 0.15em; }
+  li { margin-bottom: 0.1em; }
+}
+
+/*-- scss:rules --*/
+
+// ---- title slide -------------------------------------------------------
+#title-slide {
+  text-align: left;
+
+  .title {
+    color: $ucla-darkest-blue;
+    font-size: 2.05em;
+    font-weight: 700;
+    line-height: 1.1;
+    border-bottom: 0.18rem solid $ucla-gold;
+    padding-bottom: 0.25em;
+  }
+
+  .subtitle {
+    color: $ucla-blue;
+    font-size: 1.15em;
+    font-weight: 600;
+    margin-top: 0.5em;
+  }
+
+  .author,
+  .quarto-title-author-name {
+    color: $body-color;
+    font-size: 0.9em;
+    margin-top: 0.7em;
+  }
+
+  .institute,
+  .date {
+    color: $ucla-gray;
+    font-size: 0.72em;
+  }
+}
+
+// ---- section divider slides (level-1 headings) -------------------------
+.reveal .slide h1 {
+  color: $ucla-darkest-blue;
+  border-bottom: 0.16rem solid $ucla-gold;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.4em;
+}
+
+// ---- content slide headings (level-2) ----------------------------------
+.reveal .slide h2 {
+  color: $ucla-darker-blue;
+  font-size: 1.35em;
+  margin-bottom: 0.55em;
+  border-bottom: 0.08rem solid $ucla-lighter-blue;
+  padding-bottom: 0.15em;
+}
+
+.reveal .slide h3 {
+  color: $ucla-blue;
+  font-weight: 600;
+}
+
+// ---- lists -------------------------------------------------------------
+.reveal ul,
+.reveal ol {
+  margin-left: 0.6em;
+}
+
+.reveal ul li::marker {
+  color: $ucla-blue;
+}
+
+.reveal ol li::marker {
+  color: $ucla-blue;
+  font-weight: 600;
+}
+
+// ---- inline emphasis ---------------------------------------------------
+.reveal strong {
+  color: $ucla-darker-blue;
+  font-weight: 700;
+}
+
+.reveal code:not(.sourceCode) {
+  color: $ucla-darkest-blue;
+  background-color: $ucla-light-gray;
+  padding: 0.05em 0.25em;
+  border-radius: 0.2em;
+}
+
+// ---- links -------------------------------------------------------------
+.reveal a {
+  border-bottom: 0.08rem solid $ucla-gold;
+  text-decoration: none;
+}
+
+.reveal a:hover {
+  color: $ucla-blue;
+  border-bottom-color: $ucla-blue;
+}
+
+// ---- footer, slide numbers, progress bar -------------------------------
+.reveal .footer {
+  color: $ucla-gray;
+  font-size: 0.55em;
+}
+
+.reveal .slide-number {
+  background-color: transparent;
+  color: $ucla-blue;
+  font-size: 0.5em;
+}
+
+.reveal .progress {
+  color: $ucla-gold;
+  height: 5px;
+}
+
+// ---- boxes: definitions, theorems, your-turn ---------------------------
+.defn {
+  @include ucla-panel($ucla-blue, $ucla-lightest-blue);
+}
+
+.thm {
+  @include ucla-panel($ucla-darkest-blue, #EDF3F8);
+}
+
+.note {
+  @include ucla-panel($ucla-gray, $ucla-light-gray);
+}
+
+.warn {
+  @include ucla-panel($ucla-darkest-gold, #FFF8E1);
+}
+
+// the star of the show: practice prompts
+.your-turn {
+  @include ucla-panel($ucla-gold, #FFFBEB);
+  border: 0.1rem solid $ucla-darker-gold;
+  border-left: 0.4rem solid $ucla-gold;
+}
+
+.your-turn::before {
+  content: "Your turn";
+  display: block;
+  font-weight: 700;
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $ucla-darkest-blue;
+  margin-bottom: 0.35em;
+}
+
+.answer {
+  @include ucla-panel($ucla-blue, #F2F8FD);
+}
+
+.answer::before {
+  content: "Answer sketch";
+  display: block;
+  font-weight: 700;
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $ucla-blue;
+  margin-bottom: 0.35em;
+}
+
+// ---- difficulty tier badges --------------------------------------------
+.tier {
+  display: inline-block;
+  font-size: 0.55em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.15em 0.6em;
+  border-radius: 1em;
+  vertical-align: middle;
+  margin-left: 0.4em;
+}
+
+.baseline  { background-color: $ucla-lightest-blue; color: $ucla-darkest-blue; }
+.bridge    { background-color: $ucla-gold;          color: $ucla-darkest-blue; }
+.stretch   { background-color: $ucla-darker-blue;   color: #FFFFFF; }
+.challenge { background-color: $ucla-darkest-blue;  color: $ucla-gold; }
+
+// ---- text size helpers (same names as the STA 199 decks) ---------------
+.large  { font-size: 1.4em; }
+.midi   { font-size: 0.85em; }
+.small  { font-size: 0.75em; }
+.xsmall { font-size: 0.62em; }
+
+.hl   { color: $ucla-blue; font-weight: 600; }
+.gold { color: $ucla-darkest-gold; font-weight: 600; }
+
+// ---- tables ------------------------------------------------------------
+.reveal table {
+  font-size: 0.8em;
+  border-collapse: collapse;
+}
+
+.reveal table th {
+  background-color: $ucla-darkest-blue;
+  color: #FFFFFF;
+  border-bottom: none;
+}
+
+.reveal table tr:nth-child(even) {
+  background-color: $ucla-light-gray;
+}
+
+.reveal table td,
+.reveal table th {
+  padding: 0.3em 0.6em;
+}
+
+// ---- blockquote --------------------------------------------------------
+.reveal blockquote {
+  border-left: 0.3rem solid $ucla-gold;
+  background-color: $ucla-light-gray;
+  box-shadow: none;
+  font-style: normal;
+  padding: 0.6em 1em;
+}
+
+// ---- math tweaks -------------------------------------------------------
+.reveal .MathJax,
+.reveal mjx-container {
+  color: $body-color;
+}
+
+// display math ships with ~1em margins top and bottom; on a slide carrying two
+// or three equations that alone is a wasted line of text each time
+.reveal mjx-container[display="true"] {
+  margin: 0.45em 0 !important;
+}
+
+// two-column helper spacing
+.reveal .columns {
+  gap: 1.2em;
+}
+
+// ---- vertical rhythm ---------------------------------------------------
+.reveal .slide > p    { margin: 0.4em 0; }
+.reveal .slide > ul,
+.reveal .slide > ol   { margin: 0.35em 0; }
+.reveal .slide li     { margin-bottom: 0.15em; }
+
+// ---- scroll affordance -------------------------------------------------
+// `scrollable: true` is set deck-wide. Quarto implements that as
+// `overflow-y: auto` on `.slide:not(.center)` rather than by tagging each
+// section, so the scrollbar styling has to target the slide itself -- not the
+// `.scrollable` class, which only lands on some slides.
+.reveal .slide {
+  scrollbar-width: thin;
+  scrollbar-color: $ucla-lighter-blue transparent;
+
+  &::-webkit-scrollbar { width: 0.4em; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background-color: $ucla-lighter-blue;
+    border-radius: 1em;
+  }
+}
