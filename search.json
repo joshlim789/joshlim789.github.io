@@ -1,31 +1,38 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Joshua Lim",
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
     "section": "",
-    "text": "I’m a third year Ph.D. candidate in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits at the intersection of causal inference and missing data. Specifically, I seek to develop Bayesian methodology that can estimate heterogeneous treatment effects in the presence of missing data.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke, UC San Diego, and previously Stanford University Schools of Medicine.\nI am highly passionate about teaching. In Summer 2026 I was instructor of record for STA 199: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
+    "text": "STA 199: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site\n\n\nPh.D. Bootcamp Summer 2026 Department of Statistical Science · Instructor\nA one-day linear algebra review preparing incoming Ph.D. students for STA 721: Linear Models, built around the geometry behind projection, the spectral theorem, and the SVD, with practice problems and worked solutions throughout. Slides\n\n\nSTA 199: Introduction to Data Science and Statistical Thinking Fall 2026 Department of Statistical Science · Teaching Assistant\n\n\nM.S.S. Bootcamp Summer 2026 Department of Statistical Science · Teaching Assistant"
   },
   {
-    "objectID": "index.html#hi-im-josh",
-    "href": "index.html#hi-im-josh",
-    "title": "Joshua Lim",
+    "objectID": "teaching.html#duke-university",
+    "href": "teaching.html#duke-university",
+    "title": "Teaching",
     "section": "",
-    "text": "I’m a third year Ph.D. candidate in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits at the intersection of causal inference and missing data. Specifically, I seek to develop Bayesian methodology that can estimate heterogeneous treatment effects in the presence of missing data.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke, UC San Diego, and previously Stanford University Schools of Medicine.\nI am highly passionate about teaching. In Summer 2026 I was instructor of record for STA 199: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
+    "text": "STA 199: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site\n\n\nPh.D. Bootcamp Summer 2026 Department of Statistical Science · Instructor\nA one-day linear algebra review preparing incoming Ph.D. students for STA 721: Linear Models, built around the geometry behind projection, the spectral theorem, and the SVD, with practice problems and worked solutions throughout. Slides\n\n\nSTA 199: Introduction to Data Science and Statistical Thinking Fall 2026 Department of Statistical Science · Teaching Assistant\n\n\nM.S.S. Bootcamp Summer 2026 Department of Statistical Science · Teaching Assistant"
   },
   {
-    "objectID": "index.html#research-interests",
-    "href": "index.html#research-interests",
-    "title": "Joshua Lim",
-    "section": "Research interests",
-    "text": "Research interests\nCausal inference Missing data Biostatistics"
+    "objectID": "teaching.html#ucla",
+    "href": "teaching.html#ucla",
+    "title": "Teaching",
+    "section": "UCLA",
+    "text": "UCLA\n\nTeaching Assistant, Department of Statistics and Data Science Jan – Jun 2024 STATS 13: Introduction to Statistical Methods for Life and Health Sciences STATS 102B: Introduction to Computation and Optimization for Statistics\nWrote original homework assignments and practice exams, led office hours and review sessions, and graded for sections of over 180 students."
   },
   {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "Joshua Lim",
-    "section": "Education",
-    "text": "Education\n\nPh.D. Statistical Science Expected 2029 Duke University · also a Certificate in College Teaching\n\n\nB.S. Applied Mathematics, Statistics and Data Science 2024 University of California, Los Angeles"
+    "objectID": "teaching.html#mentoring-and-service",
+    "href": "teaching.html#mentoring-and-service",
+    "title": "Teaching",
+    "section": "Mentoring and service",
+    "text": "Mentoring and service\n\nIntroduction to Statistics for Health Science Using R May 2026 Johnson C. Smith University · Workshop Instructor\nDesigned and taught a one-day workshop introducing statistics and R to undergraduates with no prior programming experience, built around a public-health case study.\n\n\nIntroduction to Undergraduate Research Workshop Mentor May 2025 Duke University, Department of Statistical Science\nMentored a team of six undergraduates through a full applied statistical analysis of perceived quality of life in Durham, NC, and ran mini-workshops on research practice, coding, and collaboration for all 20+ participants. Completed additional mentoring training under Dr. Joan Combs Durso.\n\n\nGraduate Consultative Committee Aug 2024 – present Duke University, Department of Statistical Science\nWorking with the director of graduate studies and department chair on the academic and personal needs of more than 50 Ph.D. students; organizing admitted-student open houses and department community events."
+  },
+  {
+    "objectID": "teaching.html#earlier-teaching",
+    "href": "teaching.html#earlier-teaching",
+    "title": "Teaching",
+    "section": "Earlier teaching",
+    "text": "Earlier teaching\n\nMath Speeder Upper Course — Introduction to Multivariable Calculus Summer 2021 Instructor and Curriculum Designer\nA fully online introductory multivariable calculus course: 22 lectures, homework with solutions, quizzes, two midterms, three projects, and a final exam. Ten students in the first cohort, and new students still work through the now fully asynchronous material every year. Built to be accessible to any student regardless of background or socioeconomic status.\n\n\nPhysics Catcher Upper Course — Selected Topics from AP Physics Summer 2020 Instructor and Curriculum Designer\nA fully online introductory physics course: 17 lectures, homework assignments and answer keys, a midterm, and a final exam.\n\n\nTeaching Assistant, Menlo School Aug 2020 – Jun 2021 AP Statistics · AP Calculus BC · Advanced Topics in Probability and Statistics\nSupported online, hybrid, and in-person formats. Wrote test questions, held help hours, led classroom activities, and ran problem-solving sessions with immediate feedback.\n\n\nPrivate Tutor 2019 – present Mathematics, statistics, and physics\nDozens of students from middle school through college over seven years."
   },
   {
     "objectID": "research.html",
@@ -63,38 +70,31 @@
     "text": "Download PDF    Last updated April 2026.\n\n\nYour browser can’t display embedded PDFs. &lt;a href=\"files/Lim_Joshua_CV.pdf\"&gt;Download the CV instead&lt;/a&gt;."
   },
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Joshua Lim",
     "section": "",
-    "text": "STA 199: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site\n\n\nPh.D. Bootcamp Summer 2026 Department of Statistical Science · Instructor\n\n\nSTA 199: Introduction to Data Science and Statistical Thinking Fall 2026 Department of Statistical Science · Teaching Assistant\n\n\nM.S.S. Bootcamp Summer 2026 Department of Statistical Science · Teaching Assistant"
+    "text": "I’m a third year Ph.D. candidate in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits at the intersection of causal inference and missing data. Specifically, I seek to develop Bayesian methodology that can estimate heterogeneous treatment effects in the presence of missing data.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke, UC San Diego, and previously Stanford University Schools of Medicine.\nI am highly passionate about teaching. In Summer 2026 I was instructor of record for STA 199: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
   },
   {
-    "objectID": "teaching.html#duke-university",
-    "href": "teaching.html#duke-university",
-    "title": "Teaching",
+    "objectID": "index.html#hi-im-josh",
+    "href": "index.html#hi-im-josh",
+    "title": "Joshua Lim",
     "section": "",
-    "text": "STA 199: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site\n\n\nPh.D. Bootcamp Summer 2026 Department of Statistical Science · Instructor\n\n\nSTA 199: Introduction to Data Science and Statistical Thinking Fall 2026 Department of Statistical Science · Teaching Assistant\n\n\nM.S.S. Bootcamp Summer 2026 Department of Statistical Science · Teaching Assistant"
+    "text": "I’m a third year Ph.D. candidate in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits at the intersection of causal inference and missing data. Specifically, I seek to develop Bayesian methodology that can estimate heterogeneous treatment effects in the presence of missing data.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke, UC San Diego, and previously Stanford University Schools of Medicine.\nI am highly passionate about teaching. In Summer 2026 I was instructor of record for STA 199: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
   },
   {
-    "objectID": "teaching.html#ucla",
-    "href": "teaching.html#ucla",
-    "title": "Teaching",
-    "section": "UCLA",
-    "text": "UCLA\n\nTeaching Assistant, Department of Statistics and Data Science Jan – Jun 2024 STATS 13: Introduction to Statistical Methods for Life and Health Sciences STATS 102B: Introduction to Computation and Optimization for Statistics\nWrote original homework assignments and practice exams, led office hours and review sessions, and graded for sections of over 180 students."
+    "objectID": "index.html#research-interests",
+    "href": "index.html#research-interests",
+    "title": "Joshua Lim",
+    "section": "Research interests",
+    "text": "Research interests\nCausal inference Missing data Biostatistics"
   },
   {
-    "objectID": "teaching.html#mentoring-and-service",
-    "href": "teaching.html#mentoring-and-service",
-    "title": "Teaching",
-    "section": "Mentoring and service",
-    "text": "Mentoring and service\n\nIntroduction to Statistics for Health Science Using R May 2026 Johnson C. Smith University · Workshop Instructor\nDesigned and taught a one-day workshop introducing statistics and R to undergraduates with no prior programming experience, built around a public-health case study.\n\n\nIntroduction to Undergraduate Research Workshop Mentor May 2025 Duke University, Department of Statistical Science\nMentored a team of six undergraduates through a full applied statistical analysis of perceived quality of life in Durham, NC, and ran mini-workshops on research practice, coding, and collaboration for all 20+ participants. Completed additional mentoring training under Dr. Joan Combs Durso.\n\n\nGraduate Consultative Committee Aug 2024 – present Duke University, Department of Statistical Science\nWorking with the director of graduate studies and department chair on the academic and personal needs of more than 50 Ph.D. students; organizing admitted-student open houses and department community events."
-  },
-  {
-    "objectID": "teaching.html#earlier-teaching",
-    "href": "teaching.html#earlier-teaching",
-    "title": "Teaching",
-    "section": "Earlier teaching",
-    "text": "Earlier teaching\n\nMath Speeder Upper Course — Introduction to Multivariable Calculus Summer 2021 Instructor and Curriculum Designer\nA fully online introductory multivariable calculus course: 22 lectures, homework with solutions, quizzes, two midterms, three projects, and a final exam. Ten students in the first cohort, and new students still work through the now fully asynchronous material every year. Built to be accessible to any student regardless of background or socioeconomic status.\n\n\nPhysics Catcher Upper Course — Selected Topics from AP Physics Summer 2020 Instructor and Curriculum Designer\nA fully online introductory physics course: 17 lectures, homework assignments and answer keys, a midterm, and a final exam.\n\n\nTeaching Assistant, Menlo School Aug 2020 – Jun 2021 AP Statistics · AP Calculus BC · Advanced Topics in Probability and Statistics\nSupported online, hybrid, and in-person formats. Wrote test questions, held help hours, led classroom activities, and ran problem-solving sessions with immediate feedback.\n\n\nPrivate Tutor 2019 – present Mathematics, statistics, and physics\nDozens of students from middle school through college over seven years."
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Joshua Lim",
+    "section": "Education",
+    "text": "Education\n\nPh.D. Statistical Science Expected 2029 Duke University · also a Certificate in College Teaching\n\n\nB.S. Applied Mathematics, Statistics and Data Science 2024 University of California, Los Angeles"
   }
 ]

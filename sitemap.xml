@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://joshlim789.github.io/index.html</loc>
-    <lastmod>2026-08-04T02:58:56.875Z</lastmod>
+    <loc>https://joshlim789.github.io/teaching.html</loc>
+    <lastmod>2026-08-08T23:49:42.414Z</lastmod>
   </url>
   <url>
     <loc>https://joshlim789.github.io/research.html</loc>
-    <lastmod>2026-08-04T02:58:56.877Z</lastmod>
+    <lastmod>2026-08-08T23:49:42.413Z</lastmod>
   </url>
   <url>
     <loc>https://joshlim789.github.io/cv.html</loc>
-    <lastmod>2026-08-04T02:58:56.871Z</lastmod>
+    <lastmod>2026-08-08T23:49:42.407Z</lastmod>
   </url>
   <url>
-    <loc>https://joshlim789.github.io/teaching.html</loc>
-    <lastmod>2026-08-04T02:58:56.877Z</lastmod>
+    <loc>https://joshlim789.github.io/index.html</loc>
+    <lastmod>2026-08-08T23:49:42.412Z</lastmod>
+  </url>
+  <url>
+    <loc>https://joshlim789.github.io/slides/linear-algebra-bootcamp.html</loc>
+    <lastmod>2026-08-08T23:49:42.413Z</lastmod>
   </url>
 </urlset>
