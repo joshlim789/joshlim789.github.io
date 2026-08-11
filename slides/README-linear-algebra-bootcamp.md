@@ -8,7 +8,7 @@ interwoven as "Your turn" prompts.
 
 | File | What it is |
 |---|---|
-| `linear-algebra-bootcamp.qmd` | The deck. 77 slides across 10 sections, 21 practice prompts. |
+| `linear-algebra-bootcamp.qmd` | The deck. 69 slides across 10 sections, 21 practice prompts. |
 | `ucla.scss` | Theme. All colors are variables at the top of the file. |
 
 ## Rendering

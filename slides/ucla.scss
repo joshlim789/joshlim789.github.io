@@ -87,17 +87,38 @@ $code-block-font-size: 0.72em;
     margin-top: 0.5em;
   }
 
+  // Quarto wraps the author in its own flex container and centers it
+  // (`.quarto-title-authors { display: flex; justify-content: center }`), while
+  // the date is a plain <p>. `text-align` on the parent cannot move a flex
+  // item, which is why the two did not line up. Push the container left and
+  // drop the padding Quarto adds so the name sits flush under the title.
+  .quarto-title-authors {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .quarto-title-author {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .author,
   .quarto-title-author-name {
     color: $body-color;
-    font-size: 0.9em;
+    font-size: 1.15em;
+    font-weight: 600;
     margin-top: 0.7em;
+  }
+
+  .quarto-title-affiliation {
+    color: $ucla-gray;
+    font-size: 0.8em;
   }
 
   .institute,
   .date {
     color: $ucla-gray;
-    font-size: 0.72em;
+    font-size: 0.95em;
   }
 }
 

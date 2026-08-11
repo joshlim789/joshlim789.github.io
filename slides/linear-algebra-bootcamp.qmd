@@ -25,28 +25,6 @@ search: false
 editor: source
 ---
 
-## Why we are here {.smaller}
-
-In two weeks you start **STA 721: Linear Models**. Essentially the whole course lives inside one equation:
-
-$$
-\mathbf{y} = \mathbf{X}\boldsymbol\beta + \boldsymbol\varepsilon, \qquad \mathbf{y} \in \mathbb{R}^n,\ \mathbf{X} \in \mathbb{R}^{n \times p}
-$$
-
-Every question you will ask about it is a linear algebra question in disguise:
-
-::: {.midi}
-
-| Statistical question | Linear algebra question |
-|---|---|
-| Is $\boldsymbol\beta$ identifiable? | Is $\ker(\mathbf{X}) = \{\mathbf{0}\}$? |
-| What are the fitted values? | What is the orthogonal projection onto $\operatorname{im}(\mathbf{X})$? |
-| Is $\hat{\boldsymbol\beta}$ well behaved? | How small are the singular values of $\mathbf{X}$? |
-| What is $\operatorname{Var}(\mathbf{a}^\top\hat{\boldsymbol\beta})$? | What does $(\mathbf{X}^\top\mathbf{X})^{-1}$ look like in the eigenbasis? |
-| Why does ridge regression help? | What happens to $\sigma_j$ under shrinkage? |
-
-:::
-
 ## Plan for the day
 
 ::: {.midi}
@@ -65,10 +43,6 @@ Every question you will ask about it is a linear algebra question in disguise:
 
 Throughout, concept slides are followed by a prompt from your self-assessment packets:
 
-::: {.your-turn}
-Try it on paper first. Answers appear on click --- resist for two minutes.
-:::
-
 Problems are tagged with the tier labels from the companion packets:
 
 ::: {.midi}
@@ -82,7 +56,7 @@ Problems are tagged with the tier labels from the companion packets:
 Sources: *Incoming PhD Students Self-assessment Problems* (Error-Hunt Companion Edition), plus the Stage 1 and Stage 2 companion resources.
 :::
 
-## Notation conventions {.smaller}
+## Notation conventions {.midi}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -102,10 +76,6 @@ Sources: *Incoming PhD Students Self-assessment Problems* (Error-Hunt Companion 
 - $\mathbf{A}^\top$: transpose
 - $\mathbf{A} \succeq 0$: positive semi-definite
 :::
-:::
-
-::: {.warn}
-In the regression setting we reserve $n$ for the sample size and $p$ for the number of columns of $\mathbf{X}$. Watch for it: the packets sometimes use $d$ where we use $p$.
 :::
 
 # Vector Spaces
@@ -228,95 +198,6 @@ Let $S, T$ be subspaces of $V$ and define $S + T := \{\mathbf{s} + \mathbf{t} : 
 (b) $S \cup T$ is two lines --- **not** closed under addition, so not a subspace. $S + T$ is the plane they span. For the identity: $S \cup T \subseteq S + T$ and $S+T$ is a subspace, so $\operatorname{span}(S \cup T) \subseteq S + T$; conversely any $\mathbf{s} + \mathbf{t}$ is a combination of an element of $S$ and an element of $T$, hence lies in $\operatorname{span}(S \cup T)$.
 :::
 
-# Inner Products and Orthogonality
-
-## Inner products and norms {.smaller}
-
-::: {.defn}
-**Definition (Real inner product).** A map $\langle \cdot, \cdot \rangle : V \times V \to \mathbb{R}$ with, for all $a, b \in \mathbb{R}$ and $\mathbf{u},\mathbf{v},\mathbf{w} \in V$:
-
-- **symmetry**: $\langle \mathbf{v}, \mathbf{u}\rangle = \langle \mathbf{u}, \mathbf{v}\rangle$
-- **linearity**: $\langle a\mathbf{u} + b\mathbf{v}, \mathbf{w}\rangle = a\langle \mathbf{u},\mathbf{w}\rangle + b\langle\mathbf{v},\mathbf{w}\rangle$
-- **positive definiteness**: $\langle \mathbf{v},\mathbf{v}\rangle \ge 0$, with equality iff $\mathbf{v} = \mathbf{0}$
-:::
-
-The induced **norm** is $\|\mathbf{v}\| = \sqrt{\langle\mathbf{v},\mathbf{v}\rangle}$, and $\mathbf{u} \perp \mathbf{v}$ means $\langle\mathbf{u},\mathbf{v}\rangle = 0$.
-
-On $\mathbb{R}^n$ the default is $\langle \mathbf{u},\mathbf{v}\rangle = \mathbf{u}^\top\mathbf{v}$, giving $\|\mathbf{v}\|^2 = \sum_i v_i^2$.
-
-## Pythagoras, and why it matters {.smaller}
-
-If $\mathbf{u} \perp \mathbf{v}$ then
-
-$$
-\|\mathbf{u} + \mathbf{v}\|^2 = \|\mathbf{u}\|^2 + 2\langle\mathbf{u},\mathbf{v}\rangle + \|\mathbf{v}\|^2 = \|\mathbf{u}\|^2 + \|\mathbf{v}\|^2 .
-$$
-
-## Your turn: orthogonal complements {.smaller}
-
-::: {.your-turn}
-[Bridge]{.tier .bridge} *(Companion review, Q9)*
-
-Find a basis (or parametric description) for the set of all vectors in $\mathbb{R}^4$ orthogonal to $(1,1,1,1)^\top$ and $(1,2,3,4)^\top$.
-:::
-
-. . .
-
-::: {.answer}
-We want $\ker(\mathbf{A})$ for
-$$
-\mathbf{A} = \begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 3 & 4\end{bmatrix}
-\;\longrightarrow\;
-\begin{bmatrix} 1 & 0 & -1 & -2 \\ 0 & 1 & 2 & 3\end{bmatrix}.
-$$
-Free variables $x_3, x_4$: $x_1 = x_3 + 2x_4$, $x_2 = -2x_3 - 3x_4$. A basis is
-$$
-\{(1,-2,1,0)^\top,\ (2,-3,0,1)^\top\}, \qquad \dim = 2 .
-$$
-:::
-
-. . .
-
-::: {.note}
-The general fact: the orthogonal complement of $\operatorname{im}(\mathbf{A}^\top)$ is $\ker(\mathbf{A})$. Two independent constraints in $\mathbb{R}^4$ leave a 2-dimensional solution set.
-:::
-
-## Gram--Schmidt {.smaller}
-
-::: {.thm}
-**Theorem (Gram--Schmidt).** Let $\{\mathbf{w}_1,\dots,\mathbf{w}_n\}$ be linearly independent. Set $\mathbf{v}_1 = \mathbf{w}_1$ and recursively
-$$
-\mathbf{v}_k = \mathbf{w}_k - \sum_{j=1}^{k-1} \frac{\langle \mathbf{v}_j, \mathbf{w}_k\rangle}{\|\mathbf{v}_j\|^2}\,\mathbf{v}_j , \qquad 2 \le k \le n .
-$$
-Then $\{\mathbf{v}_1,\dots,\mathbf{v}_n\}$ is orthogonal and spans the same subspace.
-:::
-
-Read the recursion as: *take $\mathbf{w}_k$, subtract off everything already explained by the earlier directions, keep the remainder.*
-
-## Your turn: Gram--Schmidt by hand {.smaller}
-
-::: {.your-turn}
-[Bridge]{.tier .bridge} *(Companion review, Q11)*
-
-Apply Gram--Schmidt to
-$$
-\mathbf{a} = (1,-1,0,0)^\top, \quad \mathbf{b} = (0,1,-1,0)^\top, \quad \mathbf{c} = (0,0,1,-1)^\top .
-$$
-Then show both $\{\mathbf{a},\mathbf{b},\mathbf{c}\}$ and the orthogonalized list are bases for the subspace orthogonal to $\mathbf{d} = (1,1,1,1)^\top$.
-:::
-
-## Your turn: Gram--Schmidt by hand {.smaller}
-
-::: {.answer}
-$\mathbf{a}' = \mathbf{a} = (1,-1,0,0)^\top$, $\|\mathbf{a}'\|^2 = 2$.
-
-$\langle \mathbf{a}',\mathbf{b}\rangle = -1$, so $\mathbf{b}' = \mathbf{b} + \tfrac12\mathbf{a}' = (\tfrac12, \tfrac12, -1, 0)^\top$, $\|\mathbf{b}'\|^2 = \tfrac32$.
-
-$\langle\mathbf{a}',\mathbf{c}\rangle = 0$ and $\langle\mathbf{b}',\mathbf{c}\rangle = -1$, so
-$\mathbf{c}' = \mathbf{c} + \tfrac23\mathbf{b}' = (\tfrac13,\tfrac13,\tfrac13,-1)^\top$.
-
-Each of $\mathbf{a},\mathbf{b},\mathbf{c}$ has entries summing to zero, so each is $\perp \mathbf{d}$; they are independent (staircase pattern), and $\dim \mathbf{d}^\perp = 3$. Gram--Schmidt preserves the span, so the primed list is a basis of the same space.
-:::
 
 # Linear Maps and Matrices
 ## Linear maps {.smaller}
@@ -376,33 +257,47 @@ $$
 Sanity checks worth internalizing now: $\mathbf{P}^2 = \mathbf{P}$ (projections are idempotent), $\mathbf{R}^2 = \mathbf{I}$ (reflections are involutions), and $\mathbf{R} = \mathbf{I} - 2(\mathbf{I} - \mathbf{P}) = 2\mathbf{P} - \mathbf{I}$.
 :::
 
-## Your turn: conformability and associativity {.smaller}
+## Your turn: conformability {.smaller}
 
 ::: {.your-turn}
 [Baseline]{.tier .baseline} *(Companion review, Q2 / Stage 1, Q2)*
 
 $$
-\mathbf{A} = \begin{bmatrix} 1 & 2\\ 3 & 1\end{bmatrix},\
-\mathbf{B} = \begin{bmatrix} 1 & 0 & 2\\ 3 & 1 & -2\end{bmatrix},\
-\mathbf{C} = \begin{bmatrix} 1 & -2 & 3\\ -2 & 1 & -1\end{bmatrix},\
+\begin{gathered}
+\mathbf{A} = \begin{bmatrix} 1 & 2\\ 3 & 1\end{bmatrix}
+\qquad
+\mathbf{B} = \begin{bmatrix} 1 & 0 & 2\\ 3 & 1 & -2\end{bmatrix}
+\\[0.5em]
+\mathbf{C} = \begin{bmatrix} 1 & -2 & 3\\ -2 & 1 & -1\end{bmatrix}
+\qquad
 \mathbf{d} = \begin{bmatrix} -2\\ 2\\ 1\end{bmatrix}
+\end{gathered}
 $$
 
 (a) Which of $\mathbf{AB}$, $\mathbf{BA}$, $\mathbf{ABC}$, $\mathbf{ABd}$, $\mathbf{BC}$, $\mathbf{BC}^\top$, $\mathbf{B}^\top\mathbf{C}$, $\mathbf{dC}$ are defined?
-(b) Compute $\mathbf{AB}$, $\mathbf{A}(3\mathbf{B} + \mathbf{C})$, $\mathbf{B}^\top\mathbf{A}$, $\mathbf{A}(\mathbf{Bd})$, $(\mathbf{AB})\mathbf{d}$.
-(c) Why must $\mathbf{A}(\mathbf{Bd})$ and $(\mathbf{AB})\mathbf{d}$ agree?
+(b) Compute $\mathbf{A}^\top(3\mathbf{B} + \mathbf{C})$.
 :::
 
-## Your turn: conformability and associativity {.smaller}
+## Your turn: conformability {.smaller}
 
 ::: {.answer}
 (a) Defined: $\mathbf{AB}$ $(2\times3)$, $\mathbf{ABd}$ $(2\times1)$, $\mathbf{BC}^\top$ $(2\times2)$, $\mathbf{B}^\top\mathbf{C}$ $(3\times3)$. Not defined: $\mathbf{BA}$, $\mathbf{ABC}$, $\mathbf{BC}$, $\mathbf{dC}$.
 
-(b) $\mathbf{AB} = \begin{bmatrix} 7 & 2 & -2\\ 6 & 1 & 4\end{bmatrix}$, $\ \mathbf{A}(3\mathbf{B}+\mathbf{C}) = \begin{bmatrix} 18 & 6 & -5\\ 19 & -2 & 20\end{bmatrix}$, $\ \mathbf{B}^\top\mathbf{A} = \begin{bmatrix} 10 & 5\\ 3 & 1\\ -4 & 2\end{bmatrix}$.
+(b) Parentheses first: $3\mathbf{B}$ and $\mathbf{C}$ are both $2\times3$, so the sum is defined. Then $\mathbf{A}^\top$ is $2\times2$, and $(2\times2)(2\times3)$ gives a $2\times3$.
 
-$\mathbf{Bd} = (0,-6)^\top$, so $\mathbf{A}(\mathbf{Bd}) = (-12,-6)^\top = (\mathbf{AB})\mathbf{d}$.
-
-(c) Associativity of composition --- and computationally this matters enormously: $\mathbf{A}(\mathbf{Bd})$ costs two matrix--vector products; $(\mathbf{AB})\mathbf{d}$ forms a whole matrix first.
+$$
+\begin{aligned}
+3\mathbf{B} + \mathbf{C}
+&= \begin{bmatrix} 3 & 0 & 6\\ 9 & 3 & -6\end{bmatrix}
+ + \begin{bmatrix} 1 & -2 & 3\\ -2 & 1 & -1\end{bmatrix}
+ = \begin{bmatrix} 4 & -2 & 9\\ 7 & 4 & -7\end{bmatrix}
+\\[0.5em]
+\mathbf{A}^\top(3\mathbf{B} + \mathbf{C})
+&= \begin{bmatrix} 1 & 3\\ 2 & 1\end{bmatrix}
+   \begin{bmatrix} 4 & -2 & 9\\ 7 & 4 & -7\end{bmatrix}
+ = \begin{bmatrix} 25 & 10 & -12\\ 15 & 0 & 11\end{bmatrix}
+\end{aligned}
+$$
 :::
 ## Image, kernel, rank, nullity {.smaller}
 
@@ -421,7 +316,7 @@ $\operatorname{Rank}(\mathbf{A}) = \dim \operatorname{im}(\mathbf{A})$ and $\ope
 **Theorem (Rank--Nullity).** $\operatorname{Rank}(\mathbf{A}) + \operatorname{Null}(\mathbf{A}) = p$, the number of **columns**.
 :::
 
-## The four fundamental subspaces {.smaller}
+## The four fundamental subspaces {.medium}
 
 For $\mathbf{A} \in \mathbb{R}^{n \times p}$ of rank $r$:
 
@@ -471,6 +366,7 @@ $\ker(\mathbf{C}) = \ker(\mathbf{A}) \cap \ker(\mathbf{B})$.
 
 $\mathbf{C}\mathbf{x} = \begin{bmatrix}\mathbf{A}\mathbf{x}\\ \mathbf{B}\mathbf{x}\end{bmatrix}$, and a stacked vector is zero iff both blocks are zero.
 :::
+
 
 ## Systems of equations and elimination {.smaller}
 
@@ -534,6 +430,173 @@ $$
 $$
 (Clear the fractions by scaling --- always allowed for a basis.)
 :::
+
+
+# Inner Products and Orthogonality
+
+## Inner products and norms {.smaller}
+
+::: {.defn}
+**Definition (Real inner product).** A map $\langle \cdot, \cdot \rangle : V \times V \to \mathbb{R}$ with, for all $a, b \in \mathbb{R}$ and $\mathbf{u},\mathbf{v},\mathbf{w} \in V$:
+
+- **symmetry**: $\langle \mathbf{v}, \mathbf{u}\rangle = \langle \mathbf{u}, \mathbf{v}\rangle$
+- **linearity**: $\langle a\mathbf{u} + b\mathbf{v}, \mathbf{w}\rangle = a\langle \mathbf{u},\mathbf{w}\rangle + b\langle\mathbf{v},\mathbf{w}\rangle$
+- **positive definiteness**: $\langle \mathbf{v},\mathbf{v}\rangle \ge 0$, with equality iff $\mathbf{v} = \mathbf{0}$
+:::
+
+The induced **norm** is $\|\mathbf{v}\| = \sqrt{\langle\mathbf{v},\mathbf{v}\rangle}$, and $\mathbf{u} \perp \mathbf{v}$ means $\langle\mathbf{u},\mathbf{v}\rangle = 0$.
+
+On $\mathbb{R}^n$ the default is $\langle \mathbf{u},\mathbf{v}\rangle = \mathbf{u}^\top\mathbf{v}$, giving $\|\mathbf{v}\|^2 = \sum_i v_i^2$.
+
+If $\mathbf{u} \perp \mathbf{v}$ then
+
+$$
+\|\mathbf{u} + \mathbf{v}\|^2 = \|\mathbf{u}\|^2 + 2\langle\mathbf{u},\mathbf{v}\rangle + \|\mathbf{v}\|^2 = \|\mathbf{u}\|^2 + \|\mathbf{v}\|^2 .
+$$
+
+## Your turn: orthogonal complements {.smaller}
+
+::: {.your-turn}
+[Bridge]{.tier .bridge} *(Companion review, Q9)*
+
+Find a basis for the set of all vectors in $\mathbb{R}^4$ orthogonal to $(1,1,1,1)^\top$ and $(1,2,3,4)^\top$.
+:::
+
+. . .
+
+::: {.answer}
+We want $\ker(\mathbf{A})$ for
+$$
+\mathbf{A} = \begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 3 & 4\end{bmatrix}
+\;\longrightarrow\;
+\begin{bmatrix} 1 & 0 & -1 & -2 \\ 0 & 1 & 2 & 3\end{bmatrix}.
+$$
+Free variables $x_3, x_4$: $x_1 = x_3 + 2x_4$, $x_2 = -2x_3 - 3x_4$. A basis is
+$$
+\{(1,-2,1,0)^\top,\ (2,-3,0,1)^\top\}, \qquad \dim = 2 .
+$$
+:::
+
+. . .
+
+::: {.note}
+The general fact: the orthogonal complement of $\operatorname{im}(\mathbf{A}^\top)$ is $\ker(\mathbf{A})$. Two independent constraints in $\mathbb{R}^4$ leave a 2-dimensional solution set.
+:::
+
+## Gram--Schmidt {.smaller}
+
+::: {.thm}
+**Theorem (Gram--Schmidt).** Let $\{\mathbf{w}_1,\dots,\mathbf{w}_n\}$ be linearly independent. Set $\mathbf{v}_1 = \mathbf{w}_1$ and recursively
+$$
+\mathbf{v}_k = \mathbf{w}_k - \sum_{j=1}^{k-1} \frac{\langle \mathbf{v}_j, \mathbf{w}_k\rangle}{\|\mathbf{v}_j\|^2}\,\mathbf{v}_j , \qquad 2 \le k \le n .
+$$
+Then $\{\mathbf{v}_1,\dots,\mathbf{v}_n\}$ is orthogonal and spans the same subspace.
+:::
+
+Read the recursion as: *take $\mathbf{w}_k$, subtract off everything already explained by the earlier directions, keep the remainder.*
+
+## Your turn: Gram--Schmidt by hand {.smaller}
+
+::: {.your-turn}
+[Bridge]{.tier .bridge} *(Companion review, Q11)*
+
+Apply Gram--Schmidt to
+$$
+\mathbf{a} = (1,-1,0,0)^\top, \quad \mathbf{b} = (0,1,-1,0)^\top, \quad \mathbf{c} = (0,0,1,-1)^\top .
+$$
+Then show both $\{\mathbf{a},\mathbf{b},\mathbf{c}\}$ and the orthogonalized list are bases for the subspace orthogonal to $\mathbf{d} = (1,1,1,1)^\top$.
+:::
+
+## Your turn: Gram--Schmidt by hand {.smaller}
+
+::: {.answer}
+$\mathbf{a}' = \mathbf{a} = (1,-1,0,0)^\top$, $\|\mathbf{a}'\|^2 = 2$.
+
+$\langle \mathbf{a}',\mathbf{b}\rangle = -1$, so $\mathbf{b}' = \mathbf{b} + \tfrac12\mathbf{a}' = (\tfrac12, \tfrac12, -1, 0)^\top$, $\|\mathbf{b}'\|^2 = \tfrac32$.
+
+$\langle\mathbf{a}',\mathbf{c}\rangle = 0$ and $\langle\mathbf{b}',\mathbf{c}\rangle = -1$, so
+$\mathbf{c}' = \mathbf{c} + \tfrac23\mathbf{b}' = (\tfrac13,\tfrac13,\tfrac13,-1)^\top$.
+
+Each of $\mathbf{a},\mathbf{b},\mathbf{c}$ has entries summing to zero, so each is $\perp \mathbf{d}$; they are independent (staircase pattern), and $\dim \mathbf{d}^\perp = 3$. Gram--Schmidt preserves the span, so the primed list is a basis of the same space.
+:::
+
+## Orthogonal complements {.smaller}
+
+::: {.defn}
+**Definition.** For a subspace $W \subseteq \mathbb{R}^m$, the **orthogonal complement** is
+$$
+W^\perp = \{\mathbf{v} \in \mathbb{R}^m : \langle \mathbf{v}, \mathbf{w}\rangle = 0 \text{ for every } \mathbf{w} \in W\} .
+$$
+:::
+
+. . .
+
+::: {.thm}
+**Theorem.** $W^\perp$ is a subspace, and
+
+- $W \cap W^\perp = \{\mathbf{0}\}$,
+- $\dim W + \dim W^\perp = m$,
+- $(W^\perp)^\perp = W$,
+- every $\mathbf{v} \in \mathbb{R}^m$ splits **uniquely** as $\mathbf{v} = \mathbf{w} + \mathbf{w}^\perp$ with $\mathbf{w}\in W$, $\mathbf{w}^\perp \in W^\perp$.
+:::
+
+
+## The four subspaces, related {.smaller}
+
+Everything about $\mathbf{A} \in \mathbb{R}^{n\times p}$ follows from one observation:
+
+$$
+\mathbf{A}\mathbf{x} = \mathbf{0}
+\iff
+\langle \text{row}_i(\mathbf{A}), \mathbf{x}\rangle = 0 \ \text{ for every } i
+\iff
+\mathbf{x} \perp \operatorname{im}(\mathbf{A}^\top).
+$$
+
+. . .
+
+That is a proof of the first line below; applying it to $\mathbf{A}^\top$ gives the second.
+
+::: {.thm}
+**Theorem (Fundamental Theorem of Linear Algebra).**
+$$
+\ker(\mathbf{A}) = \operatorname{im}(\mathbf{A}^\top)^\perp \subseteq \mathbb{R}^p,
+\qquad
+\ker(\mathbf{A}^\top) = \operatorname{im}(\mathbf{A})^\perp \subseteq \mathbb{R}^n .
+$$
+:::
+
+
+## Your turn: $\ker(\mathbf{A}^\top\mathbf{A}) = \ker(\mathbf{A})$ {.smaller}
+
+::: {.your-turn}
+[Bridge]{.tier .bridge}
+
+Show that $\ker(\mathbf{A}^\top\mathbf{A}) = \ker(\mathbf{A})$ for any $\mathbf{A} \in \mathbb{R}^{n\times p}$, and deduce that $\operatorname{Rank}(\mathbf{A}^\top\mathbf{A}) = \operatorname{Rank}(\mathbf{A})$.
+
+Then: for which $\mathbf{X}$ is $\mathbf{X}^\top\mathbf{X}$ invertible?
+:::
+
+## Your turn: $\ker(\mathbf{A}^\top\mathbf{A}) = \ker(\mathbf{A})$ {.smaller}
+
+::: {.answer}
+($\supseteq$) If $\mathbf{A}\mathbf{x} = \mathbf{0}$ then $\mathbf{A}^\top\mathbf{A}\mathbf{x} = \mathbf{0}$.
+
+($\subseteq$) If $\mathbf{A}^\top\mathbf{A}\mathbf{x} = \mathbf{0}$, take the inner product with $\mathbf{x}$:
+$$
+0 = \mathbf{x}^\top\mathbf{A}^\top\mathbf{A}\mathbf{x} = \|\mathbf{A}\mathbf{x}\|^2
+\implies
+\mathbf{A}\mathbf{x} = \mathbf{0}.
+$$
+Both are subspaces of $\mathbb{R}^p$, so rank--nullity gives equal ranks.
+:::
+
+. . .
+
+::: {.note}
+Hence $\mathbf{X}^\top\mathbf{X}$ (a $p\times p$ matrix) is invertible **iff $\mathbf{X}$ has full column rank**, i.e. $\ker(\mathbf{X}) = \{\mathbf{0}\}$ --- no exact collinearity among the columns. This is exactly the condition the hat matrix $\mathbf{H} = \mathbf{X}(\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top$ will need later.
+:::
+
 
 # Special Matrices and Scalars
 ## Transpose and symmetry {.smaller}
@@ -693,32 +756,8 @@ Never compute a determinant by brute-force cofactor expansion for $n > 3$: it co
 :::
 :::
 
-## Your turn: inverses by hand {.smaller}
-
-::: {.your-turn}
-[Baseline]{.tier .baseline} *(Companion review, Q18 and Q19)*
-
-(a) Find the inverse of $\begin{bmatrix} 1&2&1\\ 3&7&3\\ 2&3&4\end{bmatrix}$.
-
-(b) Using the cofactor formula $\mathbf{A}^{-1} = \dfrac{1}{\det\mathbf{A}}\operatorname{adj}(\mathbf{A})$, invert $\begin{bmatrix}1&2\\3&4\end{bmatrix}$, $\begin{bmatrix}1&0\\3&5\end{bmatrix}$, $\begin{bmatrix}1&1&0\\2&1&2\\0&1&1\end{bmatrix}$.
-:::
-
-## Your turn: inverses by hand {.smaller}
-
-::: {.answer}
-(a) $\det = 2$ and
-$\mathbf{A}^{-1} = \dfrac{1}{2}\begin{bmatrix} 19 & -5 & -1\\ -6 & 2 & 0\\ -5 & 1 & 1\end{bmatrix}$.
-
-(b) $\dfrac{1}{-2}\begin{bmatrix}4&-2\\-3&1\end{bmatrix}$, $\quad\dfrac{1}{5}\begin{bmatrix}5&0\\-3&1\end{bmatrix}$, $\quad\dfrac{1}{3}\begin{bmatrix}1&1&-2\\2&-1&2\\-2&1&1\end{bmatrix}$ (the last has $\det = -3$).
-:::
-
-. . .
-
-::: {.warn}
-The adjugate formula is a *proof device*, not an algorithm. In practice: `solve(A, b)`, never `solve(A) %*% b`.
-:::
-
 # Projections
+
 ## Projection matrices {.smaller}
 
 ::: {.defn}
@@ -800,46 +839,59 @@ So $\hat{\mathbf{y}} = \mathbf{H}\mathbf{y}$ with the **hat matrix** $\mathbf{H}
 Find the orthogonal projection of $(1,1,1,1)^\top$ onto the subspace of $\mathbb{R}^4$ spanned by $\mathbf{v}_1 = (1,3,1,1)^\top$ and $\mathbf{v}_2 = (2,1,1,0)^\top$.
 :::
 
-. . .
+## Your turn: projecting a vector {.smaller}
 
 ::: {.answer}
-With $\mathbf{A} = [\mathbf{v}_1\ \mathbf{v}_2]$:
+Put the spanning vectors in the columns of $\mathbf{A} = [\mathbf{v}_1\ \ \mathbf{v}_2]$ and set up the normal equations $\mathbf{A}^\top\mathbf{A}\hat{\mathbf{c}} = \mathbf{A}^\top\mathbf{y}$:
 $$
-\mathbf{A}^\top\mathbf{A} = \begin{bmatrix} 12 & 6\\ 6 & 6\end{bmatrix}, \qquad
-\mathbf{A}^\top\mathbf{y} = \begin{bmatrix} 6\\ 4\end{bmatrix}, \qquad
-\hat{\mathbf{c}} = (\mathbf{A}^\top\mathbf{A})^{-1}\mathbf{A}^\top\mathbf{y} = \begin{bmatrix} 1/3\\ 1/3\end{bmatrix}.
+\mathbf{A} = \begin{bmatrix} 1 & 2\\ 3 & 1\\ 1 & 1\\ 1 & 0\end{bmatrix},
+\qquad
+\mathbf{A}^\top\mathbf{A} = \begin{bmatrix} 12 & 6\\ 6 & 6\end{bmatrix},
+\qquad
+\mathbf{A}^\top\mathbf{y} = \begin{bmatrix} 6\\ 4\end{bmatrix}.
 $$
+
+Solve for the coefficients --- $\det(\mathbf{A}^\top\mathbf{A}) = 72 - 36 = 36$:
 $$
-\mathbf{P}\mathbf{y} = \tfrac13(\mathbf{v}_1 + \mathbf{v}_2) = \left(1, \tfrac43, \tfrac23, \tfrac13\right)^\top .
+\begin{aligned}
+\hat{\mathbf{c}}
+= (\mathbf{A}^\top\mathbf{A})^{-1}\mathbf{A}^\top\mathbf{y}
+&= \tfrac{1}{36}\begin{bmatrix} 6 & -6\\ -6 & 12\end{bmatrix}\begin{bmatrix} 6\\ 4\end{bmatrix}
+\\[0.4em]
+&= \tfrac{1}{36}\begin{bmatrix} 36 - 24\\ -36 + 48\end{bmatrix}
+ = \tfrac{1}{36}\begin{bmatrix} 12\\ 12\end{bmatrix}
+ = \begin{bmatrix} 1/3\\ 1/3\end{bmatrix}.
+\end{aligned}
 $$
-Check: $\mathbf{y} - \mathbf{P}\mathbf{y} = (0,-\tfrac13,\tfrac13,\tfrac23)^\top$ is orthogonal to both $\mathbf{v}_1$ and $\mathbf{v}_2$. ✓
 :::
 
-## Your turn: Gram--Schmidt to a projection matrix {.smaller}
-
-::: {.your-turn}
-[Bridge]{.tier .bridge} *(Companion review, Q12)*
-
-Apply Gram--Schmidt to $(1,2,3)^\top$ and $(1,3,1)^\top$, then write the orthogonal projection matrix onto the plane they span.
-:::
-
-## Your turn: Gram--Schmidt to a projection matrix {.smaller}
+## Your turn: projecting a vector {.smaller}
 
 ::: {.answer}
-$\mathbf{q}_1 = (1,2,3)^\top$ with $\|\mathbf{q}_1\|^2 = 14$. Since $\langle\mathbf{q}_1,\mathbf{w}_2\rangle = 10$,
+$\hat{\mathbf{c}}$ holds **coefficients**, not the answer. Push them back through $\mathbf{A}$ to land in $\mathbb{R}^4$:
 $$
-\mathbf{q}_2 = (1,3,1)^\top - \tfrac{10}{14}(1,2,3)^\top = \tfrac{1}{7}(2,11,-8)^\top \ \propto\ (2,11,-8)^\top,\quad \|(2,11,-8)\|^2 = 189 .
+\begin{aligned}
+\mathbf{P}\mathbf{y} = \mathbf{A}\hat{\mathbf{c}}
+&= \begin{bmatrix} 1 & 2\\ 3 & 1\\ 1 & 1\\ 1 & 0\end{bmatrix}
+   \begin{bmatrix} 1/3\\ 1/3\end{bmatrix}
+ = \tfrac13\mathbf{v}_1 + \tfrac13\mathbf{v}_2
+\\[0.4em]
+&= \tfrac13\begin{bmatrix} 1+2\\ 3+1\\ 1+1\\ 1+0\end{bmatrix}
+ = \tfrac13\begin{bmatrix} 3\\ 4\\ 2\\ 1\end{bmatrix}
+ = \begin{bmatrix} 1\\ 4/3\\ 2/3\\ 1/3\end{bmatrix}.
+\end{aligned}
 $$
-Then $\mathbf{P} = \dfrac{\mathbf{q}_1\mathbf{q}_1^\top}{14} + \dfrac{\tilde{\mathbf{q}}_2\tilde{\mathbf{q}}_2^\top}{189}
-= \dfrac{1}{54}\begin{bmatrix} 5 & 14 & 7\\ 14 & 50 & -2\\ 7 & -2 & 53\end{bmatrix}$.
-
-Two checks: $\operatorname{tr}(\mathbf{P}) = 108/54 = 2 = \operatorname{Rank}(\mathbf{P})$, and $\mathbf{P}(1,2,3)^\top = (1,2,3)^\top$. ✓
 :::
 
 . . .
 
 ::: {.note}
-Once you have an **orthonormal** basis $\{\mathbf{u}_1,\dots,\mathbf{u}_r\}$ of a subspace, the projector is simply $\mathbf{P} = \sum_j \mathbf{u}_j\mathbf{u}_j^\top = \mathbf{U}\mathbf{U}^\top$. No inverse required. Remember this --- it comes back in the SVD section.
+Check by verifying the residual is orthogonal to the plane. With $\mathbf{e} = \mathbf{y} - \mathbf{P}\mathbf{y} = \left(0, -\tfrac13, \tfrac13, \tfrac23\right)^\top$:
+$$
+\langle\mathbf{e},\mathbf{v}_1\rangle = -1 + \tfrac13 + \tfrac23 = 0,
+\qquad
+\langle\mathbf{e},\mathbf{v}_2\rangle = -\tfrac13 + \tfrac13 = 0. \ ✓
+$$
 :::
 
 # Eigenvalues, Eigenvectors, and Diagonalization
@@ -895,31 +947,6 @@ $\lambda = 1$: eigenvector $(1,-1,1)^\top$. $\lambda = -2$: $\mathbf{A}+2\mathbf
 ::: {.note}
 Hold on to that second matrix. Its eigenvalue $-2$ has algebraic multiplicity 2 *and* geometric multiplicity 2 --- which is exactly the condition for diagonalizability, coming up next.
 :::
-## Similarity {.smaller}
-
-::: {.defn}
-**Definition.** $\mathbf{A}$ and $\mathbf{B}$ are **similar** if $\mathbf{B} = \mathbf{Q}^{-1}\mathbf{A}\mathbf{Q}$ for some invertible $\mathbf{Q}$.
-:::
-
-Similar matrices are *the same linear map written in two different bases*. The columns of $\mathbf{Q}$ are the new basis vectors expressed in the old coordinates.
-
-Similarity preserves everything intrinsic to the map:
-
-::: {.midi}
-
-| Preserved | Not preserved |
-|---|---|
-| characteristic polynomial | individual entries |
-| eigenvalues and multiplicities | symmetry |
-| trace, determinant, rank | orthogonality of eigenvectors |
-
-:::
-
-. . .
-
-::: {.note}
-Why $\operatorname{tr}(\mathbf{Q}^{-1}\mathbf{A}\mathbf{Q}) = \operatorname{tr}(\mathbf{A})$? Cyclic property. You proved it two sections ago.
-:::
 
 ## Diagonalization {.smaller}
 
@@ -927,9 +954,25 @@ Why $\operatorname{tr}(\mathbf{Q}^{-1}\mathbf{A}\mathbf{Q}) = \operatorname{tr}(
 **Definition (Diagonalizable).** $\mathbf{A} \in \mathbb{R}^{n\times n}$ is diagonalizable if there is an invertible $\mathbf{V}$ and a diagonal $\boldsymbol\Lambda$ with $\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}$.
 :::
 
-Where does this come from? Suppose $\mathbf{A}$ has $n$ linearly independent eigenvectors $\mathbf{v}_1,\dots,\mathbf{v}_n$ with eigenvalues $\lambda_1,\dots,\lambda_n$. Stack them:
+Suppose $\mathbf{A}$ has $n$ linearly independent eigenvectors $\mathbf{v}_1,\dots,\mathbf{v}_n$ with eigenvalues $\lambda_1,\dots,\lambda_n$. Put the **eigenvectors in the columns** of $\mathbf{V}$ and the **eigenvalues on the diagonal** of $\boldsymbol\Lambda$:
 $$
-\mathbf{V} = \begin{bmatrix}\mathbf{v}_1 & \cdots & \mathbf{v}_n\end{bmatrix}, \qquad
+\begin{aligned}
+\mathbf{V} &= \begin{bmatrix}\mathbf{v}_1 & \mathbf{v}_2 & \cdots & \mathbf{v}_n\end{bmatrix}
+\\[0.4em]
+\boldsymbol\Lambda &= \operatorname{diag}(\lambda_1,\lambda_2,\dots,\lambda_n)
+= \begin{bmatrix}
+\lambda_1 & 0 & \cdots & 0\\
+0 & \lambda_2 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \lambda_n
+\end{bmatrix}
+\end{aligned}
+$$
+
+. . .
+
+Now stack the eigenvalue equations $\mathbf{A}\mathbf{v}_i = \lambda_i\mathbf{v}_i$ column by column:
+$$
 \mathbf{A}\mathbf{V} = \begin{bmatrix}\lambda_1\mathbf{v}_1 & \cdots & \lambda_n\mathbf{v}_n\end{bmatrix} = \mathbf{V}\boldsymbol\Lambda .
 $$
 Since the $\mathbf{v}_i$ are independent, $\mathbf{V}$ is invertible and
@@ -958,7 +1001,7 @@ Always $1 \le m_g(\lambda) \le m_a(\lambda)$.
 . . .
 
 ::: {.warn}
-The canonical failure: $\mathbf{A} = \begin{bmatrix}1 & 1\\ 0 & 1\end{bmatrix}$ has $\lambda = 1$ with $m_a = 2$ but $\ker(\mathbf{A}-\mathbf{I}) = \operatorname{span}\{\mathbf{e}_1\}$, so $m_g = 1$. Not diagonalizable --- it is **defective**. (The best you can do is a Jordan block.)
+The canonical failure: $\mathbf{A} = \begin{bmatrix}1 & 1\\ 0 & 1\end{bmatrix}$ has $\lambda = 1$ with $m_a = 2$ but $\ker(\mathbf{A}-\mathbf{I}) = \operatorname{span}\{\mathbf{e}_1\}$, so $m_g = 1$. Not diagonalizable)
 :::
 
 ## Why bother diagonalizing? {.smaller}
@@ -985,12 +1028,7 @@ $$
 \mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top, \qquad \mathbf{Q}^\top\mathbf{Q} = \mathbf{Q}\mathbf{Q}^\top = \mathbf{I}_n .
 $$
 :::
-
-Equivalently, in **outer product form**,
-$$
-\mathbf{A} = \sum_{i=1}^n \lambda_i\, \mathbf{q}_i\mathbf{q}_i^\top ,
-$$
-a weighted sum of rank-one orthogonal projectors. Note $\mathbf{Q}^{-1} = \mathbf{Q}^\top$: no inverse to compute, ever.
+Note $\mathbf{Q}^{-1} = \mathbf{Q}^\top$: (makes our life so easy)
 
 . . .
 
@@ -1015,42 +1053,72 @@ $$
 $$
 :::
 
-## Projections through the spectral lens {.smaller}
-
-Let $\mathbf{P}$ be symmetric and idempotent. If $\mathbf{P}\mathbf{v} = \lambda\mathbf{v}$ then
-$$
-\lambda\mathbf{v} = \mathbf{P}\mathbf{v} = \mathbf{P}^2\mathbf{v} = \lambda^2\mathbf{v} \implies \lambda^2 = \lambda \implies \lambda \in \{0,1\} .
-$$
-
-So an orthogonal projector of rank $r$ has eigenvalues $1$ ($r$ times) and $0$ ($n-r$ times), and
-$$
-\mathbf{P} = \sum_{j=1}^{r}\mathbf{q}_j\mathbf{q}_j^\top = \mathbf{Q}_r\mathbf{Q}_r^\top, \qquad
-\operatorname{tr}(\mathbf{P}) = \operatorname{Rank}(\mathbf{P}) = r .
-$$
-
-## Your turn: eigenvalues of the all-ones matrix {.smaller}
+## Your turn: trace, projections, and the spectral theorem {.smaller}
 
 ::: {.your-turn}
-[Bridge]{.tier .bridge} *(Companion review, Q24)*
+[Bridge]{.tier .bridge}
 
-(a) Find the orthogonal projection matrix onto the one-dimensional subspace of $\mathbb{R}^n$ spanned by $\mathbf{1} = (1,\dots,1)^\top$.
-(b) Let $\mathbf{J}$ be the $n\times n$ matrix of all ones. Compute its eigenvalues and multiplicities.
-(c) Compute the eigenvalues of $\mathbf{J} - \mathbf{I}_n$ (zeros on the diagonal, ones elsewhere).
-(d) Compute $\det(\mathbf{J} - \mathbf{I}_n)$.
+(a) Prove that $\operatorname{tr}(\mathbf{A}) = \sum_{i=1}^n \lambda_i$ for symmetric $\mathbf{A}$.
+(b) What are the possible eigenvalues of a projection matrix? For an orthogonal projector of rank $r$, what are their multiplicities?
+(c) Find the orthogonal projection matrix onto the one-dimensional subspace of $\mathbb{R}^n$ spanned by $\mathbf{1} = (1,\dots,1)^\top$.
 :::
 
-## Your turn: eigenvalues of the all-ones matrix {.smaller}
+## Your turn: trace, projections, and the spectral theorem {.smaller}
 
 ::: {.answer}
-(a) $\mathbf{P} = \dfrac{\mathbf{1}\mathbf{1}^\top}{\mathbf{1}^\top\mathbf{1}} = \dfrac{1}{n}\mathbf{J}$. Check: symmetric, and $\mathbf{P}^2 = \mathbf{J}^2/n^2 = n\mathbf{J}/n^2 = \mathbf{P}$. ✓
+**(a)** Write $\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top$ with $\mathbf{Q}$ orthogonal, then use the cyclic property of the trace:
 
-(b) $\mathbf{J} = n\mathbf{P}$, and $\mathbf{P}$ is a rank-one projector, so $\mathbf{J}$ has eigenvalues $n$ (multiplicity 1, eigenvector $\mathbf{1}$) and $0$ (multiplicity $n-1$, eigenspace $\mathbf{1}^\perp$).
+$$
+\operatorname{tr}(\mathbf{A})
+= \operatorname{tr}(\mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top)
+= \operatorname{tr}(\boldsymbol\Lambda\mathbf{Q}^\top\mathbf{Q})
+= \operatorname{tr}(\boldsymbol\Lambda)
+= \sum_{i=1}^n \lambda_i .
+$$
 
-(c) Shifting by $-\mathbf{I}$ shifts every eigenvalue by $-1$ and leaves eigenvectors alone: $n - 1$ (once) and $-1$ ($n-1$ times).
-
-(d) $\det(\mathbf{J}-\mathbf{I}_n) = (n-1)\cdot(-1)^{n-1}$.
+The only fact used was $\mathbf{Q}^\top\mathbf{Q} = \mathbf{I}$, so the same two lines give $\operatorname{tr}(\mathbf{A}) = \sum_i\lambda_i$ for **any** diagonalizable $\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}$, symmetric or not.
 :::
 
+## Your turn: trace, projections, and the spectral theorem {.smaller}
+
+::: {.answer}
+**(b)** Idempotence pins the eigenvalues down completely. If $\mathbf{P}\mathbf{v} = \lambda\mathbf{v}$ with $\mathbf{v}\ne\mathbf{0}$, then
+
+$$
+\lambda\mathbf{v} = \mathbf{P}\mathbf{v} = \mathbf{P}^2\mathbf{v} = \lambda^2\mathbf{v}
+\implies \lambda^2 = \lambda
+\implies \lambda \in \{0, 1\} .
+$$
+
+For an orthogonal projector of rank $r$: $\lambda = 1$ with multiplicity $r$, with eigenvectors spanning $\operatorname{im}(\mathbf{P})$, and $\lambda = 0$ with multiplicity $n - r$, spanning $\ker(\mathbf{P})$.
+:::
+
+. . .
+
+::: {.note}
+Put (a) and (b) together: $\operatorname{tr}(\mathbf{P}) = \sum_i\lambda_i = r = \operatorname{Rank}(\mathbf{P})$. For projections, trace **is** rank --- which is why $\operatorname{tr}(\mathbf{H}) = p$ counts model degrees of freedom.
+:::
+
+## Your turn: trace, projections, and the spectral theorem {.smaller}
+
+::: {.answer}
+**(c)** Projecting onto the line spanned by a vector $\mathbf{v}$ gives $\mathbf{P} = \mathbf{v}\mathbf{v}^\top / (\mathbf{v}^\top\mathbf{v})$. Here $\mathbf{v} = \mathbf{1}$ and $\mathbf{1}^\top\mathbf{1} = n$, so
+
+$$
+\mathbf{P} = \frac{\mathbf{1}\mathbf{1}^\top}{n} = \frac{1}{n}\mathbf{J},
+\qquad
+\mathbf{J} = \mathbf{1}\mathbf{1}^\top
+= \begin{bmatrix} 1 & \cdots & 1\\ \vdots & \ddots & \vdots\\ 1 & \cdots & 1\end{bmatrix}.
+$$
+
+Check idempotence: $\mathbf{P}^2 = \dfrac{\mathbf{1}(\mathbf{1}^\top\mathbf{1})\mathbf{1}^\top}{n^2} = \dfrac{n\,\mathbf{1}\mathbf{1}^\top}{n^2} = \mathbf{P}$, and $\mathbf{P}$ is symmetric. ✓
+:::
+
+. . .
+
+::: {.note}
+$\mathbf{P}$ has rank 1, so by (a) and (b) $\operatorname{tr}(\mathbf{P}) = 1$ --- and indeed the diagonal holds $n$ copies of $1/n$. Applied to data, $\mathbf{P}\mathbf{y} = \bar{y}\,\mathbf{1}$: projecting onto $\mathbf{1}$ replaces every entry by the sample mean, and $\mathbf{I} - \mathbf{P}$ centers the data.
+:::
 # Positive Definiteness
 ## Positive (semi-)definite matrices {.smaller}
 
@@ -1070,24 +1138,6 @@ $$
 
 Replace $\ge$ by $>$ throughout for PD, and add: all leading principal minors are positive; a Cholesky factorization $\mathbf{A}=\mathbf{L}\mathbf{L}^\top$ with positive diagonal exists.
 :::
-
-. . .
-
-::: {.warn}
-Last year's deck says PSD matrices have "non-negative eigenvectors." Read that as **eigenvalues** --- eigenvectors have no sign.
-:::
-
-## Why $\mathbf{X}^\top\mathbf{X} \succeq 0$, and what it buys {.smaller}
-
-For any $\mathbf{X} \in \mathbb{R}^{n\times p}$ and any $\mathbf{z} \in \mathbb{R}^p$,
-$$
-\mathbf{z}^\top(\mathbf{X}^\top\mathbf{X})\mathbf{z} = (\mathbf{X}\mathbf{z})^\top(\mathbf{X}\mathbf{z}) = \|\mathbf{X}\mathbf{z}\|^2 \ge 0 .
-$$
-Equality holds iff $\mathbf{X}\mathbf{z} = \mathbf{0}$. Therefore
-$$
-\mathbf{X}^\top\mathbf{X} \succ 0 \iff \ker(\mathbf{X}) = \{\mathbf{0}\} \iff \mathbf{X}\ \text{has full column rank}.
-$$
-Same argument gives $\mathbf{X}\mathbf{X}^\top \succeq 0$, and in fact $\ker(\mathbf{X}^\top\mathbf{X}) = \ker(\mathbf{X})$, so $\operatorname{Rank}(\mathbf{X}^\top\mathbf{X}) = \operatorname{Rank}(\mathbf{X})$.
 
 ## Your turn: PSD and the spectral theorem {.smaller}
 
@@ -1110,6 +1160,76 @@ $$
 This is $\ge 0$ for all $\mathbf{u}$ iff every $\lambda_i \ge 0$ (take $\mathbf{u} = \mathbf{e}_i$ for necessity). So **PSD $\iff$ all eigenvalues non-negative**.
 :::
 
+## Your turn: the covariance matrix is PSD {.smaller}
+
+::: {.your-turn}
+[Bridge]{.tier .bridge}
+
+Let $\mathbf{x} \in \mathbb{R}^p$ be a random vector with $\mathbb{E}[\mathbf{x}] = \boldsymbol\mu$.
+
+(a) Define $\operatorname{Cov}(\mathbf{x})$ two ways: as a single matrix expectation, and entry by entry.
+(b) Prove that $\operatorname{Cov}(\mathbf{x})$ is symmetric and positive semi-definite.
+:::
+
+## Your turn: the covariance matrix is PSD {.smaller}
+
+::: {.answer}
+(a) With $\mathbf{z} = \mathbf{x} - \boldsymbol\mu$,
+$$
+\boldsymbol\Sigma \;\triangleq\; \operatorname{Cov}(\mathbf{x}) = \mathbb{E}\!\left[\mathbf{z}\mathbf{z}^\top\right],
+\qquad
+\Sigma_{ij} = \operatorname{Cov}(x_i, x_j) = \mathbb{E}\!\left[(x_i - \mu_i)(x_j - \mu_j)\right].
+$$
+The diagonal holds the variances $\operatorname{Var}(x_i)$.
+
+:::
+
+## Your turn: the covariance matrix is PSD {.smaller}
+
+::: {.answer}
+**(b)** Symmetry is immediate:
+$\boldsymbol\Sigma^\top = \mathbb{E}\!\left[(\mathbf{z}\mathbf{z}^\top)^\top\right] = \mathbb{E}\!\left[\mathbf{z}\mathbf{z}^\top\right] = \boldsymbol\Sigma$.
+
+For positive semi-definiteness, fix an **arbitrary** $\mathbf{a}\in\mathbb{R}^p$ and use linearity of expectation to move it inside:
+
+$$
+\mathbf{a}^\top\boldsymbol\Sigma\mathbf{a}
+= \mathbf{a}^\top\,\mathbb{E}\!\left[\mathbf{z}\mathbf{z}^\top\right]\mathbf{a}
+= \mathbb{E}\!\left[\mathbf{a}^\top\mathbf{z}\mathbf{z}^\top\mathbf{a}\right].
+$$
+
+Now define the **scalar** random variable $Y = \mathbf{a}^\top\mathbf{z}$. Because a scalar equals its own transpose, $\mathbf{a}^\top\mathbf{z} = \mathbf{z}^\top\mathbf{a}$, so the quantity inside the expectation is $Y \cdot Y$:
+
+$$
+\mathbf{a}^\top\boldsymbol\Sigma\mathbf{a} = \mathbb{E}\!\left[Y^2\right].
+$$
+:::
+
+## Your turn: the covariance matrix is PSD {.smaller}
+
+::: {.answer}
+**(b, continued)** $Y^2 \ge 0$ for every outcome, and the expected value of a non-negative random variable is non-negative. Therefore
+
+$$
+\mathbf{a}^\top\boldsymbol\Sigma\mathbf{a} = \mathbb{E}\!\left[Y^2\right] \;\ge\; 0
+\qquad\text{for every } \mathbf{a}\in\mathbb{R}^p,
+$$
+
+which is exactly the statement $\boldsymbol\Sigma \succeq 0$. $\blacksquare$
+:::
+
+. . .
+
+::: {.note}
+Since $\mathbb{E}[Y] = \mathbf{a}^\top\mathbb{E}[\mathbf{z}] = 0$, we also have $\mathbb{E}[Y^2] = \operatorname{Var}(Y) = \operatorname{Var}(\mathbf{a}^\top\mathbf{x})$. So the quadratic form is not merely non-negative --- it **is** the variance of the scalar $\mathbf{a}^\top\mathbf{x}$.
+:::
+
+## Your turn: the covariance matrix is PSD {.smaller}
+
+::: {.note}
+Same shape as the $\mathbf{X}^\top\mathbf{X}$ exercise: there $\mathbf{X}^\top\mathbf{X} \succeq 0$ because it is of the form $\mathbf{B}^\top\mathbf{B}$; here $\boldsymbol\Sigma \succeq 0$ because it is $\mathbb{E}[\mathbf{z}\mathbf{z}^\top]$ --- the population version of the same statement. Given $n$ observations, the sample covariance $\mathbf{S} = \tfrac{1}{n-1}\mathbf{X}_c^\top\mathbf{X}_c$ is *literally* of the form $\mathbf{B}^\top\mathbf{B}$, so it inherits PSD directly --- and like $\boldsymbol\Sigma$ it is $p\times p$.
+:::
+
 # Singular Value Decomposition
 
 ## Why we need more than eigenvalues {.smaller}
@@ -1119,11 +1239,14 @@ The spectral theorem is beautiful but demands a **square, symmetric** matrix. Yo
 The fix: every matrix, of any shape, of any rank, has a singular value decomposition.
 
 ::: {.defn}
-**Definition (Singular vectors and values).** Let $\mathbf{A}\in\mathbb{R}^{n\times p}$ with $\operatorname{Rank}(\mathbf{A}) = r$. The eigenvectors of $\mathbf{A}\mathbf{A}^\top$ are the **left singular vectors**; the eigenvectors of $\mathbf{A}^\top\mathbf{A}$ are the **right singular vectors**. The **singular values** are
+**Definition (Singular vectors and values).** Let $\mathbf{A}\in\mathbb{R}^{n\times p}$ with $\operatorname{Rank}(\mathbf{A}) = r$. The eigenvectors of $\mathbf{A}\mathbf{A}^\top$ are the **left singular vectors**; the eigenvectors of $\mathbf{A}^\top\mathbf{A}$ are the **right singular vectors**.
+
+Let $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_r > 0$ denote the nonzero eigenvalues of $\mathbf{A}^\top\mathbf{A}$. The **singular values** of $\mathbf{A}$ are their square roots:
 $$
-\sigma_i = \sqrt{\lambda_i(\mathbf{A}^\top\mathbf{A})}, \qquad i = 1,\dots,r,
+\sigma_i = \sqrt{\lambda_i}, \qquad i = 1,\dots,r,
+\qquad\text{so}\qquad
+\sigma_1 \ge \sigma_2 \ge \cdots \ge \sigma_r > 0 .
 $$
-the square roots of the $r$ positive eigenvalues, ordered $\sigma_1\ge\sigma_2\ge\cdots\ge\sigma_r > 0$.
 :::
 
 . . .
@@ -1142,24 +1265,28 @@ $$
 with $\mathbf{U}\in\mathbb{R}^{n\times n}$ orthogonal, $\mathbf{V}\in\mathbb{R}^{p\times p}$ orthogonal, and $\boldsymbol\Sigma\in\mathbb{R}^{n\times p}$ rectangular diagonal with entries $\sigma_1\ge\cdots\ge\sigma_r>0$ followed by zeros.
 :::
 
-**Compact (thin) form** --- keep only the $r$ useful directions:
-$$
-\mathbf{A} = \mathbf{U}_r\boldsymbol\Sigma_r\mathbf{V}_r^\top = \sum_{j=1}^{r}\sigma_j\,\mathbf{u}_j\mathbf{v}_j^\top .
-$$
+## The algorithm {.smaller}
 
-Every matrix is a sum of $r$ rank-one pieces, weighted by decreasing importance. This one line is the reason SVD runs recommender systems, image compression, PCA, and latent semantic analysis.
+Given $\mathbf{A}\in\mathbb{R}^{n\times p}$, here is how the three factors are actually produced:
 
-## Where it comes from {.smaller}
+::: {.midi}
+1. **Form $\mathbf{A}^\top\mathbf{A}$** --- a $p\times p$ symmetric PSD matrix, so the spectral theorem applies to it.
+2. **Eigendecompose it:** $\mathbf{A}^\top\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^\top$ with $\lambda_1\ge\cdots\ge\lambda_p\ge0$. The columns of $\mathbf{V}$ are the **right singular vectors**.
+3. **Take square roots:** $\sigma_j = \sqrt{\lambda_j}$. The number of nonzero $\sigma_j$ is $r = \operatorname{Rank}(\mathbf{A})$.
+4. **Build the left singular vectors** for $j \le r$:
+$$
+\mathbf{u}_j = \frac{\mathbf{A}\mathbf{v}_j}{\sigma_j} .
+$$
+5. **Fill out $\mathbf{U}$:** extend $\mathbf{u}_1,\dots,\mathbf{u}_r$ to an orthonormal basis of $\mathbb{R}^n$ by Gram--Schmidt.
+6. **Assemble:** $\mathbf{A} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top$.
+:::
+
+
+## Where it comes from {.medium}
 
 The SVD is not a new theorem --- it is the spectral theorem applied twice.
 
-1. $\mathbf{A}^\top\mathbf{A}$ is symmetric PSD, so $\mathbf{A}^\top\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^\top$ with $\lambda_1\ge\cdots\ge\lambda_p\ge0$ and $\mathbf{V}$ orthogonal.
-2. Set $\sigma_j = \sqrt{\lambda_j}$, and for $j\le r$ define
-$$
-\mathbf{u}_j = \frac{\mathbf{A}\mathbf{v}_j}{\sigma_j}.
-$$
-3. Check orthonormality: $\mathbf{u}_i^\top\mathbf{u}_j = \dfrac{\mathbf{v}_i^\top\mathbf{A}^\top\mathbf{A}\mathbf{v}_j}{\sigma_i\sigma_j} = \dfrac{\lambda_j\,\mathbf{v}_i^\top\mathbf{v}_j}{\sigma_i\sigma_j} = \delta_{ij}$. ✓
-4. Extend $\{\mathbf{u}_j\}$ to an orthonormal basis of $\mathbb{R}^n$ and read off $\mathbf{A}\mathbf{V} = \mathbf{U}\boldsymbol\Sigma$.
+$\mathbf{A}^\top\mathbf{A}$ is symmetric PSD, so $\mathbf{A}^\top\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^\top$ with $\lambda_1\ge\cdots\ge\lambda_p\ge0$ and $\mathbf{V}$ orthogonal.
 
 ::: {.note}
 Consequences you get for free:
@@ -1192,132 +1319,7 @@ The four fundamental subspaces fall right out:
 
 :::
 
-## SVD vs eigendecomposition {.smaller}
-
-::: {.midi}
-
-| | Eigendecomposition | SVD |
-|---|---|---|
-| Applies to | square matrices (diagonalizable ones) | **every** matrix |
-| Form | $\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}$ | $\mathbf{A} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top$ |
-| Bases | one basis, generally not orthogonal | **two** orthonormal bases |
-| Values | $\lambda_i$, possibly negative or complex | $\sigma_i \ge 0$, always real |
-| Numerics | can be ill-conditioned | backward stable |
-
-:::
-
-**Relationships.** If $\mathbf{A}\in\mathbb{S}^n$ with eigenvalues $\lambda_i$, then $\sigma_i = |\lambda_i|$ and the singular vectors are the eigenvectors up to sign. If additionally $\mathbf{A}\succeq0$, the two decompositions coincide exactly.
-
-::: {.warn}
-So for $\mathbf{X}^\top\mathbf{X}$ they are the same object. For $\mathbf{X}$ itself only the SVD exists --- and computing the SVD of $\mathbf{X}$ directly is far more accurate than forming $\mathbf{X}^\top\mathbf{X}$, which **squares the condition number**.
-:::
-
-## Conditioning and collinearity {.smaller}
-
-$$
-\kappa(\mathbf{X}) = \frac{\sigma_1}{\sigma_p} \qquad\text{(condition number)}
-$$
-
-Write $\mathbf{X} = \mathbf{U}\mathbf{D}\mathbf{V}^\top$ (thin, full column rank, $\mathbf{D} = \operatorname{diag}(d_1,\dots,d_p)$). Then
-$$
-\mathbf{X}^\top\mathbf{X} = \mathbf{V}\mathbf{D}^2\mathbf{V}^\top,\qquad
-(\mathbf{X}^\top\mathbf{X})^{-1} = \mathbf{V}\mathbf{D}^{-2}\mathbf{V}^\top,\qquad
-\operatorname{Var}(\hat{\boldsymbol\beta}) = \sigma^2\mathbf{V}\mathbf{D}^{-2}\mathbf{V}^\top .
-$$
-
-## Ridge regression, seen properly {.smaller}
-
-$$
-\hat{\boldsymbol\beta}_\lambda = (\mathbf{X}^\top\mathbf{X}+\lambda\mathbf{I})^{-1}\mathbf{X}^\top\mathbf{y}
-= \mathbf{V}(\mathbf{D}^2+\lambda\mathbf{I})^{-1}\mathbf{D}\,\mathbf{U}^\top\mathbf{y}
-$$
-
-and the fitted values become
-$$
-\mathbf{X}\hat{\boldsymbol\beta}_\lambda = \sum_{j=1}^{p}\mathbf{u}_j\left(\frac{d_j^2}{d_j^2+\lambda}\right)\mathbf{u}_j^\top\mathbf{y} .
-$$
-
-Compare OLS, which is $\sum_j\mathbf{u}_j\mathbf{u}_j^\top\mathbf{y}$ --- shrinkage factor $1$ in every direction.
-
-## Pseudo-inverse and minimum-norm least squares {.smaller}
-
-::: {.defn}
-**Definition (Moore--Penrose pseudo-inverse).** For $\mathbf{X} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top$,
-$$
-\mathbf{X}^{+} = \mathbf{V}\boldsymbol\Sigma^{+}\mathbf{U}^\top \in \mathbb{R}^{p\times n},
-$$
-where $\boldsymbol\Sigma^{+}\in\mathbb{R}^{p\times n}$ is rectangular diagonal with entries $\sigma_1^{-1},\dots,\sigma_r^{-1}$ and zeros thereafter. Invert what you can; leave the rest at zero.
-:::
-
-::: {.incremental}
-- If $\mathbf{X}$ has full column rank, $\mathbf{X}^+ = (\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top$ and $\mathbf{X}^+\mathbf{y} = \hat{\boldsymbol\beta}_{\text{OLS}}$.
-- If $\mathbf{X}$ is rank deficient, $\mathbf{X}^+\mathbf{y}$ is the **minimum-norm** element of the (affine) solution set.
-- Always: $\mathbf{X}\mathbf{X}^+ = \mathbf{U}_r\mathbf{U}_r^\top = \mathbf{H}$, the projector onto $\operatorname{im}(\mathbf{X})$.
-:::
-
-## Check every claim yourself {.smaller}
-
-None of this needs to be taken on faith. Ten lines in R:
-
-```r
-set.seed(721)
-n <- 50; p <- 4
-X <- matrix(rnorm(n * p), n, p)
-y <- rnorm(n)
-
-s <- svd(X)                            # X = U D V'
-all.equal(s$u %*% diag(s$d) %*% t(s$v), X)          # the decomposition
-all.equal(s$d^2, eigen(crossprod(X))$values)        # d_j^2 are eigenvalues of X'X
-all.equal(s$v %*% diag(1 / s$d) %*% t(s$u) %*% y,   # X^+ y ...
-          unname(coef(lm(y ~ X - 1))), check.attributes = FALSE)   # ... is OLS
-
-H <- s$u %*% t(s$u)                    # hat matrix, no inverse anywhere
-c(sum(diag(H)), qr(X)$rank)            # tr(H) = rank(X) = p
-kappa(X); kappa(crossprod(X))          # squaring the condition number
-```
-
-::: {.note}
-The last line is the punchline of the section: `kappa(crossprod(X))` is roughly `kappa(X)^2`. Forming $\mathbf{X}^\top\mathbf{X}$ costs you half your digits, which is why `lm()` uses a QR decomposition and never touches the normal equations.
-:::
-
-## Your turn: least squares via SVD {.smaller}
-
-::: {.your-turn}
-[Challenge]{.tier .challenge} *(Stage 2, Q2)*
-
-Let $\mathbf{X}\in\mathbb{R}^{n\times p}$ have rank $r\le p$.
-
-(a) State the normal equations for minimizing $\|\mathbf{y}-\mathbf{X}\boldsymbol\beta\|^2$.
-(b) If $\mathbf{X}$ has full column rank, prove the minimizer is unique.
-(c) If $\mathbf{X}$ is rank deficient, describe the set of minimizers.
-(d) Define $\mathbf{X}^+$ via the SVD and show $\mathbf{X}^+\mathbf{y}$ is the minimum-norm least-squares solution.
-:::
-
-## Your turn: least squares via SVD {.smaller}
-
-::: {.answer}
-::: {.midi}
-(a) $\mathbf{X}^\top\mathbf{X}\boldsymbol\beta = \mathbf{X}^\top\mathbf{y}$. (Always consistent, since $\operatorname{im}(\mathbf{X}^\top\mathbf{X}) = \operatorname{im}(\mathbf{X}^\top)$.)
-
-(b) Full column rank $\Rightarrow \mathbf{X}^\top\mathbf{X}\succ0 \Rightarrow$ invertible, so $\hat{\boldsymbol\beta} = (\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top\mathbf{y}$ is the unique stationary point of a strictly convex objective.
-
-(c) The solution set is $\hat{\boldsymbol\beta}_0 + \ker(\mathbf{X})$, an affine subspace of dimension $p - r$. All members give the *same* fitted values $\mathbf{H}\mathbf{y}$.
-
-(d) Write $\boldsymbol\beta = \sum_j c_j\mathbf{v}_j$. Then $\|\mathbf{y}-\mathbf{X}\boldsymbol\beta\|^2 = \sum_{j\le r}(\mathbf{u}_j^\top\mathbf{y} - \sigma_j c_j)^2 + \sum_{j>r}(\mathbf{u}_j^\top\mathbf{y})^2$. The residual pins down $c_j = \mathbf{u}_j^\top\mathbf{y}/\sigma_j$ for $j\le r$ and says **nothing** about $c_j$, $j>r$. Since $\|\boldsymbol\beta\|^2 = \sum_j c_j^2$, minimizing the norm sets those free coordinates to zero --- which is exactly $\mathbf{X}^+\mathbf{y}$.
-:::
-:::
-## Low-rank approximation and PCA {.smaller}
-
-::: {.thm}
-**Theorem (Eckart--Young--Mirsky).** The best rank-$k$ approximation to $\mathbf{A}$ in Frobenius (or spectral) norm is obtained by truncating the SVD:
-$$
-\mathbf{A}_k = \sum_{j=1}^{k}\sigma_j\mathbf{u}_j\mathbf{v}_j^\top, \qquad
-\|\mathbf{A}-\mathbf{A}_k\|_F^2 = \sum_{j>k}\sigma_j^2 .
-$$
-:::
-
 # Block Matrices
-
 ## Block matrices and the Schur complement {.smaller}
 
 Write $\mathbf{M}\in\mathbb{R}^{(n+p)\times(n+p)}$ as
@@ -1394,42 +1396,40 @@ $$
 
 # Wrap-Up
 
-## The five things to know cold {.smaller}
+## What we covered today {.smaller}
 
 ::: {.midi}
-1. **Column space thinking.** $\mathbf{X}\boldsymbol\beta$ is a linear combination of columns. Fitted values live in $\operatorname{im}(\mathbf{X})$; nothing else is reachable.
-
-2. **Projection.** $\mathbf{H} = \mathbf{X}(\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top$ is symmetric and idempotent, $\operatorname{tr}(\mathbf{H}) = \operatorname{Rank}(\mathbf{H}) = p$, and $\mathbf{y} = \mathbf{H}\mathbf{y} + (\mathbf{I}-\mathbf{H})\mathbf{y}$ is an orthogonal decomposition. Every sum-of-squares identity is Pythagoras.
-
-3. **Rank and identifiability.** Full column rank $\iff \ker(\mathbf{X}) = \{\mathbf{0}\} \iff \mathbf{X}^\top\mathbf{X}\succ0 \iff$ unique $\hat{\boldsymbol\beta}$.
-
-4. **Spectral theorem.** Every symmetric matrix is $\mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top$. Traces, determinants, ranks, square roots, and PSD-ness are all statements about $\{\lambda_i\}$.
-
-5. **SVD.** $\mathbf{X} = \mathbf{U}\mathbf{D}\mathbf{V}^\top$ for any matrix. It gives you rank, conditioning, the pseudo-inverse, PCA, low-rank approximation, and the cleanest possible view of ridge.
+1. **Vector spaces** --- a basis is exactly a spanning set for which representation is *unique*, and every basis of $V$ has the same size, $\dim V$.
+2. **Inner products and orthogonality** --- the inner product induces the norm, orthogonality gives Pythagoras, and Gram--Schmidt turns any independent set into an orthonormal one.
+3. **Linear maps and matrices** --- a matrix *is* a linear map in coordinates; $\operatorname{Rank} + \operatorname{Null} = p$ splits the domain, and the four fundamental subspaces account for everything.
+4. **Special matrices and scalars** --- transpose, trace, determinant, inverse, and the identities you will use without thinking.
+5. **Projections** --- $\mathbf{P}^2 = \mathbf{P}$, and $\mathbf{P}_{\mathbf{A}} = \mathbf{A}(\mathbf{A}^\top\mathbf{A})^{-1}\mathbf{A}^\top$ is the reason least squares is a geometry problem.
+6. **Eigenvalues and diagonalization** --- when a matrix is diagonalizable, and why symmetric ones always are.
+7. **Positive definiteness** --- $\mathbf{X}^\top\mathbf{X} \succeq 0$ always, PSD $\iff$ all eigenvalues $\ge 0$, and the covariance matrix as the canonical example.
+8. **Singular value decomposition** --- every matrix, any shape, any rank: $\mathbf{A} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top$.
+9. **Block matrices** --- Schur complements, block determinants and inverses, Kronecker products and $\operatorname{vec}$.
 :::
 
-## Where to go next {.smaller}
+## Three ideas everything rested on {.smaller}
 
-::: {.columns}
-::: {.column width="50%"}
-**Finish the packets**
-
-- Stage 1: the core self-assessment. If any item feels unfamiliar, do it before STA 721 starts.
-- Stage 2: challenge and bridge material --- rank-one updates, block inverses, quadratic forms, SVD.
-- The Error-Hunt companion review covers everything we skipped today.
-:::
-::: {.column width="50%"}
-**References**
-
-- Strang, *Linear Algebra and Its Applications* --- for intuition
-- Harville, *Matrix Algebra from a Statistician's Perspective* --- the STA 721 reference
-- Searle & Khuri, *Matrix Algebra Useful for Statistics*
-- Boyd & Vandenberghe, *Introduction to Applied Linear Algebra* (free online)
-:::
+::: {.thm}
+**Orthogonal projection.** The closest point in a subspace is found by dropping a perpendicular. Every least-squares problem you will ever solve is this sentence.
 :::
 
-## Questions? {.center}
+. . .
 
-Slides and problem packets are linked from the bootcamp page.
+::: {.thm}
+**The spectral theorem.** A symmetric matrix is nothing more than a set of scalings along orthogonal axes: $\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top$. Choose the right basis and the matrix becomes diagonal.
+:::
 
-Come find me during the week --- especially about anything in Sections 5--7.
+. . .
+
+::: {.thm}
+**The SVD.** The same picture, freed from squareness and symmetry: rotate, stretch, rotate. $\mathbf{A} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top$ exists for *every* matrix.
+:::
+
+. . .
+
+::: {.note}
+If a problem looks hard in the standard basis, the move is almost always the same: change to a basis where the operator is diagonal, solve it there, and change back.
+:::
