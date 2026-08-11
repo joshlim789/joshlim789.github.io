@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.6.39">
 
   <meta name="author" content="Josh Lim">
-  <meta name="dcterms.date" content="2026-08-08">
+  <meta name="dcterms.date" content="2026-08-11">
   <title>Joshua Lim – Linear Algebra Review</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -29,73 +29,8 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-94e9823f8bbc8bcab3ad60d438d89fea.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-af2813adabe2085923f43ae288759d39.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -213,51 +148,7 @@ Josh Lim
     </div>
 </div>
 
-  <p class="date">August 8, 2026</p>
-</section>
-<section id="why-we-are-here" class="slide level2 smaller">
-<h2>Why we are here</h2>
-<p>In two weeks you start <strong>STA 721: Linear Models</strong>. Essentially the whole course lives inside one equation:</p>
-<p><span class="math display">\[
-\mathbf{y} = \mathbf{X}\boldsymbol\beta + \boldsymbol\varepsilon, \qquad \mathbf{y} \in \mathbb{R}^n,\ \mathbf{X} \in \mathbb{R}^{n \times p}
-\]</span></p>
-<p>Every question you will ask about it is a linear algebra question in disguise:</p>
-<div class="midi">
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Statistical question</th>
-<th>Linear algebra question</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Is <span class="math inline">\(\boldsymbol\beta\)</span> identifiable?</td>
-<td>Is <span class="math inline">\(\ker(\mathbf{X}) = \{\mathbf{0}\}\)</span>?</td>
-</tr>
-<tr class="even">
-<td>What are the fitted values?</td>
-<td>What is the orthogonal projection onto <span class="math inline">\(\operatorname{im}(\mathbf{X})\)</span>?</td>
-</tr>
-<tr class="odd">
-<td>Is <span class="math inline">\(\hat{\boldsymbol\beta}\)</span> well behaved?</td>
-<td>How small are the singular values of <span class="math inline">\(\mathbf{X}\)</span>?</td>
-</tr>
-<tr class="even">
-<td>What is <span class="math inline">\(\operatorname{Var}(\mathbf{a}^\top\hat{\boldsymbol\beta})\)</span>?</td>
-<td>What does <span class="math inline">\((\mathbf{X}^\top\mathbf{X})^{-1}\)</span> look like in the eigenbasis?</td>
-</tr>
-<tr class="odd">
-<td>Why does ridge regression help?</td>
-<td>What happens to <span class="math inline">\(\sigma_j\)</span> under shrinkage?</td>
-</tr>
-</tbody>
-</table>
-</div>
+  <p class="date">August 11, 2026</p>
 </section>
 <section id="plan-for-the-day" class="slide level2 scrollable">
 <h2>Plan for the day</h2>
@@ -278,9 +169,6 @@ Josh Lim
 <section id="how-the-practice-works" class="slide level2 smaller">
 <h2>How the practice works</h2>
 <p>Throughout, concept slides are followed by a prompt from your self-assessment packets:</p>
-<div class="your-turn">
-<p>Try it on paper first. Answers appear on click — resist for two minutes.</p>
-</div>
 <p>Problems are tagged with the tier labels from the companion packets:</p>
 <div class="midi">
 <ul>
@@ -294,7 +182,7 @@ Josh Lim
 <p>Sources: <em>Incoming PhD Students Self-assessment Problems</em> (Error-Hunt Companion Edition), plus the Stage 1 and Stage 2 companion resources.</p>
 </div>
 </section>
-<section id="notation-conventions" class="slide level2 smaller">
+<section id="notation-conventions" class="slide level2 midi">
 <h2>Notation conventions</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -317,9 +205,6 @@ Josh Lim
 <li><span class="math inline">\(\mathbf{A} \succeq 0\)</span>: positive semi-definite</li>
 </ul>
 </div></div>
-<div class="warn">
-<p>In the regression setting we reserve <span class="math inline">\(n\)</span> for the sample size and <span class="math inline">\(p\)</span> for the number of columns of <span class="math inline">\(\mathbf{X}\)</span>. Watch for it: the packets sometimes use <span class="math inline">\(d\)</span> where we use <span class="math inline">\(p\)</span>.</p>
-</div>
 </section>
 <section>
 <section id="vector-spaces" class="title-slide slide level1">
@@ -435,81 +320,6 @@ Josh Lim
 </div>
 </section></section>
 <section>
-<section id="inner-products-and-orthogonality" class="title-slide slide level1">
-<h1>Inner Products and Orthogonality</h1>
-
-</section>
-<section id="inner-products-and-norms" class="slide level2 smaller">
-<h2>Inner products and norms</h2>
-<div class="defn">
-<p><strong>Definition (Real inner product).</strong> A map <span class="math inline">\(\langle \cdot, \cdot \rangle : V \times V \to \mathbb{R}\)</span> with, for all <span class="math inline">\(a, b \in \mathbb{R}\)</span> and <span class="math inline">\(\mathbf{u},\mathbf{v},\mathbf{w} \in V\)</span>:</p>
-<ul>
-<li><strong>symmetry</strong>: <span class="math inline">\(\langle \mathbf{v}, \mathbf{u}\rangle = \langle \mathbf{u}, \mathbf{v}\rangle\)</span></li>
-<li><strong>linearity</strong>: <span class="math inline">\(\langle a\mathbf{u} + b\mathbf{v}, \mathbf{w}\rangle = a\langle \mathbf{u},\mathbf{w}\rangle + b\langle\mathbf{v},\mathbf{w}\rangle\)</span></li>
-<li><strong>positive definiteness</strong>: <span class="math inline">\(\langle \mathbf{v},\mathbf{v}\rangle \ge 0\)</span>, with equality iff <span class="math inline">\(\mathbf{v} = \mathbf{0}\)</span></li>
-</ul>
-</div>
-<p>The induced <strong>norm</strong> is <span class="math inline">\(\|\mathbf{v}\| = \sqrt{\langle\mathbf{v},\mathbf{v}\rangle}\)</span>, and <span class="math inline">\(\mathbf{u} \perp \mathbf{v}\)</span> means <span class="math inline">\(\langle\mathbf{u},\mathbf{v}\rangle = 0\)</span>.</p>
-<p>On <span class="math inline">\(\mathbb{R}^n\)</span> the default is <span class="math inline">\(\langle \mathbf{u},\mathbf{v}\rangle = \mathbf{u}^\top\mathbf{v}\)</span>, giving <span class="math inline">\(\|\mathbf{v}\|^2 = \sum_i v_i^2\)</span>.</p>
-</section>
-<section id="pythagoras-and-why-it-matters" class="slide level2 smaller">
-<h2>Pythagoras, and why it matters</h2>
-<p>If <span class="math inline">\(\mathbf{u} \perp \mathbf{v}\)</span> then</p>
-<p><span class="math display">\[
-\|\mathbf{u} + \mathbf{v}\|^2 = \|\mathbf{u}\|^2 + 2\langle\mathbf{u},\mathbf{v}\rangle + \|\mathbf{v}\|^2 = \|\mathbf{u}\|^2 + \|\mathbf{v}\|^2 .
-\]</span></p>
-</section>
-<section id="your-turn-orthogonal-complements" class="slide level2 smaller">
-<h2>Your turn: orthogonal complements</h2>
-<div class="your-turn">
-<p><span class="tier bridge">Bridge</span> <em>(Companion review, Q9)</em></p>
-<p>Find a basis (or parametric description) for the set of all vectors in <span class="math inline">\(\mathbb{R}^4\)</span> orthogonal to <span class="math inline">\((1,1,1,1)^\top\)</span> and <span class="math inline">\((1,2,3,4)^\top\)</span>.</p>
-</div>
-<div class="fragment">
-<div class="answer">
-<p>We want <span class="math inline">\(\ker(\mathbf{A})\)</span> for <span class="math display">\[
-\mathbf{A} = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 3 &amp; 4\end{bmatrix}
-\;\longrightarrow\;
-\begin{bmatrix} 1 &amp; 0 &amp; -1 &amp; -2 \\ 0 &amp; 1 &amp; 2 &amp; 3\end{bmatrix}.
-\]</span> Free variables <span class="math inline">\(x_3, x_4\)</span>: <span class="math inline">\(x_1 = x_3 + 2x_4\)</span>, <span class="math inline">\(x_2 = -2x_3 - 3x_4\)</span>. A basis is <span class="math display">\[
-\{(1,-2,1,0)^\top,\ (2,-3,0,1)^\top\}, \qquad \dim = 2 .
-\]</span></p>
-</div>
-</div>
-<div class="fragment">
-<div class="note">
-<p>The general fact: the orthogonal complement of <span class="math inline">\(\operatorname{im}(\mathbf{A}^\top)\)</span> is <span class="math inline">\(\ker(\mathbf{A})\)</span>. Two independent constraints in <span class="math inline">\(\mathbb{R}^4\)</span> leave a 2-dimensional solution set.</p>
-</div>
-</div>
-</section>
-<section id="gramschmidt" class="slide level2 smaller">
-<h2>Gram–Schmidt</h2>
-<div class="thm">
-<p><strong>Theorem (Gram–Schmidt).</strong> Let <span class="math inline">\(\{\mathbf{w}_1,\dots,\mathbf{w}_n\}\)</span> be linearly independent. Set <span class="math inline">\(\mathbf{v}_1 = \mathbf{w}_1\)</span> and recursively <span class="math display">\[
-\mathbf{v}_k = \mathbf{w}_k - \sum_{j=1}^{k-1} \frac{\langle \mathbf{v}_j, \mathbf{w}_k\rangle}{\|\mathbf{v}_j\|^2}\,\mathbf{v}_j , \qquad 2 \le k \le n .
-\]</span> Then <span class="math inline">\(\{\mathbf{v}_1,\dots,\mathbf{v}_n\}\)</span> is orthogonal and spans the same subspace.</p>
-</div>
-<p>Read the recursion as: <em>take <span class="math inline">\(\mathbf{w}_k\)</span>, subtract off everything already explained by the earlier directions, keep the remainder.</em></p>
-</section>
-<section id="your-turn-gramschmidt-by-hand" class="slide level2 smaller">
-<h2>Your turn: Gram–Schmidt by hand</h2>
-<div class="your-turn">
-<p><span class="tier bridge">Bridge</span> <em>(Companion review, Q11)</em></p>
-<p>Apply Gram–Schmidt to <span class="math display">\[
-\mathbf{a} = (1,-1,0,0)^\top, \quad \mathbf{b} = (0,1,-1,0)^\top, \quad \mathbf{c} = (0,0,1,-1)^\top .
-\]</span> Then show both <span class="math inline">\(\{\mathbf{a},\mathbf{b},\mathbf{c}\}\)</span> and the orthogonalized list are bases for the subspace orthogonal to <span class="math inline">\(\mathbf{d} = (1,1,1,1)^\top\)</span>.</p>
-</div>
-</section>
-<section id="your-turn-gramschmidt-by-hand-1" class="slide level2 smaller">
-<h2>Your turn: Gram–Schmidt by hand</h2>
-<div class="answer">
-<p><span class="math inline">\(\mathbf{a}' = \mathbf{a} = (1,-1,0,0)^\top\)</span>, <span class="math inline">\(\|\mathbf{a}'\|^2 = 2\)</span>.</p>
-<p><span class="math inline">\(\langle \mathbf{a}',\mathbf{b}\rangle = -1\)</span>, so <span class="math inline">\(\mathbf{b}' = \mathbf{b} + \tfrac12\mathbf{a}' = (\tfrac12, \tfrac12, -1, 0)^\top\)</span>, <span class="math inline">\(\|\mathbf{b}'\|^2 = \tfrac32\)</span>.</p>
-<p><span class="math inline">\(\langle\mathbf{a}',\mathbf{c}\rangle = 0\)</span> and <span class="math inline">\(\langle\mathbf{b}',\mathbf{c}\rangle = -1\)</span>, so <span class="math inline">\(\mathbf{c}' = \mathbf{c} + \tfrac23\mathbf{b}' = (\tfrac13,\tfrac13,\tfrac13,-1)^\top\)</span>.</p>
-<p>Each of <span class="math inline">\(\mathbf{a},\mathbf{b},\mathbf{c}\)</span> has entries summing to zero, so each is <span class="math inline">\(\perp \mathbf{d}\)</span>; they are independent (staircase pattern), and <span class="math inline">\(\dim \mathbf{d}^\perp = 3\)</span>. Gram–Schmidt preserves the span, so the primed list is a basis of the same space.</p>
-</div>
-</section></section>
-<section>
 <section id="linear-maps-and-matrices" class="title-slide slide level1">
 <h1>Linear Maps and Matrices</h1>
 
@@ -565,34 +375,47 @@ c_{ij} = \sum_{k=1}^{m} b_{ik}a_{kj} .
 </div>
 </div>
 </section>
-<section id="your-turn-conformability-and-associativity" class="slide level2 smaller scrollable">
-<h2>Your turn: conformability and associativity</h2>
+<section id="your-turn-conformability" class="slide level2 smaller scrollable">
+<h2>Your turn: conformability</h2>
 <div class="your-turn">
 <p><span class="tier baseline">Baseline</span> <em>(Companion review, Q2 / Stage 1, Q2)</em></p>
 <p><span class="math display">\[
-\mathbf{A} = \begin{bmatrix} 1 &amp; 2\\ 3 &amp; 1\end{bmatrix},\
-\mathbf{B} = \begin{bmatrix} 1 &amp; 0 &amp; 2\\ 3 &amp; 1 &amp; -2\end{bmatrix},\
-\mathbf{C} = \begin{bmatrix} 1 &amp; -2 &amp; 3\\ -2 &amp; 1 &amp; -1\end{bmatrix},\
+\begin{gathered}
+\mathbf{A} = \begin{bmatrix} 1 &amp; 2\\ 3 &amp; 1\end{bmatrix}
+\qquad
+\mathbf{B} = \begin{bmatrix} 1 &amp; 0 &amp; 2\\ 3 &amp; 1 &amp; -2\end{bmatrix}
+\\[0.5em]
+\mathbf{C} = \begin{bmatrix} 1 &amp; -2 &amp; 3\\ -2 &amp; 1 &amp; -1\end{bmatrix}
+\qquad
 \mathbf{d} = \begin{bmatrix} -2\\ 2\\ 1\end{bmatrix}
+\end{gathered}
 \]</span></p>
 <ol type="a">
 <li>Which of <span class="math inline">\(\mathbf{AB}\)</span>, <span class="math inline">\(\mathbf{BA}\)</span>, <span class="math inline">\(\mathbf{ABC}\)</span>, <span class="math inline">\(\mathbf{ABd}\)</span>, <span class="math inline">\(\mathbf{BC}\)</span>, <span class="math inline">\(\mathbf{BC}^\top\)</span>, <span class="math inline">\(\mathbf{B}^\top\mathbf{C}\)</span>, <span class="math inline">\(\mathbf{dC}\)</span> are defined?</li>
-<li>Compute <span class="math inline">\(\mathbf{AB}\)</span>, <span class="math inline">\(\mathbf{A}(3\mathbf{B} + \mathbf{C})\)</span>, <span class="math inline">\(\mathbf{B}^\top\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{A}(\mathbf{Bd})\)</span>, <span class="math inline">\((\mathbf{AB})\mathbf{d}\)</span>.</li>
-<li>Why must <span class="math inline">\(\mathbf{A}(\mathbf{Bd})\)</span> and <span class="math inline">\((\mathbf{AB})\mathbf{d}\)</span> agree?</li>
+<li>Compute <span class="math inline">\(\mathbf{A}^\top(3\mathbf{B} + \mathbf{C})\)</span>.</li>
 </ol>
 </div>
 </section>
-<section id="your-turn-conformability-and-associativity-1" class="slide level2 smaller scrollable">
-<h2>Your turn: conformability and associativity</h2>
+<section id="your-turn-conformability-1" class="slide level2 smaller scrollable">
+<h2>Your turn: conformability</h2>
 <div class="answer">
 <ol type="a">
 <li><p>Defined: <span class="math inline">\(\mathbf{AB}\)</span> <span class="math inline">\((2\times3)\)</span>, <span class="math inline">\(\mathbf{ABd}\)</span> <span class="math inline">\((2\times1)\)</span>, <span class="math inline">\(\mathbf{BC}^\top\)</span> <span class="math inline">\((2\times2)\)</span>, <span class="math inline">\(\mathbf{B}^\top\mathbf{C}\)</span> <span class="math inline">\((3\times3)\)</span>. Not defined: <span class="math inline">\(\mathbf{BA}\)</span>, <span class="math inline">\(\mathbf{ABC}\)</span>, <span class="math inline">\(\mathbf{BC}\)</span>, <span class="math inline">\(\mathbf{dC}\)</span>.</p></li>
-<li><p><span class="math inline">\(\mathbf{AB} = \begin{bmatrix} 7 &amp; 2 &amp; -2\\ 6 &amp; 1 &amp; 4\end{bmatrix}\)</span>, <span class="math inline">\(\ \mathbf{A}(3\mathbf{B}+\mathbf{C}) = \begin{bmatrix} 18 &amp; 6 &amp; -5\\ 19 &amp; -2 &amp; 20\end{bmatrix}\)</span>, <span class="math inline">\(\ \mathbf{B}^\top\mathbf{A} = \begin{bmatrix} 10 &amp; 5\\ 3 &amp; 1\\ -4 &amp; 2\end{bmatrix}\)</span>.</p></li>
+<li><p>Parentheses first: <span class="math inline">\(3\mathbf{B}\)</span> and <span class="math inline">\(\mathbf{C}\)</span> are both <span class="math inline">\(2\times3\)</span>, so the sum is defined. Then <span class="math inline">\(\mathbf{A}^\top\)</span> is <span class="math inline">\(2\times2\)</span>, and <span class="math inline">\((2\times2)(2\times3)\)</span> gives a <span class="math inline">\(2\times3\)</span>.</p></li>
 </ol>
-<p><span class="math inline">\(\mathbf{Bd} = (0,-6)^\top\)</span>, so <span class="math inline">\(\mathbf{A}(\mathbf{Bd}) = (-12,-6)^\top = (\mathbf{AB})\mathbf{d}\)</span>.</p>
-<ol start="3" type="a">
-<li>Associativity of composition — and computationally this matters enormously: <span class="math inline">\(\mathbf{A}(\mathbf{Bd})\)</span> costs two matrix–vector products; <span class="math inline">\((\mathbf{AB})\mathbf{d}\)</span> forms a whole matrix first.</li>
-</ol>
+<p><span class="math display">\[
+\begin{aligned}
+3\mathbf{B} + \mathbf{C}
+&amp;= \begin{bmatrix} 3 &amp; 0 &amp; 6\\ 9 &amp; 3 &amp; -6\end{bmatrix}
++ \begin{bmatrix} 1 &amp; -2 &amp; 3\\ -2 &amp; 1 &amp; -1\end{bmatrix}
+= \begin{bmatrix} 4 &amp; -2 &amp; 9\\ 7 &amp; 4 &amp; -7\end{bmatrix}
+\\[0.5em]
+\mathbf{A}^\top(3\mathbf{B} + \mathbf{C})
+&amp;= \begin{bmatrix} 1 &amp; 3\\ 2 &amp; 1\end{bmatrix}
+   \begin{bmatrix} 4 &amp; -2 &amp; 9\\ 7 &amp; 4 &amp; -7\end{bmatrix}
+= \begin{bmatrix} 25 &amp; 10 &amp; -12\\ 15 &amp; 0 &amp; 11\end{bmatrix}
+\end{aligned}
+\]</span></p>
 </div>
 </section>
 <section id="image-kernel-rank-nullity" class="slide level2 smaller">
@@ -609,7 +432,7 @@ c_{ij} = \sum_{k=1}^{m} b_{ik}a_{kj} .
 </div>
 </div>
 </section>
-<section id="the-four-fundamental-subspaces" class="slide level2 smaller">
+<section id="the-four-fundamental-subspaces" class="slide level2 medium">
 <h2>The four fundamental subspaces</h2>
 <p>For <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times p}\)</span> of rank <span class="math inline">\(r\)</span>:</p>
 <div class="midi">
@@ -738,6 +561,142 @@ c_{ij} = \sum_{k=1}^{m} b_{ik}a_{kj} .
 (-23, -1, 4, 0)^\top, \qquad (-1, -7, 0, 4)^\top .
 \]</span> (Clear the fractions by scaling — always allowed for a basis.)</p></li>
 </ol>
+</div>
+</section></section>
+<section>
+<section id="inner-products-and-orthogonality" class="title-slide slide level1">
+<h1>Inner Products and Orthogonality</h1>
+
+</section>
+<section id="inner-products-and-norms" class="slide level2 smaller">
+<h2>Inner products and norms</h2>
+<div class="defn">
+<p><strong>Definition (Real inner product).</strong> A map <span class="math inline">\(\langle \cdot, \cdot \rangle : V \times V \to \mathbb{R}\)</span> with, for all <span class="math inline">\(a, b \in \mathbb{R}\)</span> and <span class="math inline">\(\mathbf{u},\mathbf{v},\mathbf{w} \in V\)</span>:</p>
+<ul>
+<li><strong>symmetry</strong>: <span class="math inline">\(\langle \mathbf{v}, \mathbf{u}\rangle = \langle \mathbf{u}, \mathbf{v}\rangle\)</span></li>
+<li><strong>linearity</strong>: <span class="math inline">\(\langle a\mathbf{u} + b\mathbf{v}, \mathbf{w}\rangle = a\langle \mathbf{u},\mathbf{w}\rangle + b\langle\mathbf{v},\mathbf{w}\rangle\)</span></li>
+<li><strong>positive definiteness</strong>: <span class="math inline">\(\langle \mathbf{v},\mathbf{v}\rangle \ge 0\)</span>, with equality iff <span class="math inline">\(\mathbf{v} = \mathbf{0}\)</span></li>
+</ul>
+</div>
+<p>The induced <strong>norm</strong> is <span class="math inline">\(\|\mathbf{v}\| = \sqrt{\langle\mathbf{v},\mathbf{v}\rangle}\)</span>, and <span class="math inline">\(\mathbf{u} \perp \mathbf{v}\)</span> means <span class="math inline">\(\langle\mathbf{u},\mathbf{v}\rangle = 0\)</span>.</p>
+<p>On <span class="math inline">\(\mathbb{R}^n\)</span> the default is <span class="math inline">\(\langle \mathbf{u},\mathbf{v}\rangle = \mathbf{u}^\top\mathbf{v}\)</span>, giving <span class="math inline">\(\|\mathbf{v}\|^2 = \sum_i v_i^2\)</span>.</p>
+<p>If <span class="math inline">\(\mathbf{u} \perp \mathbf{v}\)</span> then</p>
+<p><span class="math display">\[
+\|\mathbf{u} + \mathbf{v}\|^2 = \|\mathbf{u}\|^2 + 2\langle\mathbf{u},\mathbf{v}\rangle + \|\mathbf{v}\|^2 = \|\mathbf{u}\|^2 + \|\mathbf{v}\|^2 .
+\]</span></p>
+</section>
+<section id="your-turn-orthogonal-complements" class="slide level2 smaller">
+<h2>Your turn: orthogonal complements</h2>
+<div class="your-turn">
+<p><span class="tier bridge">Bridge</span> <em>(Companion review, Q9)</em></p>
+<p>Find a basis for the set of all vectors in <span class="math inline">\(\mathbb{R}^4\)</span> orthogonal to <span class="math inline">\((1,1,1,1)^\top\)</span> and <span class="math inline">\((1,2,3,4)^\top\)</span>.</p>
+</div>
+<div class="fragment">
+<div class="answer">
+<p>We want <span class="math inline">\(\ker(\mathbf{A})\)</span> for <span class="math display">\[
+\mathbf{A} = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 3 &amp; 4\end{bmatrix}
+\;\longrightarrow\;
+\begin{bmatrix} 1 &amp; 0 &amp; -1 &amp; -2 \\ 0 &amp; 1 &amp; 2 &amp; 3\end{bmatrix}.
+\]</span> Free variables <span class="math inline">\(x_3, x_4\)</span>: <span class="math inline">\(x_1 = x_3 + 2x_4\)</span>, <span class="math inline">\(x_2 = -2x_3 - 3x_4\)</span>. A basis is <span class="math display">\[
+\{(1,-2,1,0)^\top,\ (2,-3,0,1)^\top\}, \qquad \dim = 2 .
+\]</span></p>
+</div>
+</div>
+<div class="fragment">
+<div class="note">
+<p>The general fact: the orthogonal complement of <span class="math inline">\(\operatorname{im}(\mathbf{A}^\top)\)</span> is <span class="math inline">\(\ker(\mathbf{A})\)</span>. Two independent constraints in <span class="math inline">\(\mathbb{R}^4\)</span> leave a 2-dimensional solution set.</p>
+</div>
+</div>
+</section>
+<section id="gramschmidt" class="slide level2 smaller">
+<h2>Gram–Schmidt</h2>
+<div class="thm">
+<p><strong>Theorem (Gram–Schmidt).</strong> Let <span class="math inline">\(\{\mathbf{w}_1,\dots,\mathbf{w}_n\}\)</span> be linearly independent. Set <span class="math inline">\(\mathbf{v}_1 = \mathbf{w}_1\)</span> and recursively <span class="math display">\[
+\mathbf{v}_k = \mathbf{w}_k - \sum_{j=1}^{k-1} \frac{\langle \mathbf{v}_j, \mathbf{w}_k\rangle}{\|\mathbf{v}_j\|^2}\,\mathbf{v}_j , \qquad 2 \le k \le n .
+\]</span> Then <span class="math inline">\(\{\mathbf{v}_1,\dots,\mathbf{v}_n\}\)</span> is orthogonal and spans the same subspace.</p>
+</div>
+<p>Read the recursion as: <em>take <span class="math inline">\(\mathbf{w}_k\)</span>, subtract off everything already explained by the earlier directions, keep the remainder.</em></p>
+</section>
+<section id="your-turn-gramschmidt-by-hand" class="slide level2 smaller">
+<h2>Your turn: Gram–Schmidt by hand</h2>
+<div class="your-turn">
+<p><span class="tier bridge">Bridge</span> <em>(Companion review, Q11)</em></p>
+<p>Apply Gram–Schmidt to <span class="math display">\[
+\mathbf{a} = (1,-1,0,0)^\top, \quad \mathbf{b} = (0,1,-1,0)^\top, \quad \mathbf{c} = (0,0,1,-1)^\top .
+\]</span> Then show both <span class="math inline">\(\{\mathbf{a},\mathbf{b},\mathbf{c}\}\)</span> and the orthogonalized list are bases for the subspace orthogonal to <span class="math inline">\(\mathbf{d} = (1,1,1,1)^\top\)</span>.</p>
+</div>
+</section>
+<section id="your-turn-gramschmidt-by-hand-1" class="slide level2 smaller">
+<h2>Your turn: Gram–Schmidt by hand</h2>
+<div class="answer">
+<p><span class="math inline">\(\mathbf{a}' = \mathbf{a} = (1,-1,0,0)^\top\)</span>, <span class="math inline">\(\|\mathbf{a}'\|^2 = 2\)</span>.</p>
+<p><span class="math inline">\(\langle \mathbf{a}',\mathbf{b}\rangle = -1\)</span>, so <span class="math inline">\(\mathbf{b}' = \mathbf{b} + \tfrac12\mathbf{a}' = (\tfrac12, \tfrac12, -1, 0)^\top\)</span>, <span class="math inline">\(\|\mathbf{b}'\|^2 = \tfrac32\)</span>.</p>
+<p><span class="math inline">\(\langle\mathbf{a}',\mathbf{c}\rangle = 0\)</span> and <span class="math inline">\(\langle\mathbf{b}',\mathbf{c}\rangle = -1\)</span>, so <span class="math inline">\(\mathbf{c}' = \mathbf{c} + \tfrac23\mathbf{b}' = (\tfrac13,\tfrac13,\tfrac13,-1)^\top\)</span>.</p>
+<p>Each of <span class="math inline">\(\mathbf{a},\mathbf{b},\mathbf{c}\)</span> has entries summing to zero, so each is <span class="math inline">\(\perp \mathbf{d}\)</span>; they are independent (staircase pattern), and <span class="math inline">\(\dim \mathbf{d}^\perp = 3\)</span>. Gram–Schmidt preserves the span, so the primed list is a basis of the same space.</p>
+</div>
+</section>
+<section id="orthogonal-complements" class="slide level2 smaller">
+<h2>Orthogonal complements</h2>
+<div class="defn">
+<p><strong>Definition.</strong> For a subspace <span class="math inline">\(W \subseteq \mathbb{R}^m\)</span>, the <strong>orthogonal complement</strong> is <span class="math display">\[
+W^\perp = \{\mathbf{v} \in \mathbb{R}^m : \langle \mathbf{v}, \mathbf{w}\rangle = 0 \text{ for every } \mathbf{w} \in W\} .
+\]</span></p>
+</div>
+<div class="fragment">
+<div class="thm">
+<p><strong>Theorem.</strong> <span class="math inline">\(W^\perp\)</span> is a subspace, and</p>
+<ul>
+<li><span class="math inline">\(W \cap W^\perp = \{\mathbf{0}\}\)</span>,</li>
+<li><span class="math inline">\(\dim W + \dim W^\perp = m\)</span>,</li>
+<li><span class="math inline">\((W^\perp)^\perp = W\)</span>,</li>
+<li>every <span class="math inline">\(\mathbf{v} \in \mathbb{R}^m\)</span> splits <strong>uniquely</strong> as <span class="math inline">\(\mathbf{v} = \mathbf{w} + \mathbf{w}^\perp\)</span> with <span class="math inline">\(\mathbf{w}\in W\)</span>, <span class="math inline">\(\mathbf{w}^\perp \in W^\perp\)</span>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="the-four-subspaces-related" class="slide level2 smaller">
+<h2>The four subspaces, related</h2>
+<p>Everything about <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n\times p}\)</span> follows from one observation:</p>
+<p><span class="math display">\[
+\mathbf{A}\mathbf{x} = \mathbf{0}
+\iff
+\langle \text{row}_i(\mathbf{A}), \mathbf{x}\rangle = 0 \ \text{ for every } i
+\iff
+\mathbf{x} \perp \operatorname{im}(\mathbf{A}^\top).
+\]</span></p>
+<div class="fragment">
+<p>That is a proof of the first line below; applying it to <span class="math inline">\(\mathbf{A}^\top\)</span> gives the second.</p>
+<div class="thm">
+<p><strong>Theorem (Fundamental Theorem of Linear Algebra).</strong> <span class="math display">\[
+\ker(\mathbf{A}) = \operatorname{im}(\mathbf{A}^\top)^\perp \subseteq \mathbb{R}^p,
+\qquad
+\ker(\mathbf{A}^\top) = \operatorname{im}(\mathbf{A})^\perp \subseteq \mathbb{R}^n .
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="your-turn-kermathbfatopmathbfa-kermathbfa" class="slide level2 smaller">
+<h2>Your turn: <span class="math inline">\(\ker(\mathbf{A}^\top\mathbf{A}) = \ker(\mathbf{A})\)</span></h2>
+<div class="your-turn">
+<p><span class="tier bridge">Bridge</span></p>
+<p>Show that <span class="math inline">\(\ker(\mathbf{A}^\top\mathbf{A}) = \ker(\mathbf{A})\)</span> for any <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n\times p}\)</span>, and deduce that <span class="math inline">\(\operatorname{Rank}(\mathbf{A}^\top\mathbf{A}) = \operatorname{Rank}(\mathbf{A})\)</span>.</p>
+<p>Then: for which <span class="math inline">\(\mathbf{X}\)</span> is <span class="math inline">\(\mathbf{X}^\top\mathbf{X}\)</span> invertible?</p>
+</div>
+</section>
+<section id="your-turn-kermathbfatopmathbfa-kermathbfa-1" class="slide level2 smaller">
+<h2>Your turn: <span class="math inline">\(\ker(\mathbf{A}^\top\mathbf{A}) = \ker(\mathbf{A})\)</span></h2>
+<div class="answer">
+<p>(<span class="math inline">\(\supseteq\)</span>) If <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{0}\)</span> then <span class="math inline">\(\mathbf{A}^\top\mathbf{A}\mathbf{x} = \mathbf{0}\)</span>.</p>
+<p>(<span class="math inline">\(\subseteq\)</span>) If <span class="math inline">\(\mathbf{A}^\top\mathbf{A}\mathbf{x} = \mathbf{0}\)</span>, take the inner product with <span class="math inline">\(\mathbf{x}\)</span>: <span class="math display">\[
+0 = \mathbf{x}^\top\mathbf{A}^\top\mathbf{A}\mathbf{x} = \|\mathbf{A}\mathbf{x}\|^2
+\implies
+\mathbf{A}\mathbf{x} = \mathbf{0}.
+\]</span> Both are subspaces of <span class="math inline">\(\mathbb{R}^p\)</span>, so rank–nullity gives equal ranks.</p>
+</div>
+<div class="fragment">
+<div class="note">
+<p>Hence <span class="math inline">\(\mathbf{X}^\top\mathbf{X}\)</span> (a <span class="math inline">\(p\times p\)</span> matrix) is invertible <strong>iff <span class="math inline">\(\mathbf{X}\)</span> has full column rank</strong>, i.e.&nbsp;<span class="math inline">\(\ker(\mathbf{X}) = \{\mathbf{0}\}\)</span> — no exact collinearity among the columns. This is exactly the condition the hat matrix <span class="math inline">\(\mathbf{H} = \mathbf{X}(\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top\)</span> will need later.</p>
+</div>
 </div>
 </section></section>
 <section>
@@ -890,30 +849,6 @@ c_{ij} = \sum_{k=1}^{m} b_{ik}a_{kj} .
 </ul>
 </div>
 </div></div>
-</section>
-<section id="your-turn-inverses-by-hand" class="slide level2 smaller scrollable">
-<h2>Your turn: inverses by hand</h2>
-<div class="your-turn">
-<p><span class="tier baseline">Baseline</span> <em>(Companion review, Q18 and Q19)</em></p>
-<ol type="a">
-<li><p>Find the inverse of <span class="math inline">\(\begin{bmatrix} 1&amp;2&amp;1\\ 3&amp;7&amp;3\\ 2&amp;3&amp;4\end{bmatrix}\)</span>.</p></li>
-<li><p>Using the cofactor formula <span class="math inline">\(\mathbf{A}^{-1} = \dfrac{1}{\det\mathbf{A}}\operatorname{adj}(\mathbf{A})\)</span>, invert <span class="math inline">\(\begin{bmatrix}1&amp;2\\3&amp;4\end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix}1&amp;0\\3&amp;5\end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix}1&amp;1&amp;0\\2&amp;1&amp;2\\0&amp;1&amp;1\end{bmatrix}\)</span>.</p></li>
-</ol>
-</div>
-</section>
-<section id="your-turn-inverses-by-hand-1" class="slide level2 smaller scrollable">
-<h2>Your turn: inverses by hand</h2>
-<div class="answer">
-<ol type="a">
-<li><p><span class="math inline">\(\det = 2\)</span> and <span class="math inline">\(\mathbf{A}^{-1} = \dfrac{1}{2}\begin{bmatrix} 19 &amp; -5 &amp; -1\\ -6 &amp; 2 &amp; 0\\ -5 &amp; 1 &amp; 1\end{bmatrix}\)</span>.</p></li>
-<li><p><span class="math inline">\(\dfrac{1}{-2}\begin{bmatrix}4&amp;-2\\-3&amp;1\end{bmatrix}\)</span>, <span class="math inline">\(\quad\dfrac{1}{5}\begin{bmatrix}5&amp;0\\-3&amp;1\end{bmatrix}\)</span>, <span class="math inline">\(\quad\dfrac{1}{3}\begin{bmatrix}1&amp;1&amp;-2\\2&amp;-1&amp;2\\-2&amp;1&amp;1\end{bmatrix}\)</span> (the last has <span class="math inline">\(\det = -3\)</span>).</p></li>
-</ol>
-</div>
-<div class="fragment">
-<div class="warn">
-<p>The adjugate formula is a <em>proof device</em>, not an algorithm. In practice: <code>solve(A, b)</code>, never <code>solve(A) %*% b</code>.</p>
-</div>
-</div>
 </section></section>
 <section>
 <section id="projections" class="title-slide slide level1">
@@ -1028,37 +963,53 @@ c_{ij} = \sum_{k=1}^{m} b_{ik}a_{kj} .
 <p><span class="tier bridge">Bridge</span> <em>(Companion review, Q10)</em></p>
 <p>Find the orthogonal projection of <span class="math inline">\((1,1,1,1)^\top\)</span> onto the subspace of <span class="math inline">\(\mathbb{R}^4\)</span> spanned by <span class="math inline">\(\mathbf{v}_1 = (1,3,1,1)^\top\)</span> and <span class="math inline">\(\mathbf{v}_2 = (2,1,1,0)^\top\)</span>.</p>
 </div>
-<div class="fragment">
+</section>
+<section id="your-turn-projecting-a-vector-1" class="slide level2 smaller">
+<h2>Your turn: projecting a vector</h2>
 <div class="answer">
-<p>With <span class="math inline">\(\mathbf{A} = [\mathbf{v}_1\ \mathbf{v}_2]\)</span>: <span class="math display">\[
-\mathbf{A}^\top\mathbf{A} = \begin{bmatrix} 12 &amp; 6\\ 6 &amp; 6\end{bmatrix}, \qquad
-\mathbf{A}^\top\mathbf{y} = \begin{bmatrix} 6\\ 4\end{bmatrix}, \qquad
-\hat{\mathbf{c}} = (\mathbf{A}^\top\mathbf{A})^{-1}\mathbf{A}^\top\mathbf{y} = \begin{bmatrix} 1/3\\ 1/3\end{bmatrix}.
-\]</span> <span class="math display">\[
-\mathbf{P}\mathbf{y} = \tfrac13(\mathbf{v}_1 + \mathbf{v}_2) = \left(1, \tfrac43, \tfrac23, \tfrac13\right)^\top .
-\]</span> Check: <span class="math inline">\(\mathbf{y} - \mathbf{P}\mathbf{y} = (0,-\tfrac13,\tfrac13,\tfrac23)^\top\)</span> is orthogonal to both <span class="math inline">\(\mathbf{v}_1\)</span> and <span class="math inline">\(\mathbf{v}_2\)</span>. ✓</p>
-</div>
+<p>Put the spanning vectors in the columns of <span class="math inline">\(\mathbf{A} = [\mathbf{v}_1\ \ \mathbf{v}_2]\)</span> and set up the normal equations <span class="math inline">\(\mathbf{A}^\top\mathbf{A}\hat{\mathbf{c}} = \mathbf{A}^\top\mathbf{y}\)</span>: <span class="math display">\[
+\mathbf{A} = \begin{bmatrix} 1 &amp; 2\\ 3 &amp; 1\\ 1 &amp; 1\\ 1 &amp; 0\end{bmatrix},
+\qquad
+\mathbf{A}^\top\mathbf{A} = \begin{bmatrix} 12 &amp; 6\\ 6 &amp; 6\end{bmatrix},
+\qquad
+\mathbf{A}^\top\mathbf{y} = \begin{bmatrix} 6\\ 4\end{bmatrix}.
+\]</span></p>
+<p>Solve for the coefficients — <span class="math inline">\(\det(\mathbf{A}^\top\mathbf{A}) = 72 - 36 = 36\)</span>: <span class="math display">\[
+\begin{aligned}
+\hat{\mathbf{c}}
+= (\mathbf{A}^\top\mathbf{A})^{-1}\mathbf{A}^\top\mathbf{y}
+&amp;= \tfrac{1}{36}\begin{bmatrix} 6 &amp; -6\\ -6 &amp; 12\end{bmatrix}\begin{bmatrix} 6\\ 4\end{bmatrix}
+\\[0.4em]
+&amp;= \tfrac{1}{36}\begin{bmatrix} 36 - 24\\ -36 + 48\end{bmatrix}
+= \tfrac{1}{36}\begin{bmatrix} 12\\ 12\end{bmatrix}
+= \begin{bmatrix} 1/3\\ 1/3\end{bmatrix}.
+\end{aligned}
+\]</span></p>
 </div>
 </section>
-<section id="your-turn-gramschmidt-to-a-projection-matrix" class="slide level2 smaller">
-<h2>Your turn: Gram–Schmidt to a projection matrix</h2>
-<div class="your-turn">
-<p><span class="tier bridge">Bridge</span> <em>(Companion review, Q12)</em></p>
-<p>Apply Gram–Schmidt to <span class="math inline">\((1,2,3)^\top\)</span> and <span class="math inline">\((1,3,1)^\top\)</span>, then write the orthogonal projection matrix onto the plane they span.</p>
-</div>
-</section>
-<section id="your-turn-gramschmidt-to-a-projection-matrix-1" class="slide level2 smaller">
-<h2>Your turn: Gram–Schmidt to a projection matrix</h2>
+<section id="your-turn-projecting-a-vector-2" class="slide level2 smaller">
+<h2>Your turn: projecting a vector</h2>
 <div class="answer">
-<p><span class="math inline">\(\mathbf{q}_1 = (1,2,3)^\top\)</span> with <span class="math inline">\(\|\mathbf{q}_1\|^2 = 14\)</span>. Since <span class="math inline">\(\langle\mathbf{q}_1,\mathbf{w}_2\rangle = 10\)</span>, <span class="math display">\[
-\mathbf{q}_2 = (1,3,1)^\top - \tfrac{10}{14}(1,2,3)^\top = \tfrac{1}{7}(2,11,-8)^\top \ \propto\ (2,11,-8)^\top,\quad \|(2,11,-8)\|^2 = 189 .
-\]</span> Then <span class="math inline">\(\mathbf{P} = \dfrac{\mathbf{q}_1\mathbf{q}_1^\top}{14} + \dfrac{\tilde{\mathbf{q}}_2\tilde{\mathbf{q}}_2^\top}{189}
-= \dfrac{1}{54}\begin{bmatrix} 5 &amp; 14 &amp; 7\\ 14 &amp; 50 &amp; -2\\ 7 &amp; -2 &amp; 53\end{bmatrix}\)</span>.</p>
-<p>Two checks: <span class="math inline">\(\operatorname{tr}(\mathbf{P}) = 108/54 = 2 = \operatorname{Rank}(\mathbf{P})\)</span>, and <span class="math inline">\(\mathbf{P}(1,2,3)^\top = (1,2,3)^\top\)</span>. ✓</p>
+<p><span class="math inline">\(\hat{\mathbf{c}}\)</span> holds <strong>coefficients</strong>, not the answer. Push them back through <span class="math inline">\(\mathbf{A}\)</span> to land in <span class="math inline">\(\mathbb{R}^4\)</span>: <span class="math display">\[
+\begin{aligned}
+\mathbf{P}\mathbf{y} = \mathbf{A}\hat{\mathbf{c}}
+&amp;= \begin{bmatrix} 1 &amp; 2\\ 3 &amp; 1\\ 1 &amp; 1\\ 1 &amp; 0\end{bmatrix}
+   \begin{bmatrix} 1/3\\ 1/3\end{bmatrix}
+= \tfrac13\mathbf{v}_1 + \tfrac13\mathbf{v}_2
+\\[0.4em]
+&amp;= \tfrac13\begin{bmatrix} 1+2\\ 3+1\\ 1+1\\ 1+0\end{bmatrix}
+= \tfrac13\begin{bmatrix} 3\\ 4\\ 2\\ 1\end{bmatrix}
+= \begin{bmatrix} 1\\ 4/3\\ 2/3\\ 1/3\end{bmatrix}.
+\end{aligned}
+\]</span></p>
 </div>
 <div class="fragment">
 <div class="note">
-<p>Once you have an <strong>orthonormal</strong> basis <span class="math inline">\(\{\mathbf{u}_1,\dots,\mathbf{u}_r\}\)</span> of a subspace, the projector is simply <span class="math inline">\(\mathbf{P} = \sum_j \mathbf{u}_j\mathbf{u}_j^\top = \mathbf{U}\mathbf{U}^\top\)</span>. No inverse required. Remember this — it comes back in the SVD section.</p>
+<p>Check by verifying the residual is orthogonal to the plane. With <span class="math inline">\(\mathbf{e} = \mathbf{y} - \mathbf{P}\mathbf{y} = \left(0, -\tfrac13, \tfrac13, \tfrac23\right)^\top\)</span>: <span class="math display">\[
+\langle\mathbf{e},\mathbf{v}_1\rangle = -1 + \tfrac13 + \tfrac23 = 0,
+\qquad
+\langle\mathbf{e},\mathbf{v}_2\rangle = -\tfrac13 + \tfrac13 = 0. \ ✓
+\]</span></p>
 </div>
 </div>
 </section></section>
@@ -1111,54 +1062,31 @@ p(\lambda) = \lambda^3 + 3\lambda^2 - 4 = (\lambda - 1)(\lambda + 2)^2 .
 </div>
 </div>
 </section>
-<section id="similarity" class="slide level2 smaller">
-<h2>Similarity</h2>
-<div class="defn">
-<p><strong>Definition.</strong> <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are <strong>similar</strong> if <span class="math inline">\(\mathbf{B} = \mathbf{Q}^{-1}\mathbf{A}\mathbf{Q}\)</span> for some invertible <span class="math inline">\(\mathbf{Q}\)</span>.</p>
-</div>
-<p>Similar matrices are <em>the same linear map written in two different bases</em>. The columns of <span class="math inline">\(\mathbf{Q}\)</span> are the new basis vectors expressed in the old coordinates.</p>
-<p>Similarity preserves everything intrinsic to the map:</p>
-<div class="midi">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Preserved</th>
-<th>Not preserved</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>characteristic polynomial</td>
-<td>individual entries</td>
-</tr>
-<tr class="even">
-<td>eigenvalues and multiplicities</td>
-<td>symmetry</td>
-</tr>
-<tr class="odd">
-<td>trace, determinant, rank</td>
-<td>orthogonality of eigenvectors</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="fragment">
-<div class="note">
-<p>Why <span class="math inline">\(\operatorname{tr}(\mathbf{Q}^{-1}\mathbf{A}\mathbf{Q}) = \operatorname{tr}(\mathbf{A})\)</span>? Cyclic property. You proved it two sections ago.</p>
-</div>
-</div>
-</section>
 <section id="diagonalization" class="slide level2 smaller">
 <h2>Diagonalization</h2>
 <div class="defn">
 <p><strong>Definition (Diagonalizable).</strong> <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n\times n}\)</span> is diagonalizable if there is an invertible <span class="math inline">\(\mathbf{V}\)</span> and a diagonal <span class="math inline">\(\boldsymbol\Lambda\)</span> with <span class="math inline">\(\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}\)</span>.</p>
 </div>
-<p>Where does this come from? Suppose <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors <span class="math inline">\(\mathbf{v}_1,\dots,\mathbf{v}_n\)</span> with eigenvalues <span class="math inline">\(\lambda_1,\dots,\lambda_n\)</span>. Stack them: <span class="math display">\[
-\mathbf{V} = \begin{bmatrix}\mathbf{v}_1 &amp; \cdots &amp; \mathbf{v}_n\end{bmatrix}, \qquad
+<p>Suppose <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors <span class="math inline">\(\mathbf{v}_1,\dots,\mathbf{v}_n\)</span> with eigenvalues <span class="math inline">\(\lambda_1,\dots,\lambda_n\)</span>. Put the <strong>eigenvectors in the columns</strong> of <span class="math inline">\(\mathbf{V}\)</span> and the <strong>eigenvalues on the diagonal</strong> of <span class="math inline">\(\boldsymbol\Lambda\)</span>: <span class="math display">\[
+\begin{aligned}
+\mathbf{V} &amp;= \begin{bmatrix}\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \cdots &amp; \mathbf{v}_n\end{bmatrix}
+\\[0.4em]
+\boldsymbol\Lambda &amp;= \operatorname{diag}(\lambda_1,\lambda_2,\dots,\lambda_n)
+= \begin{bmatrix}
+\lambda_1 &amp; 0 &amp; \cdots &amp; 0\\
+0 &amp; \lambda_2 &amp; \cdots &amp; 0\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+0 &amp; 0 &amp; \cdots &amp; \lambda_n
+\end{bmatrix}
+\end{aligned}
+\]</span></p>
+<div class="fragment">
+<p>Now stack the eigenvalue equations <span class="math inline">\(\mathbf{A}\mathbf{v}_i = \lambda_i\mathbf{v}_i\)</span> column by column: <span class="math display">\[
 \mathbf{A}\mathbf{V} = \begin{bmatrix}\lambda_1\mathbf{v}_1 &amp; \cdots &amp; \lambda_n\mathbf{v}_n\end{bmatrix} = \mathbf{V}\boldsymbol\Lambda .
 \]</span> Since the <span class="math inline">\(\mathbf{v}_i\)</span> are independent, <span class="math inline">\(\mathbf{V}\)</span> is invertible and <span class="math display">\[
 \boxed{\ \mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}\ }
 \]</span> This is the <strong>eigendecomposition</strong>. Read it right to left: <em>change into the eigenbasis, scale each coordinate, change back.</em></p>
+</div>
 </section>
 <section id="when-is-a-matrix-diagonalizable" class="slide level2 smaller">
 <h2>When is a matrix diagonalizable?</h2>
@@ -1176,7 +1104,7 @@ p(\lambda) = \lambda^3 + 3\lambda^2 - 4 = (\lambda - 1)(\lambda + 2)^2 .
 </div>
 <div class="fragment">
 <div class="warn">
-<p>The canonical failure: <span class="math inline">\(\mathbf{A} = \begin{bmatrix}1 &amp; 1\\ 0 &amp; 1\end{bmatrix}\)</span> has <span class="math inline">\(\lambda = 1\)</span> with <span class="math inline">\(m_a = 2\)</span> but <span class="math inline">\(\ker(\mathbf{A}-\mathbf{I}) = \operatorname{span}\{\mathbf{e}_1\}\)</span>, so <span class="math inline">\(m_g = 1\)</span>. Not diagonalizable — it is <strong>defective</strong>. (The best you can do is a Jordan block.)</p>
+<p>The canonical failure: <span class="math inline">\(\mathbf{A} = \begin{bmatrix}1 &amp; 1\\ 0 &amp; 1\end{bmatrix}\)</span> has <span class="math inline">\(\lambda = 1\)</span> with <span class="math inline">\(m_a = 2\)</span> but <span class="math inline">\(\ker(\mathbf{A}-\mathbf{I}) = \operatorname{span}\{\mathbf{e}_1\}\)</span>, so <span class="math inline">\(m_g = 1\)</span>. Not diagonalizable)</p>
 </div>
 </div>
 </section>
@@ -1202,9 +1130,7 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 \]</span></li>
 </ul>
 </div>
-<p>Equivalently, in <strong>outer product form</strong>, <span class="math display">\[
-\mathbf{A} = \sum_{i=1}^n \lambda_i\, \mathbf{q}_i\mathbf{q}_i^\top ,
-\]</span> a weighted sum of rank-one orthogonal projectors. Note <span class="math inline">\(\mathbf{Q}^{-1} = \mathbf{Q}^\top\)</span>: no inverse to compute, ever.</p>
+<p>Note <span class="math inline">\(\mathbf{Q}^{-1} = \mathbf{Q}^\top\)</span>: (makes our life so easy)</p>
 <div class="fragment">
 <div class="warn">
 <p>Symmetry is doing all the work. Symmetric matrices are never defective. Since every matrix you meet in linear models — <span class="math inline">\(\mathbf{X}^\top\mathbf{X}\)</span>, <span class="math inline">\(\Sigma\)</span>, <span class="math inline">\(\mathbf{H}\)</span>, <span class="math inline">\(\mathbf{I}-\mathbf{H}\)</span> — is symmetric, you almost never need the general theory.</p>
@@ -1226,37 +1152,64 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 \]</span></p>
 </div>
 </section>
-<section id="projections-through-the-spectral-lens" class="slide level2 smaller">
-<h2>Projections through the spectral lens</h2>
-<p>Let <span class="math inline">\(\mathbf{P}\)</span> be symmetric and idempotent. If <span class="math inline">\(\mathbf{P}\mathbf{v} = \lambda\mathbf{v}\)</span> then <span class="math display">\[
-\lambda\mathbf{v} = \mathbf{P}\mathbf{v} = \mathbf{P}^2\mathbf{v} = \lambda^2\mathbf{v} \implies \lambda^2 = \lambda \implies \lambda \in \{0,1\} .
-\]</span></p>
-<p>So an orthogonal projector of rank <span class="math inline">\(r\)</span> has eigenvalues <span class="math inline">\(1\)</span> (<span class="math inline">\(r\)</span> times) and <span class="math inline">\(0\)</span> (<span class="math inline">\(n-r\)</span> times), and <span class="math display">\[
-\mathbf{P} = \sum_{j=1}^{r}\mathbf{q}_j\mathbf{q}_j^\top = \mathbf{Q}_r\mathbf{Q}_r^\top, \qquad
-\operatorname{tr}(\mathbf{P}) = \operatorname{Rank}(\mathbf{P}) = r .
-\]</span></p>
-</section>
-<section id="your-turn-eigenvalues-of-the-all-ones-matrix" class="slide level2 smaller scrollable">
-<h2>Your turn: eigenvalues of the all-ones matrix</h2>
+<section id="your-turn-trace-projections-and-the-spectral-theorem" class="slide level2 smaller scrollable">
+<h2>Your turn: trace, projections, and the spectral theorem</h2>
 <div class="your-turn">
-<p><span class="tier bridge">Bridge</span> <em>(Companion review, Q24)</em></p>
+<p><span class="tier bridge">Bridge</span></p>
 <ol type="a">
+<li>Prove that <span class="math inline">\(\operatorname{tr}(\mathbf{A}) = \sum_{i=1}^n \lambda_i\)</span> for symmetric <span class="math inline">\(\mathbf{A}\)</span>.</li>
+<li>What are the possible eigenvalues of a projection matrix? For an orthogonal projector of rank <span class="math inline">\(r\)</span>, what are their multiplicities?</li>
 <li>Find the orthogonal projection matrix onto the one-dimensional subspace of <span class="math inline">\(\mathbb{R}^n\)</span> spanned by <span class="math inline">\(\mathbf{1} = (1,\dots,1)^\top\)</span>.</li>
-<li>Let <span class="math inline">\(\mathbf{J}\)</span> be the <span class="math inline">\(n\times n\)</span> matrix of all ones. Compute its eigenvalues and multiplicities.</li>
-<li>Compute the eigenvalues of <span class="math inline">\(\mathbf{J} - \mathbf{I}_n\)</span> (zeros on the diagonal, ones elsewhere).</li>
-<li>Compute <span class="math inline">\(\det(\mathbf{J} - \mathbf{I}_n)\)</span>.</li>
 </ol>
 </div>
 </section>
-<section id="your-turn-eigenvalues-of-the-all-ones-matrix-1" class="slide level2 smaller scrollable">
-<h2>Your turn: eigenvalues of the all-ones matrix</h2>
+<section id="your-turn-trace-projections-and-the-spectral-theorem-1" class="slide level2 smaller">
+<h2>Your turn: trace, projections, and the spectral theorem</h2>
 <div class="answer">
-<ol type="a">
-<li><p><span class="math inline">\(\mathbf{P} = \dfrac{\mathbf{1}\mathbf{1}^\top}{\mathbf{1}^\top\mathbf{1}} = \dfrac{1}{n}\mathbf{J}\)</span>. Check: symmetric, and <span class="math inline">\(\mathbf{P}^2 = \mathbf{J}^2/n^2 = n\mathbf{J}/n^2 = \mathbf{P}\)</span>. ✓</p></li>
-<li><p><span class="math inline">\(\mathbf{J} = n\mathbf{P}\)</span>, and <span class="math inline">\(\mathbf{P}\)</span> is a rank-one projector, so <span class="math inline">\(\mathbf{J}\)</span> has eigenvalues <span class="math inline">\(n\)</span> (multiplicity 1, eigenvector <span class="math inline">\(\mathbf{1}\)</span>) and <span class="math inline">\(0\)</span> (multiplicity <span class="math inline">\(n-1\)</span>, eigenspace <span class="math inline">\(\mathbf{1}^\perp\)</span>).</p></li>
-<li><p>Shifting by <span class="math inline">\(-\mathbf{I}\)</span> shifts every eigenvalue by <span class="math inline">\(-1\)</span> and leaves eigenvectors alone: <span class="math inline">\(n - 1\)</span> (once) and <span class="math inline">\(-1\)</span> (<span class="math inline">\(n-1\)</span> times).</p></li>
-<li><p><span class="math inline">\(\det(\mathbf{J}-\mathbf{I}_n) = (n-1)\cdot(-1)^{n-1}\)</span>.</p></li>
-</ol>
+<p><strong>(a)</strong> Write <span class="math inline">\(\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top\)</span> with <span class="math inline">\(\mathbf{Q}\)</span> orthogonal, then use the cyclic property of the trace:</p>
+<p><span class="math display">\[
+\operatorname{tr}(\mathbf{A})
+= \operatorname{tr}(\mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top)
+= \operatorname{tr}(\boldsymbol\Lambda\mathbf{Q}^\top\mathbf{Q})
+= \operatorname{tr}(\boldsymbol\Lambda)
+= \sum_{i=1}^n \lambda_i .
+\]</span></p>
+<p>The only fact used was <span class="math inline">\(\mathbf{Q}^\top\mathbf{Q} = \mathbf{I}\)</span>, so the same two lines give <span class="math inline">\(\operatorname{tr}(\mathbf{A}) = \sum_i\lambda_i\)</span> for <strong>any</strong> diagonalizable <span class="math inline">\(\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}\)</span>, symmetric or not.</p>
+</div>
+</section>
+<section id="your-turn-trace-projections-and-the-spectral-theorem-2" class="slide level2 smaller">
+<h2>Your turn: trace, projections, and the spectral theorem</h2>
+<div class="answer">
+<p><strong>(b)</strong> Idempotence pins the eigenvalues down completely. If <span class="math inline">\(\mathbf{P}\mathbf{v} = \lambda\mathbf{v}\)</span> with <span class="math inline">\(\mathbf{v}\ne\mathbf{0}\)</span>, then</p>
+<p><span class="math display">\[
+\lambda\mathbf{v} = \mathbf{P}\mathbf{v} = \mathbf{P}^2\mathbf{v} = \lambda^2\mathbf{v}
+\implies \lambda^2 = \lambda
+\implies \lambda \in \{0, 1\} .
+\]</span></p>
+<p>For an orthogonal projector of rank <span class="math inline">\(r\)</span>: <span class="math inline">\(\lambda = 1\)</span> with multiplicity <span class="math inline">\(r\)</span>, with eigenvectors spanning <span class="math inline">\(\operatorname{im}(\mathbf{P})\)</span>, and <span class="math inline">\(\lambda = 0\)</span> with multiplicity <span class="math inline">\(n - r\)</span>, spanning <span class="math inline">\(\ker(\mathbf{P})\)</span>.</p>
+</div>
+<div class="fragment">
+<div class="note">
+<p>Put (a) and (b) together: <span class="math inline">\(\operatorname{tr}(\mathbf{P}) = \sum_i\lambda_i = r = \operatorname{Rank}(\mathbf{P})\)</span>. For projections, trace <strong>is</strong> rank — which is why <span class="math inline">\(\operatorname{tr}(\mathbf{H}) = p\)</span> counts model degrees of freedom.</p>
+</div>
+</div>
+</section>
+<section id="your-turn-trace-projections-and-the-spectral-theorem-3" class="slide level2 smaller">
+<h2>Your turn: trace, projections, and the spectral theorem</h2>
+<div class="answer">
+<p><strong>(c)</strong> Projecting onto the line spanned by a vector <span class="math inline">\(\mathbf{v}\)</span> gives <span class="math inline">\(\mathbf{P} = \mathbf{v}\mathbf{v}^\top / (\mathbf{v}^\top\mathbf{v})\)</span>. Here <span class="math inline">\(\mathbf{v} = \mathbf{1}\)</span> and <span class="math inline">\(\mathbf{1}^\top\mathbf{1} = n\)</span>, so</p>
+<p><span class="math display">\[
+\mathbf{P} = \frac{\mathbf{1}\mathbf{1}^\top}{n} = \frac{1}{n}\mathbf{J},
+\qquad
+\mathbf{J} = \mathbf{1}\mathbf{1}^\top
+= \begin{bmatrix} 1 &amp; \cdots &amp; 1\\ \vdots &amp; \ddots &amp; \vdots\\ 1 &amp; \cdots &amp; 1\end{bmatrix}.
+\]</span></p>
+<p>Check idempotence: <span class="math inline">\(\mathbf{P}^2 = \dfrac{\mathbf{1}(\mathbf{1}^\top\mathbf{1})\mathbf{1}^\top}{n^2} = \dfrac{n\,\mathbf{1}\mathbf{1}^\top}{n^2} = \mathbf{P}\)</span>, and <span class="math inline">\(\mathbf{P}\)</span> is symmetric. ✓</p>
+</div>
+<div class="fragment">
+<div class="note">
+<p><span class="math inline">\(\mathbf{P}\)</span> has rank 1, so by (a) and (b) <span class="math inline">\(\operatorname{tr}(\mathbf{P}) = 1\)</span> — and indeed the diagonal holds <span class="math inline">\(n\)</span> copies of <span class="math inline">\(1/n\)</span>. Applied to data, <span class="math inline">\(\mathbf{P}\mathbf{y} = \bar{y}\,\mathbf{1}\)</span>: projecting onto <span class="math inline">\(\mathbf{1}\)</span> replaces every entry by the sample mean, and <span class="math inline">\(\mathbf{I} - \mathbf{P}\)</span> centers the data.</p>
+</div>
 </div>
 </section></section>
 <section>
@@ -1281,19 +1234,6 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 <p>Replace <span class="math inline">\(\ge\)</span> by <span class="math inline">\(&gt;\)</span> throughout for PD, and add: all leading principal minors are positive; a Cholesky factorization <span class="math inline">\(\mathbf{A}=\mathbf{L}\mathbf{L}^\top\)</span> with positive diagonal exists.</p>
 </div>
 </div>
-<div class="fragment">
-<div class="warn">
-<p>Last year’s deck says PSD matrices have “non-negative eigenvectors.” Read that as <strong>eigenvalues</strong> — eigenvectors have no sign.</p>
-</div>
-</div>
-</section>
-<section id="why-mathbfxtopmathbfx-succeq-0-and-what-it-buys" class="slide level2 smaller">
-<h2>Why <span class="math inline">\(\mathbf{X}^\top\mathbf{X} \succeq 0\)</span>, and what it buys</h2>
-<p>For any <span class="math inline">\(\mathbf{X} \in \mathbb{R}^{n\times p}\)</span> and any <span class="math inline">\(\mathbf{z} \in \mathbb{R}^p\)</span>, <span class="math display">\[
-\mathbf{z}^\top(\mathbf{X}^\top\mathbf{X})\mathbf{z} = (\mathbf{X}\mathbf{z})^\top(\mathbf{X}\mathbf{z}) = \|\mathbf{X}\mathbf{z}\|^2 \ge 0 .
-\]</span> Equality holds iff <span class="math inline">\(\mathbf{X}\mathbf{z} = \mathbf{0}\)</span>. Therefore <span class="math display">\[
-\mathbf{X}^\top\mathbf{X} \succ 0 \iff \ker(\mathbf{X}) = \{\mathbf{0}\} \iff \mathbf{X}\ \text{has full column rank}.
-\]</span> Same argument gives <span class="math inline">\(\mathbf{X}\mathbf{X}^\top \succeq 0\)</span>, and in fact <span class="math inline">\(\ker(\mathbf{X}^\top\mathbf{X}) = \ker(\mathbf{X})\)</span>, so <span class="math inline">\(\operatorname{Rank}(\mathbf{X}^\top\mathbf{X}) = \operatorname{Rank}(\mathbf{X})\)</span>.</p>
 </section>
 <section id="your-turn-psd-and-the-spectral-theorem" class="slide level2 smaller scrollable">
 <h2>Your turn: PSD and the spectral theorem</h2>
@@ -1314,6 +1254,67 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 </ol>
 </div>
 </div>
+</section>
+<section id="your-turn-the-covariance-matrix-is-psd" class="slide level2 smaller scrollable">
+<h2>Your turn: the covariance matrix is PSD</h2>
+<div class="your-turn">
+<p><span class="tier bridge">Bridge</span></p>
+<p>Let <span class="math inline">\(\mathbf{x} \in \mathbb{R}^p\)</span> be a random vector with <span class="math inline">\(\mathbb{E}[\mathbf{x}] = \boldsymbol\mu\)</span>.</p>
+<ol type="a">
+<li>Define <span class="math inline">\(\operatorname{Cov}(\mathbf{x})\)</span> two ways: as a single matrix expectation, and entry by entry.</li>
+<li>Prove that <span class="math inline">\(\operatorname{Cov}(\mathbf{x})\)</span> is symmetric and positive semi-definite.</li>
+</ol>
+</div>
+</section>
+<section id="your-turn-the-covariance-matrix-is-psd-1" class="slide level2 smaller scrollable">
+<h2>Your turn: the covariance matrix is PSD</h2>
+<div class="answer">
+<ol type="a">
+<li>With <span class="math inline">\(\mathbf{z} = \mathbf{x} - \boldsymbol\mu\)</span>, <span class="math display">\[
+\boldsymbol\Sigma \;\triangleq\; \operatorname{Cov}(\mathbf{x}) = \mathbb{E}\!\left[\mathbf{z}\mathbf{z}^\top\right],
+\qquad
+\Sigma_{ij} = \operatorname{Cov}(x_i, x_j) = \mathbb{E}\!\left[(x_i - \mu_i)(x_j - \mu_j)\right].
+\]</span> The diagonal holds the variances <span class="math inline">\(\operatorname{Var}(x_i)\)</span>.</li>
+</ol>
+</div>
+</section>
+<section id="your-turn-the-covariance-matrix-is-psd-2" class="slide level2 smaller">
+<h2>Your turn: the covariance matrix is PSD</h2>
+<div class="answer">
+<p><strong>(b)</strong> Symmetry is immediate: <span class="math inline">\(\boldsymbol\Sigma^\top = \mathbb{E}\!\left[(\mathbf{z}\mathbf{z}^\top)^\top\right] = \mathbb{E}\!\left[\mathbf{z}\mathbf{z}^\top\right] = \boldsymbol\Sigma\)</span>.</p>
+<p>For positive semi-definiteness, fix an <strong>arbitrary</strong> <span class="math inline">\(\mathbf{a}\in\mathbb{R}^p\)</span> and use linearity of expectation to move it inside:</p>
+<p><span class="math display">\[
+\mathbf{a}^\top\boldsymbol\Sigma\mathbf{a}
+= \mathbf{a}^\top\,\mathbb{E}\!\left[\mathbf{z}\mathbf{z}^\top\right]\mathbf{a}
+= \mathbb{E}\!\left[\mathbf{a}^\top\mathbf{z}\mathbf{z}^\top\mathbf{a}\right].
+\]</span></p>
+<p>Now define the <strong>scalar</strong> random variable <span class="math inline">\(Y = \mathbf{a}^\top\mathbf{z}\)</span>. Because a scalar equals its own transpose, <span class="math inline">\(\mathbf{a}^\top\mathbf{z} = \mathbf{z}^\top\mathbf{a}\)</span>, so the quantity inside the expectation is <span class="math inline">\(Y \cdot Y\)</span>:</p>
+<p><span class="math display">\[
+\mathbf{a}^\top\boldsymbol\Sigma\mathbf{a} = \mathbb{E}\!\left[Y^2\right].
+\]</span></p>
+</div>
+</section>
+<section id="your-turn-the-covariance-matrix-is-psd-3" class="slide level2 smaller">
+<h2>Your turn: the covariance matrix is PSD</h2>
+<div class="answer">
+<p><strong>(b, continued)</strong> <span class="math inline">\(Y^2 \ge 0\)</span> for every outcome, and the expected value of a non-negative random variable is non-negative. Therefore</p>
+<p><span class="math display">\[
+\mathbf{a}^\top\boldsymbol\Sigma\mathbf{a} = \mathbb{E}\!\left[Y^2\right] \;\ge\; 0
+\qquad\text{for every } \mathbf{a}\in\mathbb{R}^p,
+\]</span></p>
+<p>which is exactly the statement <span class="math inline">\(\boldsymbol\Sigma \succeq 0\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+<div class="fragment">
+<div class="note">
+<p>Since <span class="math inline">\(\mathbb{E}[Y] = \mathbf{a}^\top\mathbb{E}[\mathbf{z}] = 0\)</span>, we also have <span class="math inline">\(\mathbb{E}[Y^2] = \operatorname{Var}(Y) = \operatorname{Var}(\mathbf{a}^\top\mathbf{x})\)</span>. So the quadratic form is not merely non-negative — it <strong>is</strong> the variance of the scalar <span class="math inline">\(\mathbf{a}^\top\mathbf{x}\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="your-turn-the-covariance-matrix-is-psd-4" class="slide level2 smaller">
+<h2>Your turn: the covariance matrix is PSD</h2>
+<div class="note">
+<p>Same shape as the <span class="math inline">\(\mathbf{X}^\top\mathbf{X}\)</span> exercise: there <span class="math inline">\(\mathbf{X}^\top\mathbf{X} \succeq 0\)</span> because it is of the form <span class="math inline">\(\mathbf{B}^\top\mathbf{B}\)</span>; here <span class="math inline">\(\boldsymbol\Sigma \succeq 0\)</span> because it is <span class="math inline">\(\mathbb{E}[\mathbf{z}\mathbf{z}^\top]\)</span> — the population version of the same statement. Given <span class="math inline">\(n\)</span> observations, the sample covariance <span class="math inline">\(\mathbf{S} = \tfrac{1}{n-1}\mathbf{X}_c^\top\mathbf{X}_c\)</span> is <em>literally</em> of the form <span class="math inline">\(\mathbf{B}^\top\mathbf{B}\)</span>, so it inherits PSD directly — and like <span class="math inline">\(\boldsymbol\Sigma\)</span> it is <span class="math inline">\(p\times p\)</span>.</p>
+</div>
 </section></section>
 <section>
 <section id="singular-value-decomposition" class="title-slide slide level1">
@@ -1325,9 +1326,12 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 <p>The spectral theorem is beautiful but demands a <strong>square, symmetric</strong> matrix. Your design matrix <span class="math inline">\(\mathbf{X}\)</span> is <span class="math inline">\(n\times p\)</span> with <span class="math inline">\(n \gg p\)</span>. It has no eigenvalues at all.</p>
 <p>The fix: every matrix, of any shape, of any rank, has a singular value decomposition.</p>
 <div class="defn">
-<p><strong>Definition (Singular vectors and values).</strong> Let <span class="math inline">\(\mathbf{A}\in\mathbb{R}^{n\times p}\)</span> with <span class="math inline">\(\operatorname{Rank}(\mathbf{A}) = r\)</span>. The eigenvectors of <span class="math inline">\(\mathbf{A}\mathbf{A}^\top\)</span> are the <strong>left singular vectors</strong>; the eigenvectors of <span class="math inline">\(\mathbf{A}^\top\mathbf{A}\)</span> are the <strong>right singular vectors</strong>. The <strong>singular values</strong> are <span class="math display">\[
-\sigma_i = \sqrt{\lambda_i(\mathbf{A}^\top\mathbf{A})}, \qquad i = 1,\dots,r,
-\]</span> the square roots of the <span class="math inline">\(r\)</span> positive eigenvalues, ordered <span class="math inline">\(\sigma_1\ge\sigma_2\ge\cdots\ge\sigma_r &gt; 0\)</span>.</p>
+<p><strong>Definition (Singular vectors and values).</strong> Let <span class="math inline">\(\mathbf{A}\in\mathbb{R}^{n\times p}\)</span> with <span class="math inline">\(\operatorname{Rank}(\mathbf{A}) = r\)</span>. The eigenvectors of <span class="math inline">\(\mathbf{A}\mathbf{A}^\top\)</span> are the <strong>left singular vectors</strong>; the eigenvectors of <span class="math inline">\(\mathbf{A}^\top\mathbf{A}\)</span> are the <strong>right singular vectors</strong>.</p>
+<p>Let <span class="math inline">\(\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_r &gt; 0\)</span> denote the nonzero eigenvalues of <span class="math inline">\(\mathbf{A}^\top\mathbf{A}\)</span>. The <strong>singular values</strong> of <span class="math inline">\(\mathbf{A}\)</span> are their square roots: <span class="math display">\[
+\sigma_i = \sqrt{\lambda_i}, \qquad i = 1,\dots,r,
+\qquad\text{so}\qquad
+\sigma_1 \ge \sigma_2 \ge \cdots \ge \sigma_r &gt; 0 .
+\]</span></p>
 </div>
 <div class="fragment">
 <div class="warn">
@@ -1342,22 +1346,27 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 \mathbf{A} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top
 \]</span> with <span class="math inline">\(\mathbf{U}\in\mathbb{R}^{n\times n}\)</span> orthogonal, <span class="math inline">\(\mathbf{V}\in\mathbb{R}^{p\times p}\)</span> orthogonal, and <span class="math inline">\(\boldsymbol\Sigma\in\mathbb{R}^{n\times p}\)</span> rectangular diagonal with entries <span class="math inline">\(\sigma_1\ge\cdots\ge\sigma_r&gt;0\)</span> followed by zeros.</p>
 </div>
-<p><strong>Compact (thin) form</strong> — keep only the <span class="math inline">\(r\)</span> useful directions: <span class="math display">\[
-\mathbf{A} = \mathbf{U}_r\boldsymbol\Sigma_r\mathbf{V}_r^\top = \sum_{j=1}^{r}\sigma_j\,\mathbf{u}_j\mathbf{v}_j^\top .
-\]</span></p>
-<p>Every matrix is a sum of <span class="math inline">\(r\)</span> rank-one pieces, weighted by decreasing importance. This one line is the reason SVD runs recommender systems, image compression, PCA, and latent semantic analysis.</p>
 </section>
-<section id="where-it-comes-from" class="slide level2 smaller scrollable">
+<section id="the-algorithm" class="slide level2 smaller scrollable">
+<h2>The algorithm</h2>
+<p>Given <span class="math inline">\(\mathbf{A}\in\mathbb{R}^{n\times p}\)</span>, here is how the three factors are actually produced:</p>
+<div class="midi">
+<ol type="1">
+<li><strong>Form <span class="math inline">\(\mathbf{A}^\top\mathbf{A}\)</span></strong> — a <span class="math inline">\(p\times p\)</span> symmetric PSD matrix, so the spectral theorem applies to it.</li>
+<li><strong>Eigendecompose it:</strong> <span class="math inline">\(\mathbf{A}^\top\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^\top\)</span> with <span class="math inline">\(\lambda_1\ge\cdots\ge\lambda_p\ge0\)</span>. The columns of <span class="math inline">\(\mathbf{V}\)</span> are the <strong>right singular vectors</strong>.</li>
+<li><strong>Take square roots:</strong> <span class="math inline">\(\sigma_j = \sqrt{\lambda_j}\)</span>. The number of nonzero <span class="math inline">\(\sigma_j\)</span> is <span class="math inline">\(r = \operatorname{Rank}(\mathbf{A})\)</span>.</li>
+<li><strong>Build the left singular vectors</strong> for <span class="math inline">\(j \le r\)</span>: <span class="math display">\[
+\mathbf{u}_j = \frac{\mathbf{A}\mathbf{v}_j}{\sigma_j} .
+\]</span></li>
+<li><strong>Fill out <span class="math inline">\(\mathbf{U}\)</span>:</strong> extend <span class="math inline">\(\mathbf{u}_1,\dots,\mathbf{u}_r\)</span> to an orthonormal basis of <span class="math inline">\(\mathbb{R}^n\)</span> by Gram–Schmidt.</li>
+<li><strong>Assemble:</strong> <span class="math inline">\(\mathbf{A} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top\)</span>.</li>
+</ol>
+</div>
+</section>
+<section id="where-it-comes-from" class="slide level2 medium">
 <h2>Where it comes from</h2>
 <p>The SVD is not a new theorem — it is the spectral theorem applied twice.</p>
-<ol type="1">
-<li><span class="math inline">\(\mathbf{A}^\top\mathbf{A}\)</span> is symmetric PSD, so <span class="math inline">\(\mathbf{A}^\top\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^\top\)</span> with <span class="math inline">\(\lambda_1\ge\cdots\ge\lambda_p\ge0\)</span> and <span class="math inline">\(\mathbf{V}\)</span> orthogonal.</li>
-<li>Set <span class="math inline">\(\sigma_j = \sqrt{\lambda_j}\)</span>, and for <span class="math inline">\(j\le r\)</span> define <span class="math display">\[
-\mathbf{u}_j = \frac{\mathbf{A}\mathbf{v}_j}{\sigma_j}.
-\]</span></li>
-<li>Check orthonormality: <span class="math inline">\(\mathbf{u}_i^\top\mathbf{u}_j = \dfrac{\mathbf{v}_i^\top\mathbf{A}^\top\mathbf{A}\mathbf{v}_j}{\sigma_i\sigma_j} = \dfrac{\lambda_j\,\mathbf{v}_i^\top\mathbf{v}_j}{\sigma_i\sigma_j} = \delta_{ij}\)</span>. ✓</li>
-<li>Extend <span class="math inline">\(\{\mathbf{u}_j\}\)</span> to an orthonormal basis of <span class="math inline">\(\mathbb{R}^n\)</span> and read off <span class="math inline">\(\mathbf{A}\mathbf{V} = \mathbf{U}\boldsymbol\Sigma\)</span>.</li>
-</ol>
+<p><span class="math inline">\(\mathbf{A}^\top\mathbf{A}\)</span> is symmetric PSD, so <span class="math inline">\(\mathbf{A}^\top\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^\top\)</span> with <span class="math inline">\(\lambda_1\ge\cdots\ge\lambda_p\ge0\)</span> and <span class="math inline">\(\mathbf{V}\)</span> orthogonal.</p>
 <div class="note">
 <p>Consequences you get for free: <span class="math display">\[
 \mathbf{A}^\top\mathbf{A} = \mathbf{V}\boldsymbol\Sigma^\top\boldsymbol\Sigma\mathbf{V}^\top, \qquad
@@ -1406,149 +1415,6 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 </tr>
 </tbody>
 </table>
-</div>
-</section>
-<section id="svd-vs-eigendecomposition" class="slide level2 smaller">
-<h2>SVD vs eigendecomposition</h2>
-<div class="midi">
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>Eigendecomposition</th>
-<th>SVD</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Applies to</td>
-<td>square matrices (diagonalizable ones)</td>
-<td><strong>every</strong> matrix</td>
-</tr>
-<tr class="even">
-<td>Form</td>
-<td><span class="math inline">\(\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}\)</span></td>
-<td><span class="math inline">\(\mathbf{A} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top\)</span></td>
-</tr>
-<tr class="odd">
-<td>Bases</td>
-<td>one basis, generally not orthogonal</td>
-<td><strong>two</strong> orthonormal bases</td>
-</tr>
-<tr class="even">
-<td>Values</td>
-<td><span class="math inline">\(\lambda_i\)</span>, possibly negative or complex</td>
-<td><span class="math inline">\(\sigma_i \ge 0\)</span>, always real</td>
-</tr>
-<tr class="odd">
-<td>Numerics</td>
-<td>can be ill-conditioned</td>
-<td>backward stable</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Relationships.</strong> If <span class="math inline">\(\mathbf{A}\in\mathbb{S}^n\)</span> with eigenvalues <span class="math inline">\(\lambda_i\)</span>, then <span class="math inline">\(\sigma_i = |\lambda_i|\)</span> and the singular vectors are the eigenvectors up to sign. If additionally <span class="math inline">\(\mathbf{A}\succeq0\)</span>, the two decompositions coincide exactly.</p>
-<div class="warn">
-<p>So for <span class="math inline">\(\mathbf{X}^\top\mathbf{X}\)</span> they are the same object. For <span class="math inline">\(\mathbf{X}\)</span> itself only the SVD exists — and computing the SVD of <span class="math inline">\(\mathbf{X}\)</span> directly is far more accurate than forming <span class="math inline">\(\mathbf{X}^\top\mathbf{X}\)</span>, which <strong>squares the condition number</strong>.</p>
-</div>
-</section>
-<section id="conditioning-and-collinearity" class="slide level2 smaller">
-<h2>Conditioning and collinearity</h2>
-<p><span class="math display">\[
-\kappa(\mathbf{X}) = \frac{\sigma_1}{\sigma_p} \qquad\text{(condition number)}
-\]</span></p>
-<p>Write <span class="math inline">\(\mathbf{X} = \mathbf{U}\mathbf{D}\mathbf{V}^\top\)</span> (thin, full column rank, <span class="math inline">\(\mathbf{D} = \operatorname{diag}(d_1,\dots,d_p)\)</span>). Then <span class="math display">\[
-\mathbf{X}^\top\mathbf{X} = \mathbf{V}\mathbf{D}^2\mathbf{V}^\top,\qquad
-(\mathbf{X}^\top\mathbf{X})^{-1} = \mathbf{V}\mathbf{D}^{-2}\mathbf{V}^\top,\qquad
-\operatorname{Var}(\hat{\boldsymbol\beta}) = \sigma^2\mathbf{V}\mathbf{D}^{-2}\mathbf{V}^\top .
-\]</span></p>
-</section>
-<section id="ridge-regression-seen-properly" class="slide level2 smaller">
-<h2>Ridge regression, seen properly</h2>
-<p><span class="math display">\[
-\hat{\boldsymbol\beta}_\lambda = (\mathbf{X}^\top\mathbf{X}+\lambda\mathbf{I})^{-1}\mathbf{X}^\top\mathbf{y}
-= \mathbf{V}(\mathbf{D}^2+\lambda\mathbf{I})^{-1}\mathbf{D}\,\mathbf{U}^\top\mathbf{y}
-\]</span></p>
-<p>and the fitted values become <span class="math display">\[
-\mathbf{X}\hat{\boldsymbol\beta}_\lambda = \sum_{j=1}^{p}\mathbf{u}_j\left(\frac{d_j^2}{d_j^2+\lambda}\right)\mathbf{u}_j^\top\mathbf{y} .
-\]</span></p>
-<p>Compare OLS, which is <span class="math inline">\(\sum_j\mathbf{u}_j\mathbf{u}_j^\top\mathbf{y}\)</span> — shrinkage factor <span class="math inline">\(1\)</span> in every direction.</p>
-</section>
-<section id="pseudo-inverse-and-minimum-norm-least-squares" class="slide level2 smaller">
-<h2>Pseudo-inverse and minimum-norm least squares</h2>
-<div class="defn">
-<p><strong>Definition (Moore–Penrose pseudo-inverse).</strong> For <span class="math inline">\(\mathbf{X} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top\)</span>, <span class="math display">\[
-\mathbf{X}^{+} = \mathbf{V}\boldsymbol\Sigma^{+}\mathbf{U}^\top \in \mathbb{R}^{p\times n},
-\]</span> where <span class="math inline">\(\boldsymbol\Sigma^{+}\in\mathbb{R}^{p\times n}\)</span> is rectangular diagonal with entries <span class="math inline">\(\sigma_1^{-1},\dots,\sigma_r^{-1}\)</span> and zeros thereafter. Invert what you can; leave the rest at zero.</p>
-</div>
-<div>
-<ul>
-<li class="fragment">If <span class="math inline">\(\mathbf{X}\)</span> has full column rank, <span class="math inline">\(\mathbf{X}^+ = (\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top\)</span> and <span class="math inline">\(\mathbf{X}^+\mathbf{y} = \hat{\boldsymbol\beta}_{\text{OLS}}\)</span>.</li>
-<li class="fragment">If <span class="math inline">\(\mathbf{X}\)</span> is rank deficient, <span class="math inline">\(\mathbf{X}^+\mathbf{y}\)</span> is the <strong>minimum-norm</strong> element of the (affine) solution set.</li>
-<li class="fragment">Always: <span class="math inline">\(\mathbf{X}\mathbf{X}^+ = \mathbf{U}_r\mathbf{U}_r^\top = \mathbf{H}\)</span>, the projector onto <span class="math inline">\(\operatorname{im}(\mathbf{X})\)</span>.</li>
-</ul>
-</div>
-</section>
-<section id="check-every-claim-yourself" class="slide level2 smaller">
-<h2>Check every claim yourself</h2>
-<p>None of this needs to be taken on faith. Ten lines in R:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">721</span>)</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span>; p <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(n <span class="sc">*</span> p), n, p)</span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">svd</span>(X)                            <span class="co"># X = U D V'</span></span>
-<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(s<span class="sc">$</span>u <span class="sc">%*%</span> <span class="fu">diag</span>(s<span class="sc">$</span>d) <span class="sc">%*%</span> <span class="fu">t</span>(s<span class="sc">$</span>v), X)          <span class="co"># the decomposition</span></span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(s<span class="sc">$</span>d<span class="sc">^</span><span class="dv">2</span>, <span class="fu">eigen</span>(<span class="fu">crossprod</span>(X))<span class="sc">$</span>values)        <span class="co"># d_j^2 are eigenvalues of X'X</span></span>
-<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(s<span class="sc">$</span>v <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">1</span> <span class="sc">/</span> s<span class="sc">$</span>d) <span class="sc">%*%</span> <span class="fu">t</span>(s<span class="sc">$</span>u) <span class="sc">%*%</span> y,   <span class="co"># X^+ y ...</span></span>
-<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a>          <span class="fu">unname</span>(<span class="fu">coef</span>(<span class="fu">lm</span>(y <span class="sc">~</span> X <span class="sc">-</span> <span class="dv">1</span>))), <span class="at">check.attributes =</span> <span class="cn">FALSE</span>)   <span class="co"># ... is OLS</span></span>
-<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a aria-hidden="true" tabindex="-1"></a>H <span class="ot">&lt;-</span> s<span class="sc">$</span>u <span class="sc">%*%</span> <span class="fu">t</span>(s<span class="sc">$</span>u)                    <span class="co"># hat matrix, no inverse anywhere</span></span>
-<span id="cb1-13"><a aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">sum</span>(<span class="fu">diag</span>(H)), <span class="fu">qr</span>(X)<span class="sc">$</span>rank)            <span class="co"># tr(H) = rank(X) = p</span></span>
-<span id="cb1-14"><a aria-hidden="true" tabindex="-1"></a><span class="fu">kappa</span>(X); <span class="fu">kappa</span>(<span class="fu">crossprod</span>(X))          <span class="co"># squaring the condition number</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="note">
-<p>The last line is the punchline of the section: <code>kappa(crossprod(X))</code> is roughly <code>kappa(X)^2</code>. Forming <span class="math inline">\(\mathbf{X}^\top\mathbf{X}\)</span> costs you half your digits, which is why <code>lm()</code> uses a QR decomposition and never touches the normal equations.</p>
-</div>
-</section>
-<section id="your-turn-least-squares-via-svd" class="slide level2 smaller scrollable">
-<h2>Your turn: least squares via SVD</h2>
-<div class="your-turn">
-<p><span class="tier challenge">Challenge</span> <em>(Stage 2, Q2)</em></p>
-<p>Let <span class="math inline">\(\mathbf{X}\in\mathbb{R}^{n\times p}\)</span> have rank <span class="math inline">\(r\le p\)</span>.</p>
-<ol type="a">
-<li>State the normal equations for minimizing <span class="math inline">\(\|\mathbf{y}-\mathbf{X}\boldsymbol\beta\|^2\)</span>.</li>
-<li>If <span class="math inline">\(\mathbf{X}\)</span> has full column rank, prove the minimizer is unique.</li>
-<li>If <span class="math inline">\(\mathbf{X}\)</span> is rank deficient, describe the set of minimizers.</li>
-<li>Define <span class="math inline">\(\mathbf{X}^+\)</span> via the SVD and show <span class="math inline">\(\mathbf{X}^+\mathbf{y}\)</span> is the minimum-norm least-squares solution.</li>
-</ol>
-</div>
-</section>
-<section id="your-turn-least-squares-via-svd-1" class="slide level2 smaller scrollable">
-<h2>Your turn: least squares via SVD</h2>
-<div class="answer">
-<div class="midi">
-<ol type="a">
-<li><p><span class="math inline">\(\mathbf{X}^\top\mathbf{X}\boldsymbol\beta = \mathbf{X}^\top\mathbf{y}\)</span>. (Always consistent, since <span class="math inline">\(\operatorname{im}(\mathbf{X}^\top\mathbf{X}) = \operatorname{im}(\mathbf{X}^\top)\)</span>.)</p></li>
-<li><p>Full column rank <span class="math inline">\(\Rightarrow \mathbf{X}^\top\mathbf{X}\succ0 \Rightarrow\)</span> invertible, so <span class="math inline">\(\hat{\boldsymbol\beta} = (\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top\mathbf{y}\)</span> is the unique stationary point of a strictly convex objective.</p></li>
-<li><p>The solution set is <span class="math inline">\(\hat{\boldsymbol\beta}_0 + \ker(\mathbf{X})\)</span>, an affine subspace of dimension <span class="math inline">\(p - r\)</span>. All members give the <em>same</em> fitted values <span class="math inline">\(\mathbf{H}\mathbf{y}\)</span>.</p></li>
-<li><p>Write <span class="math inline">\(\boldsymbol\beta = \sum_j c_j\mathbf{v}_j\)</span>. Then <span class="math inline">\(\|\mathbf{y}-\mathbf{X}\boldsymbol\beta\|^2 = \sum_{j\le r}(\mathbf{u}_j^\top\mathbf{y} - \sigma_j c_j)^2 + \sum_{j&gt;r}(\mathbf{u}_j^\top\mathbf{y})^2\)</span>. The residual pins down <span class="math inline">\(c_j = \mathbf{u}_j^\top\mathbf{y}/\sigma_j\)</span> for <span class="math inline">\(j\le r\)</span> and says <strong>nothing</strong> about <span class="math inline">\(c_j\)</span>, <span class="math inline">\(j&gt;r\)</span>. Since <span class="math inline">\(\|\boldsymbol\beta\|^2 = \sum_j c_j^2\)</span>, minimizing the norm sets those free coordinates to zero — which is exactly <span class="math inline">\(\mathbf{X}^+\mathbf{y}\)</span>.</p></li>
-</ol>
-</div>
-</div>
-</section>
-<section id="low-rank-approximation-and-pca" class="slide level2 smaller">
-<h2>Low-rank approximation and PCA</h2>
-<div class="thm">
-<p><strong>Theorem (Eckart–Young–Mirsky).</strong> The best rank-<span class="math inline">\(k\)</span> approximation to <span class="math inline">\(\mathbf{A}\)</span> in Frobenius (or spectral) norm is obtained by truncating the SVD: <span class="math display">\[
-\mathbf{A}_k = \sum_{j=1}^{k}\sigma_j\mathbf{u}_j\mathbf{v}_j^\top, \qquad
-\|\mathbf{A}-\mathbf{A}_k\|_F^2 = \sum_{j&gt;k}\sigma_j^2 .
-\]</span></p>
 </div>
 </section></section>
 <section>
@@ -1619,44 +1485,44 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 <h1>Wrap-Up</h1>
 
 </section>
-<section id="the-five-things-to-know-cold" class="slide level2 smaller scrollable">
-<h2>The five things to know cold</h2>
+<section id="what-we-covered-today" class="slide level2 smaller scrollable">
+<h2>What we covered today</h2>
 <div class="midi">
 <ol type="1">
-<li><p><strong>Column space thinking.</strong> <span class="math inline">\(\mathbf{X}\boldsymbol\beta\)</span> is a linear combination of columns. Fitted values live in <span class="math inline">\(\operatorname{im}(\mathbf{X})\)</span>; nothing else is reachable.</p></li>
-<li><p><strong>Projection.</strong> <span class="math inline">\(\mathbf{H} = \mathbf{X}(\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top\)</span> is symmetric and idempotent, <span class="math inline">\(\operatorname{tr}(\mathbf{H}) = \operatorname{Rank}(\mathbf{H}) = p\)</span>, and <span class="math inline">\(\mathbf{y} = \mathbf{H}\mathbf{y} + (\mathbf{I}-\mathbf{H})\mathbf{y}\)</span> is an orthogonal decomposition. Every sum-of-squares identity is Pythagoras.</p></li>
-<li><p><strong>Rank and identifiability.</strong> Full column rank <span class="math inline">\(\iff \ker(\mathbf{X}) = \{\mathbf{0}\} \iff \mathbf{X}^\top\mathbf{X}\succ0 \iff\)</span> unique <span class="math inline">\(\hat{\boldsymbol\beta}\)</span>.</p></li>
-<li><p><strong>Spectral theorem.</strong> Every symmetric matrix is <span class="math inline">\(\mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top\)</span>. Traces, determinants, ranks, square roots, and PSD-ness are all statements about <span class="math inline">\(\{\lambda_i\}\)</span>.</p></li>
-<li><p><strong>SVD.</strong> <span class="math inline">\(\mathbf{X} = \mathbf{U}\mathbf{D}\mathbf{V}^\top\)</span> for any matrix. It gives you rank, conditioning, the pseudo-inverse, PCA, low-rank approximation, and the cleanest possible view of ridge.</p></li>
+<li><strong>Vector spaces</strong> — a basis is exactly a spanning set for which representation is <em>unique</em>, and every basis of <span class="math inline">\(V\)</span> has the same size, <span class="math inline">\(\dim V\)</span>.</li>
+<li><strong>Inner products and orthogonality</strong> — the inner product induces the norm, orthogonality gives Pythagoras, and Gram–Schmidt turns any independent set into an orthonormal one.</li>
+<li><strong>Linear maps and matrices</strong> — a matrix <em>is</em> a linear map in coordinates; <span class="math inline">\(\operatorname{Rank} + \operatorname{Null} = p\)</span> splits the domain, and the four fundamental subspaces account for everything.</li>
+<li><strong>Special matrices and scalars</strong> — transpose, trace, determinant, inverse, and the identities you will use without thinking.</li>
+<li><strong>Projections</strong> — <span class="math inline">\(\mathbf{P}^2 = \mathbf{P}\)</span>, and <span class="math inline">\(\mathbf{P}_{\mathbf{A}} = \mathbf{A}(\mathbf{A}^\top\mathbf{A})^{-1}\mathbf{A}^\top\)</span> is the reason least squares is a geometry problem.</li>
+<li><strong>Eigenvalues and diagonalization</strong> — when a matrix is diagonalizable, and why symmetric ones always are.</li>
+<li><strong>Positive definiteness</strong> — <span class="math inline">\(\mathbf{X}^\top\mathbf{X} \succeq 0\)</span> always, PSD <span class="math inline">\(\iff\)</span> all eigenvalues <span class="math inline">\(\ge 0\)</span>, and the covariance matrix as the canonical example.</li>
+<li><strong>Singular value decomposition</strong> — every matrix, any shape, any rank: <span class="math inline">\(\mathbf{A} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top\)</span>.</li>
+<li><strong>Block matrices</strong> — Schur complements, block determinants and inverses, Kronecker products and <span class="math inline">\(\operatorname{vec}\)</span>.</li>
 </ol>
 </div>
 </section>
-<section id="where-to-go-next" class="slide level2 smaller">
-<h2>Where to go next</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Finish the packets</strong></p>
-<ul>
-<li>Stage 1: the core self-assessment. If any item feels unfamiliar, do it before STA 721 starts.</li>
-<li>Stage 2: challenge and bridge material — rank-one updates, block inverses, quadratic forms, SVD.</li>
-<li>The Error-Hunt companion review covers everything we skipped today.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><strong>References</strong></p>
-<ul>
-<li>Strang, <em>Linear Algebra and Its Applications</em> — for intuition</li>
-<li>Harville, <em>Matrix Algebra from a Statistician’s Perspective</em> — the STA 721 reference</li>
-<li>Searle &amp; Khuri, <em>Matrix Algebra Useful for Statistics</em></li>
-<li>Boyd &amp; Vandenberghe, <em>Introduction to Applied Linear Algebra</em> (free online)</li>
-</ul>
-</div></div>
-</section>
-<section id="questions" class="slide level2 center">
-<h2>Questions?</h2>
-<p>Slides and problem packets are linked from the bootcamp page.</p>
-<p>Come find me during the week — especially about anything in Sections 5–7.</p>
+<section id="three-ideas-everything-rested-on" class="slide level2 smaller">
+<h2>Three ideas everything rested on</h2>
+<div class="thm">
+<p><strong>Orthogonal projection.</strong> The closest point in a subspace is found by dropping a perpendicular. Every least-squares problem you will ever solve is this sentence.</p>
+</div>
+<div class="fragment">
+<div class="thm">
+<p><strong>The spectral theorem.</strong> A symmetric matrix is nothing more than a set of scalings along orthogonal axes: <span class="math inline">\(\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top\)</span>. Choose the right basis and the matrix becomes diagonal.</p>
+</div>
+</div>
+<div class="fragment">
+<div class="thm">
+<p><strong>The SVD.</strong> The same picture, freed from squareness and symmetry: rotate, stretch, rotate. <span class="math inline">\(\mathbf{A} = \mathbf{U}\boldsymbol\Sigma\mathbf{V}^\top\)</span> exists for <em>every</em> matrix.</p>
+</div>
+</div>
+<div class="fragment">
+<div class="note">
+<p>If a problem looks hard in the standard basis, the move is almost always the same: change to a basis where the operator is diagonal, solve it there, and change back.</p>
+</div>
 
 
+</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
