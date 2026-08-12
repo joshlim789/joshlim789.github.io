@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.6.39">
 
   <meta name="author" content="Josh Lim">
-  <meta name="dcterms.date" content="2026-08-11">
+  <meta name="dcterms.date" content="2026-08-12">
   <title>Joshua Lim – Linear Algebra Review</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -148,7 +148,7 @@ Josh Lim
     </div>
 </div>
 
-  <p class="date">August 11, 2026</p>
+  <p class="date">August 12, 2026</p>
 </section>
 <section id="plan-for-the-day" class="slide level2 scrollable">
 <h2>Plan for the day</h2>
@@ -1065,11 +1065,11 @@ p(\lambda) = \lambda^3 + 3\lambda^2 - 4 = (\lambda - 1)(\lambda + 2)^2 .
 <section id="diagonalization" class="slide level2 smaller">
 <h2>Diagonalization</h2>
 <div class="defn">
-<p><strong>Definition (Diagonalizable).</strong> <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n\times n}\)</span> is diagonalizable if there is an invertible <span class="math inline">\(\mathbf{V}\)</span> and a diagonal <span class="math inline">\(\boldsymbol\Lambda\)</span> with <span class="math inline">\(\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}\)</span>.</p>
+<p><strong>Definition (Diagonalizable).</strong> <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n\times n}\)</span> is diagonalizable if there is an invertible <span class="math inline">\(\mathbf{P}\)</span> and a diagonal <span class="math inline">\(\boldsymbol\Lambda\)</span> with <span class="math inline">\(\mathbf{A} = \mathbf{P}\boldsymbol\Lambda\mathbf{P}^{-1}\)</span>.</p>
 </div>
-<p>Suppose <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors <span class="math inline">\(\mathbf{v}_1,\dots,\mathbf{v}_n\)</span> with eigenvalues <span class="math inline">\(\lambda_1,\dots,\lambda_n\)</span>. Put the <strong>eigenvectors in the columns</strong> of <span class="math inline">\(\mathbf{V}\)</span> and the <strong>eigenvalues on the diagonal</strong> of <span class="math inline">\(\boldsymbol\Lambda\)</span>: <span class="math display">\[
+<p>Suppose <span class="math inline">\(\mathbf{A}\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors <span class="math inline">\(\mathbf{v}_1,\dots,\mathbf{v}_n\)</span> with eigenvalues <span class="math inline">\(\lambda_1,\dots,\lambda_n\)</span>. Put the <strong>eigenvectors in the columns</strong> of <span class="math inline">\(\mathbf{P}\)</span> and the <strong>eigenvalues on the diagonal</strong> of <span class="math inline">\(\boldsymbol\Lambda\)</span>: <span class="math display">\[
 \begin{aligned}
-\mathbf{V} &amp;= \begin{bmatrix}\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \cdots &amp; \mathbf{v}_n\end{bmatrix}
+\mathbf{P} &amp;= \begin{bmatrix}\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \cdots &amp; \mathbf{v}_n\end{bmatrix}
 \\[0.4em]
 \boldsymbol\Lambda &amp;= \operatorname{diag}(\lambda_1,\lambda_2,\dots,\lambda_n)
 = \begin{bmatrix}
@@ -1082,9 +1082,9 @@ p(\lambda) = \lambda^3 + 3\lambda^2 - 4 = (\lambda - 1)(\lambda + 2)^2 .
 \]</span></p>
 <div class="fragment">
 <p>Now stack the eigenvalue equations <span class="math inline">\(\mathbf{A}\mathbf{v}_i = \lambda_i\mathbf{v}_i\)</span> column by column: <span class="math display">\[
-\mathbf{A}\mathbf{V} = \begin{bmatrix}\lambda_1\mathbf{v}_1 &amp; \cdots &amp; \lambda_n\mathbf{v}_n\end{bmatrix} = \mathbf{V}\boldsymbol\Lambda .
-\]</span> Since the <span class="math inline">\(\mathbf{v}_i\)</span> are independent, <span class="math inline">\(\mathbf{V}\)</span> is invertible and <span class="math display">\[
-\boxed{\ \mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}\ }
+\mathbf{A}\mathbf{P} = \begin{bmatrix}\lambda_1\mathbf{v}_1 &amp; \cdots &amp; \lambda_n\mathbf{v}_n\end{bmatrix} = \mathbf{P}\boldsymbol\Lambda .
+\]</span> Since the <span class="math inline">\(\mathbf{v}_i\)</span> are independent, <span class="math inline">\(\mathbf{P}\)</span> is invertible and <span class="math display">\[
+\boxed{\ \mathbf{A} = \mathbf{P}\boldsymbol\Lambda\mathbf{P}^{-1}\ }
 \]</span> This is the <strong>eigendecomposition</strong>. Read it right to left: <em>change into the eigenbasis, scale each coordinate, change back.</em></p>
 </div>
 </section>
@@ -1112,9 +1112,9 @@ p(\lambda) = \lambda^3 + 3\lambda^2 - 4 = (\lambda - 1)(\lambda + 2)^2 .
 <h2>Why bother diagonalizing?</h2>
 <p>Because in the eigenbasis, hard operations become elementwise.</p>
 <p><span class="math display">\[
-\mathbf{A}^k = \mathbf{V}\boldsymbol\Lambda^k\mathbf{V}^{-1}, \qquad
-\mathbf{A}^{-1} = \mathbf{V}\boldsymbol\Lambda^{-1}\mathbf{V}^{-1}, \qquad
-f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
+\mathbf{A}^k = \mathbf{P}\boldsymbol\Lambda^k\mathbf{P}^{-1}, \qquad
+\mathbf{A}^{-1} = \mathbf{P}\boldsymbol\Lambda^{-1}\mathbf{P}^{-1}, \qquad
+f(\mathbf{A}) = \mathbf{P}f(\boldsymbol\Lambda)\mathbf{P}^{-1}
 \]</span></p>
 <p>where <span class="math inline">\(f(\boldsymbol\Lambda) = \operatorname{diag}(f(\lambda_1),\dots,f(\lambda_n))\)</span>.</p>
 </section>
@@ -1126,11 +1126,11 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 <li>all eigenvalues are <strong>real</strong>;</li>
 <li>eigenvectors for distinct eigenvalues are <strong>orthogonal</strong>;</li>
 <li><span class="math inline">\(\mathbf{A}\)</span> is <strong>always</strong> diagonalizable, and we may choose an <strong>orthonormal</strong> eigenbasis: <span class="math display">\[
-\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top, \qquad \mathbf{Q}^\top\mathbf{Q} = \mathbf{Q}\mathbf{Q}^\top = \mathbf{I}_n .
+\mathbf{A} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top, \qquad \mathbf{U}^\top\mathbf{U} = \mathbf{U}\mathbf{U}^\top = \mathbf{I}_n .
 \]</span></li>
 </ul>
 </div>
-<p>Note <span class="math inline">\(\mathbf{Q}^{-1} = \mathbf{Q}^\top\)</span>: (makes our life so easy)</p>
+<p>Note <span class="math inline">\(\mathbf{U}^{-1} = \mathbf{U}^\top\)</span>: (makes our life so easy)</p>
 <div class="fragment">
 <div class="warn">
 <p>Symmetry is doing all the work. Symmetric matrices are never defective. Since every matrix you meet in linear models — <span class="math inline">\(\mathbf{X}^\top\mathbf{X}\)</span>, <span class="math inline">\(\Sigma\)</span>, <span class="math inline">\(\mathbf{H}\)</span>, <span class="math inline">\(\mathbf{I}-\mathbf{H}\)</span> — is symmetric, you almost never need the general theory.</p>
@@ -1139,11 +1139,11 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 </section>
 <section id="reading-the-spectral-theorem-geometrically" class="slide level2 smaller scrollable">
 <h2>Reading the spectral theorem geometrically</h2>
-<p><span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top\mathbf{x}\)</span> is three steps:</p>
+<p><span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top\mathbf{x}\)</span> is three steps:</p>
 <ol type="1">
-<li><span class="math inline">\(\mathbf{Q}^\top\mathbf{x}\)</span> — <strong>rotate</strong> into the eigenbasis (rigid motion; lengths preserved);</li>
+<li><span class="math inline">\(\mathbf{U}^\top\mathbf{x}\)</span> — <strong>rotate</strong> into the eigenbasis (rigid motion; lengths preserved);</li>
 <li><span class="math inline">\(\boldsymbol\Lambda(\cdot)\)</span> — <strong>stretch</strong> the <span class="math inline">\(i\)</span>-th axis by <span class="math inline">\(\lambda_i\)</span>;</li>
-<li><span class="math inline">\(\mathbf{Q}(\cdot)\)</span> — <strong>rotate</strong> back.</li>
+<li><span class="math inline">\(\mathbf{U}(\cdot)\)</span> — <strong>rotate</strong> back.</li>
 </ol>
 <p>Every symmetric matrix is a stretch along some set of orthogonal axes. That is all it is.</p>
 <div class="midi">
@@ -1166,15 +1166,15 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 <section id="your-turn-trace-projections-and-the-spectral-theorem-1" class="slide level2 smaller">
 <h2>Your turn: trace, projections, and the spectral theorem</h2>
 <div class="answer">
-<p><strong>(a)</strong> Write <span class="math inline">\(\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top\)</span> with <span class="math inline">\(\mathbf{Q}\)</span> orthogonal, then use the cyclic property of the trace:</p>
+<p><strong>(a)</strong> Write <span class="math inline">\(\mathbf{A} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top\)</span> with <span class="math inline">\(\mathbf{U}\)</span> orthogonal, then use the cyclic property of the trace:</p>
 <p><span class="math display">\[
 \operatorname{tr}(\mathbf{A})
-= \operatorname{tr}(\mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top)
-= \operatorname{tr}(\boldsymbol\Lambda\mathbf{Q}^\top\mathbf{Q})
+= \operatorname{tr}(\mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top)
+= \operatorname{tr}(\boldsymbol\Lambda\mathbf{U}^\top\mathbf{U})
 = \operatorname{tr}(\boldsymbol\Lambda)
 = \sum_{i=1}^n \lambda_i .
 \]</span></p>
-<p>The only fact used was <span class="math inline">\(\mathbf{Q}^\top\mathbf{Q} = \mathbf{I}\)</span>, so the same two lines give <span class="math inline">\(\operatorname{tr}(\mathbf{A}) = \sum_i\lambda_i\)</span> for <strong>any</strong> diagonalizable <span class="math inline">\(\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}\)</span>, symmetric or not.</p>
+<p>The only fact used was <span class="math inline">\(\mathbf{U}^\top\mathbf{U} = \mathbf{I}\)</span> — that the two outer factors cancel. The same two lines therefore give <span class="math inline">\(\operatorname{tr}(\mathbf{A}) = \sum_i\lambda_i\)</span> for <strong>any</strong> diagonalizable <span class="math inline">\(\mathbf{A}\)</span>, symmetric or not, since there the outer factors are inverses of each other.</p>
 </div>
 </section>
 <section id="your-turn-trace-projections-and-the-spectral-theorem-2" class="slide level2 smaller">
@@ -1229,7 +1229,7 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 <li><span class="math inline">\(\mathbf{A}\succeq 0\)</span>;</li>
 <li>all eigenvalues satisfy <span class="math inline">\(\lambda_i \ge 0\)</span>;</li>
 <li><span class="math inline">\(\mathbf{A} = \mathbf{B}^\top\mathbf{B}\)</span> for some <span class="math inline">\(\mathbf{B}\)</span>;</li>
-<li><span class="math inline">\(\mathbf{A}\)</span> has a PSD square root <span class="math inline">\(\mathbf{A}^{1/2} = \mathbf{Q}\boldsymbol\Lambda^{1/2}\mathbf{Q}^\top\)</span>.</li>
+<li><span class="math inline">\(\mathbf{A}\)</span> has a PSD square root <span class="math inline">\(\mathbf{A}^{1/2} = \mathbf{U}\boldsymbol\Lambda^{1/2}\mathbf{U}^\top\)</span>.</li>
 </ul>
 <p>Replace <span class="math inline">\(\ge\)</span> by <span class="math inline">\(&gt;\)</span> throughout for PD, and add: all leading principal minors are positive; a Cholesky factorization <span class="math inline">\(\mathbf{A}=\mathbf{L}\mathbf{L}^\top\)</span> with positive diagonal exists.</p>
 </div>
@@ -1248,9 +1248,9 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 <div class="answer">
 <ol type="a">
 <li><p>Symmetry: <span class="math inline">\((\mathbf{X}^\top\mathbf{X})^\top = \mathbf{X}^\top\mathbf{X}\)</span>. PSD: <span class="math inline">\(\mathbf{z}^\top\mathbf{X}^\top\mathbf{X}\mathbf{z} = \|\mathbf{X}\mathbf{z}\|^2\ge0\)</span>.</p></li>
-<li><p>Write <span class="math inline">\(\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top\)</span> with <span class="math inline">\(\mathbf{Q}\)</span> orthogonal. Substituting <span class="math inline">\(\mathbf{u} = \mathbf{Q}^\top\mathbf{x}\)</span> (a bijection of <span class="math inline">\(\mathbb{R}^n\)</span>), <span class="math display">\[
-\mathbf{x}^\top\mathbf{A}\mathbf{x} = \mathbf{u}^\top\boldsymbol\Lambda\mathbf{u} = \sum_{i=1}^n \lambda_i u_i^2 .
-\]</span> This is <span class="math inline">\(\ge 0\)</span> for all <span class="math inline">\(\mathbf{u}\)</span> iff every <span class="math inline">\(\lambda_i \ge 0\)</span> (take <span class="math inline">\(\mathbf{u} = \mathbf{e}_i\)</span> for necessity). So <strong>PSD <span class="math inline">\(\iff\)</span> all eigenvalues non-negative</strong>.</p></li>
+<li><p>Write <span class="math inline">\(\mathbf{A} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top\)</span> with <span class="math inline">\(\mathbf{U}\)</span> orthogonal. Substituting <span class="math inline">\(\mathbf{w} = \mathbf{U}^\top\mathbf{x}\)</span> (a bijection of <span class="math inline">\(\mathbb{R}^n\)</span>), <span class="math display">\[
+\mathbf{x}^\top\mathbf{A}\mathbf{x} = \mathbf{w}^\top\boldsymbol\Lambda\mathbf{w} = \sum_{i=1}^n \lambda_i w_i^2 .
+\]</span> This is <span class="math inline">\(\ge 0\)</span> for all <span class="math inline">\(\mathbf{w}\)</span> iff every <span class="math inline">\(\lambda_i \ge 0\)</span> (take <span class="math inline">\(\mathbf{w} = \mathbf{e}_i\)</span> for necessity). So <strong>PSD <span class="math inline">\(\iff\)</span> all eigenvalues non-negative</strong>.</p></li>
 </ol>
 </div>
 </div>
@@ -1508,7 +1508,7 @@ f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
 </div>
 <div class="fragment">
 <div class="thm">
-<p><strong>The spectral theorem.</strong> A symmetric matrix is nothing more than a set of scalings along orthogonal axes: <span class="math inline">\(\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top\)</span>. Choose the right basis and the matrix becomes diagonal.</p>
+<p><strong>The spectral theorem.</strong> A symmetric matrix is nothing more than a set of scalings along orthogonal axes: <span class="math inline">\(\mathbf{A} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top\)</span>. Choose the right basis and the matrix becomes diagonal.</p>
 </div>
 </div>
 <div class="fragment">
