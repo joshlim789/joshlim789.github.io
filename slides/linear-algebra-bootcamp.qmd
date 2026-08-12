@@ -951,13 +951,13 @@ Hold on to that second matrix. Its eigenvalue $-2$ has algebraic multiplicity 2 
 ## Diagonalization {.smaller}
 
 ::: {.defn}
-**Definition (Diagonalizable).** $\mathbf{A} \in \mathbb{R}^{n\times n}$ is diagonalizable if there is an invertible $\mathbf{V}$ and a diagonal $\boldsymbol\Lambda$ with $\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}$.
+**Definition (Diagonalizable).** $\mathbf{A} \in \mathbb{R}^{n\times n}$ is diagonalizable if there is an invertible $\mathbf{P}$ and a diagonal $\boldsymbol\Lambda$ with $\mathbf{A} = \mathbf{P}\boldsymbol\Lambda\mathbf{P}^{-1}$.
 :::
 
-Suppose $\mathbf{A}$ has $n$ linearly independent eigenvectors $\mathbf{v}_1,\dots,\mathbf{v}_n$ with eigenvalues $\lambda_1,\dots,\lambda_n$. Put the **eigenvectors in the columns** of $\mathbf{V}$ and the **eigenvalues on the diagonal** of $\boldsymbol\Lambda$:
+Suppose $\mathbf{A}$ has $n$ linearly independent eigenvectors $\mathbf{v}_1,\dots,\mathbf{v}_n$ with eigenvalues $\lambda_1,\dots,\lambda_n$. Put the **eigenvectors in the columns** of $\mathbf{P}$ and the **eigenvalues on the diagonal** of $\boldsymbol\Lambda$:
 $$
 \begin{aligned}
-\mathbf{V} &= \begin{bmatrix}\mathbf{v}_1 & \mathbf{v}_2 & \cdots & \mathbf{v}_n\end{bmatrix}
+\mathbf{P} &= \begin{bmatrix}\mathbf{v}_1 & \mathbf{v}_2 & \cdots & \mathbf{v}_n\end{bmatrix}
 \\[0.4em]
 \boldsymbol\Lambda &= \operatorname{diag}(\lambda_1,\lambda_2,\dots,\lambda_n)
 = \begin{bmatrix}
@@ -973,11 +973,11 @@ $$
 
 Now stack the eigenvalue equations $\mathbf{A}\mathbf{v}_i = \lambda_i\mathbf{v}_i$ column by column:
 $$
-\mathbf{A}\mathbf{V} = \begin{bmatrix}\lambda_1\mathbf{v}_1 & \cdots & \lambda_n\mathbf{v}_n\end{bmatrix} = \mathbf{V}\boldsymbol\Lambda .
+\mathbf{A}\mathbf{P} = \begin{bmatrix}\lambda_1\mathbf{v}_1 & \cdots & \lambda_n\mathbf{v}_n\end{bmatrix} = \mathbf{P}\boldsymbol\Lambda .
 $$
-Since the $\mathbf{v}_i$ are independent, $\mathbf{V}$ is invertible and
+Since the $\mathbf{v}_i$ are independent, $\mathbf{P}$ is invertible and
 $$
-\boxed{\ \mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}\ }
+\boxed{\ \mathbf{A} = \mathbf{P}\boldsymbol\Lambda\mathbf{P}^{-1}\ }
 $$
 This is the **eigendecomposition**. Read it right to left: *change into the eigenbasis, scale each coordinate, change back.*
 
@@ -1009,9 +1009,9 @@ The canonical failure: $\mathbf{A} = \begin{bmatrix}1 & 1\\ 0 & 1\end{bmatrix}$ 
 Because in the eigenbasis, hard operations become elementwise.
 
 $$
-\mathbf{A}^k = \mathbf{V}\boldsymbol\Lambda^k\mathbf{V}^{-1}, \qquad
-\mathbf{A}^{-1} = \mathbf{V}\boldsymbol\Lambda^{-1}\mathbf{V}^{-1}, \qquad
-f(\mathbf{A}) = \mathbf{V}f(\boldsymbol\Lambda)\mathbf{V}^{-1}
+\mathbf{A}^k = \mathbf{P}\boldsymbol\Lambda^k\mathbf{P}^{-1}, \qquad
+\mathbf{A}^{-1} = \mathbf{P}\boldsymbol\Lambda^{-1}\mathbf{P}^{-1}, \qquad
+f(\mathbf{A}) = \mathbf{P}f(\boldsymbol\Lambda)\mathbf{P}^{-1}
 $$
 
 where $f(\boldsymbol\Lambda) = \operatorname{diag}(f(\lambda_1),\dots,f(\lambda_n))$.
@@ -1025,10 +1025,10 @@ where $f(\boldsymbol\Lambda) = \operatorname{diag}(f(\lambda_1),\dots,f(\lambda_
 - eigenvectors for distinct eigenvalues are **orthogonal**;
 - $\mathbf{A}$ is **always** diagonalizable, and we may choose an **orthonormal** eigenbasis:
 $$
-\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top, \qquad \mathbf{Q}^\top\mathbf{Q} = \mathbf{Q}\mathbf{Q}^\top = \mathbf{I}_n .
+\mathbf{A} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top, \qquad \mathbf{U}^\top\mathbf{U} = \mathbf{U}\mathbf{U}^\top = \mathbf{I}_n .
 $$
 :::
-Note $\mathbf{Q}^{-1} = \mathbf{Q}^\top$: (makes our life so easy)
+Note $\mathbf{U}^{-1} = \mathbf{U}^\top$: (makes our life so easy)
 
 . . .
 
@@ -1038,11 +1038,11 @@ Symmetry is doing all the work. Symmetric matrices are never defective. Since ev
 
 ## Reading the spectral theorem geometrically {.smaller}
 
-$\mathbf{A}\mathbf{x} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top\mathbf{x}$ is three steps:
+$\mathbf{A}\mathbf{x} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top\mathbf{x}$ is three steps:
 
-1. $\mathbf{Q}^\top\mathbf{x}$ --- **rotate** into the eigenbasis (rigid motion; lengths preserved);
+1. $\mathbf{U}^\top\mathbf{x}$ --- **rotate** into the eigenbasis (rigid motion; lengths preserved);
 2. $\boldsymbol\Lambda(\cdot)$ --- **stretch** the $i$-th axis by $\lambda_i$;
-3. $\mathbf{Q}(\cdot)$ --- **rotate** back.
+3. $\mathbf{U}(\cdot)$ --- **rotate** back.
 
 Every symmetric matrix is a stretch along some set of orthogonal axes. That is all it is.
 
@@ -1066,17 +1066,17 @@ $$
 ## Your turn: trace, projections, and the spectral theorem {.smaller}
 
 ::: {.answer}
-**(a)** Write $\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top$ with $\mathbf{Q}$ orthogonal, then use the cyclic property of the trace:
+**(a)** Write $\mathbf{A} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top$ with $\mathbf{U}$ orthogonal, then use the cyclic property of the trace:
 
 $$
 \operatorname{tr}(\mathbf{A})
-= \operatorname{tr}(\mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top)
-= \operatorname{tr}(\boldsymbol\Lambda\mathbf{Q}^\top\mathbf{Q})
+= \operatorname{tr}(\mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top)
+= \operatorname{tr}(\boldsymbol\Lambda\mathbf{U}^\top\mathbf{U})
 = \operatorname{tr}(\boldsymbol\Lambda)
 = \sum_{i=1}^n \lambda_i .
 $$
 
-The only fact used was $\mathbf{Q}^\top\mathbf{Q} = \mathbf{I}$, so the same two lines give $\operatorname{tr}(\mathbf{A}) = \sum_i\lambda_i$ for **any** diagonalizable $\mathbf{A} = \mathbf{V}\boldsymbol\Lambda\mathbf{V}^{-1}$, symmetric or not.
+The only fact used was $\mathbf{U}^\top\mathbf{U} = \mathbf{I}$ --- that the two outer factors cancel. The same two lines therefore give $\operatorname{tr}(\mathbf{A}) = \sum_i\lambda_i$ for **any** diagonalizable $\mathbf{A}$, symmetric or not, since there the outer factors are inverses of each other.
 :::
 
 ## Your turn: trace, projections, and the spectral theorem {.smaller}
@@ -1134,7 +1134,7 @@ $\mathbf{P}$ has rank 1, so by (a) and (b) $\operatorname{tr}(\mathbf{P}) = 1$ -
 - $\mathbf{A}\succeq 0$;
 - all eigenvalues satisfy $\lambda_i \ge 0$;
 - $\mathbf{A} = \mathbf{B}^\top\mathbf{B}$ for some $\mathbf{B}$;
-- $\mathbf{A}$ has a PSD square root $\mathbf{A}^{1/2} = \mathbf{Q}\boldsymbol\Lambda^{1/2}\mathbf{Q}^\top$.
+- $\mathbf{A}$ has a PSD square root $\mathbf{A}^{1/2} = \mathbf{U}\boldsymbol\Lambda^{1/2}\mathbf{U}^\top$.
 
 Replace $\ge$ by $>$ throughout for PD, and add: all leading principal minors are positive; a Cholesky factorization $\mathbf{A}=\mathbf{L}\mathbf{L}^\top$ with positive diagonal exists.
 :::
@@ -1153,11 +1153,11 @@ Replace $\ge$ by $>$ throughout for PD, and add: all leading principal minors ar
 ::: {.answer}
 (a) Symmetry: $(\mathbf{X}^\top\mathbf{X})^\top = \mathbf{X}^\top\mathbf{X}$. PSD: $\mathbf{z}^\top\mathbf{X}^\top\mathbf{X}\mathbf{z} = \|\mathbf{X}\mathbf{z}\|^2\ge0$.
 
-(b) Write $\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top$ with $\mathbf{Q}$ orthogonal. Substituting $\mathbf{u} = \mathbf{Q}^\top\mathbf{x}$ (a bijection of $\mathbb{R}^n$),
+(b) Write $\mathbf{A} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top$ with $\mathbf{U}$ orthogonal. Substituting $\mathbf{w} = \mathbf{U}^\top\mathbf{x}$ (a bijection of $\mathbb{R}^n$),
 $$
-\mathbf{x}^\top\mathbf{A}\mathbf{x} = \mathbf{u}^\top\boldsymbol\Lambda\mathbf{u} = \sum_{i=1}^n \lambda_i u_i^2 .
+\mathbf{x}^\top\mathbf{A}\mathbf{x} = \mathbf{w}^\top\boldsymbol\Lambda\mathbf{w} = \sum_{i=1}^n \lambda_i w_i^2 .
 $$
-This is $\ge 0$ for all $\mathbf{u}$ iff every $\lambda_i \ge 0$ (take $\mathbf{u} = \mathbf{e}_i$ for necessity). So **PSD $\iff$ all eigenvalues non-negative**.
+This is $\ge 0$ for all $\mathbf{w}$ iff every $\lambda_i \ge 0$ (take $\mathbf{w} = \mathbf{e}_i$ for necessity). So **PSD $\iff$ all eigenvalues non-negative**.
 :::
 
 ## Your turn: the covariance matrix is PSD {.smaller}
@@ -1419,7 +1419,7 @@ $$
 . . .
 
 ::: {.thm}
-**The spectral theorem.** A symmetric matrix is nothing more than a set of scalings along orthogonal axes: $\mathbf{A} = \mathbf{Q}\boldsymbol\Lambda\mathbf{Q}^\top$. Choose the right basis and the matrix becomes diagonal.
+**The spectral theorem.** A symmetric matrix is nothing more than a set of scalings along orthogonal axes: $\mathbf{A} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top$. Choose the right basis and the matrix becomes diagonal.
 :::
 
 . . .

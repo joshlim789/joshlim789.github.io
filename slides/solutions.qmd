@@ -1,0 +1,587 @@
+---
+title: "Linear Algebra Review --- Solution Manual"
+subtitle: "Duke StatSci Ph.D. Bootcamp · instructor copy"
+author: "Josh Lim"
+date: today
+date-format: long
+toc: true
+toc-depth: 2
+number-sections: false
+format:
+  pdf:
+    pdf-engine: xelatex
+    documentclass: article
+    geometry: margin=1in
+    fontsize: 11pt
+    colorlinks: true
+  html:
+    theme: cosmo
+    embed-resources: true
+    toc-location: left
+---
+
+*Generated from `linear-algebra-bootcamp.qmd` — 20 problems. Regenerate with `python3 slides/make-solutions.py`.*
+
+
+# Vector Spaces
+
+## 1. Bases of a plane
+
+*slide 10 · Baseline · Companion review, Q15*
+
+**Problem.**
+
+Find a basis for the plane $x - 2y + 3z = 0$ in $\mathbb{R}^3$. Then find a basis for the intersection of that plane with the $xy$-plane. Finally, find a basis for all vectors perpendicular to the plane.
+
+**Solution.**
+
+Write $x = 2y - 3z$, so a general point is $y(2,1,0)^\top + z(-3,0,1)^\top$: a basis is $\{(2,1,0)^\top, (-3,0,1)^\top\}$, and $\dim = 2$.
+
+Intersect with $z = 0$: the single vector $(2,1,0)^\top$ spans a line.
+
+The perpendicular direction is the coefficient vector itself, $(1,-2,3)^\top$. Check: $\langle(1,-2,3),(2,1,0)\rangle = 2 - 2 + 0 = 0$ and $\langle(1,-2,3),(-3,0,1)\rangle = -3 + 0 + 3 = 0$. $\checkmark$
+
+Moral: the coefficients of a linear equation *are* the normal vector. A hyperplane in $\mathbb{R}^p$ is the orthogonal complement of its coefficient vector.
+
+## 2. Sums of subspaces
+
+*slide 11 · Proof stretch · Companion review, Q6*
+
+**Problem.**
+
+Let $S, T$ be subspaces of $V$ and define $S + T := \{\mathbf{s} + \mathbf{t} : \mathbf{s} \in S,\ \mathbf{t} \in T\}$.
+
+(a) Prove $S + T$ is a subspace.
+(b) If $S$ and $T$ are distinct lines through the origin in $\mathbb{R}^d$, what is the difference between $S \cup T$ and $S + T$? Prove $\operatorname{span}(S \cup T) = S + T$.
+
+**Solution.**
+
+(a) $\mathbf{0} = \mathbf{0} + \mathbf{0} \in S + T$. For closure, $(\mathbf{s}_1 + \mathbf{t}_1) + a(\mathbf{s}_2 + \mathbf{t}_2) = (\mathbf{s}_1 + a\mathbf{s}_2) + (\mathbf{t}_1 + a\mathbf{t}_2)$, and each bracket stays in its own subspace.
+
+(b) $S \cup T$ is two lines --- **not** closed under addition, so not a subspace. $S + T$ is the plane they span. For the identity: $S \cup T \subseteq S + T$ and $S+T$ is a subspace, so $\operatorname{span}(S \cup T) \subseteq S + T$; conversely any $\mathbf{s} + \mathbf{t}$ is a combination of an element of $S$ and an element of $T$, hence lies in $\operatorname{span}(S \cup T)$.
+
+
+# Linear Maps and Matrices
+
+## 3. Building transformation matrices
+
+*slide 15 · Baseline · Companion review, Q1*
+
+**Problem.**
+
+Find the $3 \times 3$ matrices acting on $\mathbf{x} \in \mathbb{R}^3$ that
+
+(a) project vectors onto the $xy$-plane;
+(b) reflect every vector about the $xy$-plane.
+
+**Solution.**
+
+Use the column rule: figure out where $\mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3$ go.
+
+$$
+\mathbf{P} = \begin{bmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 0\end{bmatrix}, \qquad
+\mathbf{R} = \begin{bmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & -1\end{bmatrix}
+$$
+
+Sanity checks worth internalizing now: $\mathbf{P}^2 = \mathbf{P}$ (projections are idempotent), $\mathbf{R}^2 = \mathbf{I}$ (reflections are involutions), and $\mathbf{R} = \mathbf{I} - 2(\mathbf{I} - \mathbf{P}) = 2\mathbf{P} - \mathbf{I}$.
+
+## 4. Conformability
+
+*slides 16–17 · Baseline · Companion review, Q2 / Stage 1, Q2*
+
+**Problem.**
+
+$$
+\begin{gathered}
+\mathbf{A} = \begin{bmatrix} 1 & 2\\ 3 & 1\end{bmatrix}
+\qquad
+\mathbf{B} = \begin{bmatrix} 1 & 0 & 2\\ 3 & 1 & -2\end{bmatrix}
+\\[0.5em]
+\mathbf{C} = \begin{bmatrix} 1 & -2 & 3\\ -2 & 1 & -1\end{bmatrix}
+\qquad
+\mathbf{d} = \begin{bmatrix} -2\\ 2\\ 1\end{bmatrix}
+\end{gathered}
+$$
+
+(a) Which of $\mathbf{AB}$, $\mathbf{BA}$, $\mathbf{ABC}$, $\mathbf{ABd}$, $\mathbf{BC}$, $\mathbf{BC}^\top$, $\mathbf{B}^\top\mathbf{C}$, $\mathbf{dC}$ are defined?
+(b) Compute $\mathbf{A}^\top(3\mathbf{B} + \mathbf{C})$.
+
+**Solution.**
+
+(a) Defined: $\mathbf{AB}$ $(2\times3)$, $\mathbf{ABd}$ $(2\times1)$, $\mathbf{BC}^\top$ $(2\times2)$, $\mathbf{B}^\top\mathbf{C}$ $(3\times3)$. Not defined: $\mathbf{BA}$, $\mathbf{ABC}$, $\mathbf{BC}$, $\mathbf{dC}$.
+
+(b) Parentheses first: $3\mathbf{B}$ and $\mathbf{C}$ are both $2\times3$, so the sum is defined. Then $\mathbf{A}^\top$ is $2\times2$, and $(2\times2)(2\times3)$ gives a $2\times3$.
+
+$$
+\begin{aligned}
+3\mathbf{B} + \mathbf{C}
+&= \begin{bmatrix} 3 & 0 & 6\\ 9 & 3 & -6\end{bmatrix}
+ + \begin{bmatrix} 1 & -2 & 3\\ -2 & 1 & -1\end{bmatrix}
+ = \begin{bmatrix} 4 & -2 & 9\\ 7 & 4 & -7\end{bmatrix}
+\\[0.5em]
+\mathbf{A}^\top(3\mathbf{B} + \mathbf{C})
+&= \begin{bmatrix} 1 & 3\\ 2 & 1\end{bmatrix}
+   \begin{bmatrix} 4 & -2 & 9\\ 7 & 4 & -7\end{bmatrix}
+ = \begin{bmatrix} 25 & 10 & -12\\ 15 & 0 & 11\end{bmatrix}
+\end{aligned}
+$$
+
+## 5. Dimension bookkeeping
+
+*slide 20 · Baseline · Companion review, Q8*
+
+**Problem.**
+
+A $57 \times 37$ matrix $\mathbf{A}$ has rank 31. Give the dimensions of all four fundamental subspaces: $\operatorname{Rank}(\mathbf{A})$, $\operatorname{Rank}(\mathbf{A}^\top)$, $\operatorname{Null}(\mathbf{A})$, $\operatorname{Null}(\mathbf{A}^\top)$.
+
+**Solution.**
+
+$\operatorname{Rank}(\mathbf{A}) = \operatorname{Rank}(\mathbf{A}^\top) = 31$.
+
+$\operatorname{Null}(\mathbf{A}) = 37 - 31 = 6$ (apply rank--nullity to the $37$ columns).
+
+$\operatorname{Null}(\mathbf{A}^\top) = 57 - 31 = 26$ (apply it to $\mathbf{A}^\top$, which has $57$ columns).
+
+## 6. Null space of a stacked matrix
+
+*slide 21 · Bridge · Companion review, Q7*
+
+**Problem.**
+
+Let $\mathbf{A} \in \mathbb{R}^{n \times d}$, $\mathbf{B} \in \mathbb{R}^{m \times d}$, and $\mathbf{C} = \begin{bmatrix}\mathbf{A}\\ \mathbf{B}\end{bmatrix} \in \mathbb{R}^{(m+n)\times d}$. State the relationship between $\ker(\mathbf{C})$, $\ker(\mathbf{A})$ and $\ker(\mathbf{B})$, and justify it.
+
+**Solution.**
+
+$\ker(\mathbf{C}) = \ker(\mathbf{A}) \cap \ker(\mathbf{B})$.
+
+$\mathbf{C}\mathbf{x} = \begin{bmatrix}\mathbf{A}\mathbf{x}\\ \mathbf{B}\mathbf{x}\end{bmatrix}$, and a stacked vector is zero iff both blocks are zero.
+
+## 7. Elimination, pivots, back-substitution
+
+*slide 23 · Baseline · Companion review, Q4*
+
+**Problem.**
+
+In the system below, what multiple of the first equation should be subtracted from the second? Convert to matrix form, run Gaussian elimination, identify the pivots, and back-substitute.
+$$
+2x + 3y = 5, \qquad 6x + 15y = 12
+$$
+
+**Solution.**
+
+Multiplier $\ell_{21} = 6/2 = 3$. Eliminating gives $6y = -3$, so $y = -\tfrac12$, then $2x = 5 - 3(-\tfrac12) = \tfrac{13}{2}$, so $x = \tfrac{13}{4}$.
+
+Pivots: $2$ and $6$. Two pivots $\Rightarrow$ rank 2 $\Rightarrow$ unique solution.
+
+## 8. Row reduction and null space
+
+*slides 24–25 · Bridge · Companion review, Q5*
+
+**Problem.**
+
+$$
+\mathbf{A} = \begin{bmatrix} 1 & 5 & 7 & 9\\ 0 & 4 & 1 & 7\\ 2 & -2 & 11 & -3\end{bmatrix}
+$$
+
+(a) Find the row-reduced form. (b) What is $\operatorname{Rank}(\mathbf{A})$? (c) Find a basis for $\ker(\mathbf{A})$.
+
+**Solution.**
+
+$R_3 \leftarrow R_3 - 2R_1$ gives $(0,-12,-3,-21)$, which is $-3 \times (0,4,1,7) = -3R_2$. So the third row is dependent:
+$$
+\mathbf{A} \longrightarrow \begin{bmatrix} 1 & 0 & 23/4 & 1/4\\ 0 & 1 & 1/4 & 7/4\\ 0 & 0 & 0 & 0\end{bmatrix}.
+$$
+
+(b) Two pivots, so $\operatorname{Rank}(\mathbf{A}) = 2$.
+
+(c) Free variables $x_3, x_4$; nullity $= 4 - 2 = 2$. A basis:
+$$
+(-23, -1, 4, 0)^\top, \qquad (-1, -7, 0, 4)^\top .
+$$
+(Clear the fractions by scaling --- always allowed for a basis.)
+
+
+# Inner Products and Orthogonality
+
+## 9. Orthogonal complements
+
+*slide 28 · Bridge · Companion review, Q9*
+
+**Problem.**
+
+Find a basis for the set of all vectors in $\mathbb{R}^4$ orthogonal to $(1,1,1,1)^\top$ and $(1,2,3,4)^\top$.
+
+**Solution.**
+
+We want $\ker(\mathbf{A})$ for
+$$
+\mathbf{A} = \begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 3 & 4\end{bmatrix}
+\;\longrightarrow\;
+\begin{bmatrix} 1 & 0 & -1 & -2 \\ 0 & 1 & 2 & 3\end{bmatrix}.
+$$
+Free variables $x_3, x_4$: $x_1 = x_3 + 2x_4$, $x_2 = -2x_3 - 3x_4$. A basis is
+$$
+\{(1,-2,1,0)^\top,\ (2,-3,0,1)^\top\}, \qquad \dim = 2 .
+$$
+
+**Remarks.**
+
+> **Note.**
+The general fact: the orthogonal complement of $\operatorname{im}(\mathbf{A}^\top)$ is $\ker(\mathbf{A})$. Two independent constraints in $\mathbb{R}^4$ leave a 2-dimensional solution set.
+
+## 10. Gram--Schmidt by hand
+
+*slides 30–31 · Bridge · Companion review, Q11*
+
+**Problem.**
+
+Apply Gram--Schmidt to
+$$
+\mathbf{a} = (1,-1,0,0)^\top, \quad \mathbf{b} = (0,1,-1,0)^\top, \quad \mathbf{c} = (0,0,1,-1)^\top .
+$$
+Then show both $\{\mathbf{a},\mathbf{b},\mathbf{c}\}$ and the orthogonalized list are bases for the subspace orthogonal to $\mathbf{d} = (1,1,1,1)^\top$.
+
+**Solution.**
+
+$\mathbf{a}' = \mathbf{a} = (1,-1,0,0)^\top$, $\|\mathbf{a}'\|^2 = 2$.
+
+$\langle \mathbf{a}',\mathbf{b}\rangle = -1$, so $\mathbf{b}' = \mathbf{b} + \tfrac12\mathbf{a}' = (\tfrac12, \tfrac12, -1, 0)^\top$, $\|\mathbf{b}'\|^2 = \tfrac32$.
+
+$\langle\mathbf{a}',\mathbf{c}\rangle = 0$ and $\langle\mathbf{b}',\mathbf{c}\rangle = -1$, so
+$\mathbf{c}' = \mathbf{c} + \tfrac23\mathbf{b}' = (\tfrac13,\tfrac13,\tfrac13,-1)^\top$.
+
+Each of $\mathbf{a},\mathbf{b},\mathbf{c}$ has entries summing to zero, so each is $\perp \mathbf{d}$; they are independent (staircase pattern), and $\dim \mathbf{d}^\perp = 3$. Gram--Schmidt preserves the span, so the primed list is a basis of the same space.
+
+## 11. $\ker(\mathbf{A}^\top\mathbf{A}) = \ker(\mathbf{A})$
+
+*slides 34–35 · Bridge*
+
+**Problem.**
+
+Show that $\ker(\mathbf{A}^\top\mathbf{A}) = \ker(\mathbf{A})$ for any $\mathbf{A} \in \mathbb{R}^{n\times p}$, and deduce that $\operatorname{Rank}(\mathbf{A}^\top\mathbf{A}) = \operatorname{Rank}(\mathbf{A})$.
+
+Then: for which $\mathbf{X}$ is $\mathbf{X}^\top\mathbf{X}$ invertible?
+
+**Solution.**
+
+($\supseteq$) If $\mathbf{A}\mathbf{x} = \mathbf{0}$ then $\mathbf{A}^\top\mathbf{A}\mathbf{x} = \mathbf{0}$.
+
+($\subseteq$) If $\mathbf{A}^\top\mathbf{A}\mathbf{x} = \mathbf{0}$, take the inner product with $\mathbf{x}$:
+$$
+0 = \mathbf{x}^\top\mathbf{A}^\top\mathbf{A}\mathbf{x} = \|\mathbf{A}\mathbf{x}\|^2
+\implies
+\mathbf{A}\mathbf{x} = \mathbf{0}.
+$$
+Both are subspaces of $\mathbb{R}^p$, so rank--nullity gives equal ranks.
+
+**Remarks.**
+
+> **Note.**
+Hence $\mathbf{X}^\top\mathbf{X}$ (a $p\times p$ matrix) is invertible **iff $\mathbf{X}$ has full column rank**, i.e. $\ker(\mathbf{X}) = \{\mathbf{0}\}$ --- no exact collinearity among the columns. This is exactly the condition the hat matrix $\mathbf{H} = \mathbf{X}(\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top$ will need later.
+
+
+# Special Matrices and Scalars
+
+## 12. Two one-line proofs
+
+*slide 38 · Bridge · Companion review, Q13 and Q14*
+
+**Problem.**
+
+(a) If $\mathbf{X}$ is any $n \times p$ matrix, show $\mathbf{X}^\top\mathbf{X}$ is symmetric.
+
+(b) For any symmetric non-singular $\mathbf{A}$, show $\mathbf{A}^{-1} = (\mathbf{A}^{-1})^\top$.
+
+**Solution.**
+
+(a) $(\mathbf{X}^\top\mathbf{X})^\top = \mathbf{X}^\top(\mathbf{X}^\top)^\top = \mathbf{X}^\top\mathbf{X}$.
+
+(b) $(\mathbf{A}^{-1})^\top = (\mathbf{A}^\top)^{-1} = \mathbf{A}^{-1}$, using symmetry in the last step.
+
+For (b), the identity $(\mathbf{A}^{-1})^\top = (\mathbf{A}^\top)^{-1}$ itself follows from transposing $\mathbf{A}\mathbf{A}^{-1} = \mathbf{I}$: $\ (\mathbf{A}^{-1})^\top\mathbf{A}^\top = \mathbf{I}$.
+
+## 13. The cyclic property
+
+*slide 40 · Bridge · Companion review, Q3*
+
+**Problem.**
+
+Prove $\operatorname{tr}(\mathbf{AB}) = \operatorname{tr}(\mathbf{BA})$ for all conformable $\mathbf{A} \in \mathbb{R}^{n\times m}$, $\mathbf{B} \in \mathbb{R}^{m\times n}$.
+
+**Solution.**
+
+$$
+\operatorname{tr}(\mathbf{AB}) = \sum_{i=1}^n [\mathbf{AB}]_{ii} = \sum_{i=1}^n\sum_{j=1}^m a_{ij}b_{ji}
+= \sum_{j=1}^m\sum_{i=1}^n b_{ji}a_{ij} = \sum_{j=1}^m [\mathbf{BA}]_{jj} = \operatorname{tr}(\mathbf{BA}).
+$$
+The whole proof is *swap the order of a finite double sum*. Note $\mathbf{AB}$ is $n\times n$ and $\mathbf{BA}$ is $m \times m$ --- different sizes, same trace.
+
+## 14. Choosing a method
+
+*slide 42 · Baseline · Companion review, Q20 and Q21*
+
+**Problem.**
+
+(a) Compute $\det \mathbf{A}$ for the $4\times4$ matrix with ones in positions $(1,4),(2,1),(3,2),(4,3)$ and zeros elsewhere. Which method would you use, and why?
+
+(b) Using row and column operations, compute
+$$
+\begin{vmatrix} 0 & 1 & 2\\ -1 & 0 & -3\\ 2 & 3 & 0\end{vmatrix},\qquad
+\begin{vmatrix} 1 & 2 & 3\\ 4 & 5 & 6\\ 7 & 8 & 9\end{vmatrix},\qquad
+\begin{vmatrix} 1 & x\\ 1 & y\end{vmatrix}
+$$
+
+**Solution.**
+
+(a) $\det = -1$. Cofactor expansion along row 1 hits a single nonzero entry with sign $(-1)^{1+4}$ and an identity minor. Better still: it is the permutation matrix of the 4-cycle $(1\,4\,3\,2)$, and a $k$-cycle has sign $(-1)^{k-1}$.
+
+(b) $-12$; $\ 0$ (rows in arithmetic progression, so $R_1 - 2R_2 + R_3 = \mathbf{0}$); $\ y - x$.
+
+**Remarks.**
+
+> **Watch out.**
+Never compute a determinant by brute-force cofactor expansion for $n > 3$: it costs $O(n!)$. Use elimination ($\det = \pm$ product of pivots, $O(n^3)$), or eigenvalues, or structure.
+
+
+# Projections
+
+## 15. Projecting a vector
+
+*slides 48–50 · Bridge · Companion review, Q10*
+
+**Problem.**
+
+Find the orthogonal projection of $(1,1,1,1)^\top$ onto the subspace of $\mathbb{R}^4$ spanned by $\mathbf{v}_1 = (1,3,1,1)^\top$ and $\mathbf{v}_2 = (2,1,1,0)^\top$.
+
+**Solution.**
+
+Put the spanning vectors in the columns of $\mathbf{A} = [\mathbf{v}_1\ \ \mathbf{v}_2]$ and set up the normal equations $\mathbf{A}^\top\mathbf{A}\hat{\mathbf{c}} = \mathbf{A}^\top\mathbf{y}$:
+$$
+\mathbf{A} = \begin{bmatrix} 1 & 2\\ 3 & 1\\ 1 & 1\\ 1 & 0\end{bmatrix},
+\qquad
+\mathbf{A}^\top\mathbf{A} = \begin{bmatrix} 12 & 6\\ 6 & 6\end{bmatrix},
+\qquad
+\mathbf{A}^\top\mathbf{y} = \begin{bmatrix} 6\\ 4\end{bmatrix}.
+$$
+
+Solve for the coefficients --- $\det(\mathbf{A}^\top\mathbf{A}) = 72 - 36 = 36$:
+$$
+\begin{aligned}
+\hat{\mathbf{c}}
+= (\mathbf{A}^\top\mathbf{A})^{-1}\mathbf{A}^\top\mathbf{y}
+&= \tfrac{1}{36}\begin{bmatrix} 6 & -6\\ -6 & 12\end{bmatrix}\begin{bmatrix} 6\\ 4\end{bmatrix}
+\\[0.4em]
+&= \tfrac{1}{36}\begin{bmatrix} 36 - 24\\ -36 + 48\end{bmatrix}
+ = \tfrac{1}{36}\begin{bmatrix} 12\\ 12\end{bmatrix}
+ = \begin{bmatrix} 1/3\\ 1/3\end{bmatrix}.
+\end{aligned}
+$$
+
+$\hat{\mathbf{c}}$ holds **coefficients**, not the answer. Push them back through $\mathbf{A}$ to land in $\mathbb{R}^4$:
+$$
+\begin{aligned}
+\mathbf{P}\mathbf{y} = \mathbf{A}\hat{\mathbf{c}}
+&= \begin{bmatrix} 1 & 2\\ 3 & 1\\ 1 & 1\\ 1 & 0\end{bmatrix}
+   \begin{bmatrix} 1/3\\ 1/3\end{bmatrix}
+ = \tfrac13\mathbf{v}_1 + \tfrac13\mathbf{v}_2
+\\[0.4em]
+&= \tfrac13\begin{bmatrix} 1+2\\ 3+1\\ 1+1\\ 1+0\end{bmatrix}
+ = \tfrac13\begin{bmatrix} 3\\ 4\\ 2\\ 1\end{bmatrix}
+ = \begin{bmatrix} 1\\ 4/3\\ 2/3\\ 1/3\end{bmatrix}.
+\end{aligned}
+$$
+
+**Remarks.**
+
+> **Note.**
+Check by verifying the residual is orthogonal to the plane. With $\mathbf{e} = \mathbf{y} - \mathbf{P}\mathbf{y} = \left(0, -\tfrac13, \tfrac13, \tfrac23\right)^\top$:
+$$
+\langle\mathbf{e},\mathbf{v}_1\rangle = -1 + \tfrac13 + \tfrac23 = 0,
+\qquad
+\langle\mathbf{e},\mathbf{v}_2\rangle = -\tfrac13 + \tfrac13 = 0. \ \checkmark
+$$
+
+
+# Eigenvalues, Eigenvectors, and Diagonalization
+
+## 16. Eigen-computations
+
+*slides 53–54 · Bridge · Companion review, Q23*
+
+**Problem.**
+
+Find the characteristic polynomials, eigenvalues, and eigenvectors of
+$$
+\begin{bmatrix} 4 & -5\\ 2 & -3\end{bmatrix}, \qquad
+\begin{bmatrix} 1 & 3 & 3\\ -3 & -5 & -3\\ 3 & 3 & 1\end{bmatrix}.
+$$
+
+**Solution.**
+
+**First.** $\operatorname{tr} = 1$, $\det = -2$, so $\lambda^2 - \lambda - 2 = (\lambda-2)(\lambda+1)$. Eigenvalues $2, -1$ with eigenvectors $(5,2)^\top$ and $(1,1)^\top$.
+
+**Second.** $\operatorname{tr} = -3$, $\det = 4$, sum of $2\times2$ principal minors $= 0$, so
+$$
+p(\lambda) = \lambda^3 + 3\lambda^2 - 4 = (\lambda - 1)(\lambda + 2)^2 .
+$$
+$\lambda = 1$: eigenvector $(1,-1,1)^\top$. $\lambda = -2$: $\mathbf{A}+2\mathbf{I}$ has rank 1 with null space $\{x+y+z=0\}$, giving a **two**-dimensional eigenspace, e.g. $(1,-1,0)^\top, (1,0,-1)^\top$.
+
+**Remarks.**
+
+> **Note.**
+Hold on to that second matrix. Its eigenvalue $-2$ has algebraic multiplicity 2 *and* geometric multiplicity 2 --- which is exactly the condition for diagonalizability, coming up next.
+
+## 17. Trace, projections, and the spectral theorem
+
+*slides 60–63 · Bridge*
+
+**Problem.**
+
+(a) Prove that $\operatorname{tr}(\mathbf{A}) = \sum_{i=1}^n \lambda_i$ for symmetric $\mathbf{A}$.
+(b) What are the possible eigenvalues of a projection matrix? For an orthogonal projector of rank $r$, what are their multiplicities?
+(c) Find the orthogonal projection matrix onto the one-dimensional subspace of $\mathbb{R}^n$ spanned by $\mathbf{1} = (1,\dots,1)^\top$.
+
+**Solution.**
+
+**(a)** Write $\mathbf{A} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top$ with $\mathbf{U}$ orthogonal, then use the cyclic property of the trace:
+
+$$
+\operatorname{tr}(\mathbf{A})
+= \operatorname{tr}(\mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top)
+= \operatorname{tr}(\boldsymbol\Lambda\mathbf{U}^\top\mathbf{U})
+= \operatorname{tr}(\boldsymbol\Lambda)
+= \sum_{i=1}^n \lambda_i .
+$$
+
+The only fact used was $\mathbf{U}^\top\mathbf{U} = \mathbf{I}$ --- that the two outer factors cancel. The same two lines therefore give $\operatorname{tr}(\mathbf{A}) = \sum_i\lambda_i$ for **any** diagonalizable $\mathbf{A}$, symmetric or not, since there the outer factors are inverses of each other.
+
+**(b)** Idempotence pins the eigenvalues down completely. If $\mathbf{P}\mathbf{v} = \lambda\mathbf{v}$ with $\mathbf{v}\ne\mathbf{0}$, then
+
+$$
+\lambda\mathbf{v} = \mathbf{P}\mathbf{v} = \mathbf{P}^2\mathbf{v} = \lambda^2\mathbf{v}
+\implies \lambda^2 = \lambda
+\implies \lambda \in \{0, 1\} .
+$$
+
+For an orthogonal projector of rank $r$: $\lambda = 1$ with multiplicity $r$, with eigenvectors spanning $\operatorname{im}(\mathbf{P})$, and $\lambda = 0$ with multiplicity $n - r$, spanning $\ker(\mathbf{P})$.
+
+**(c)** Projecting onto the line spanned by a vector $\mathbf{v}$ gives $\mathbf{P} = \mathbf{v}\mathbf{v}^\top / (\mathbf{v}^\top\mathbf{v})$. Here $\mathbf{v} = \mathbf{1}$ and $\mathbf{1}^\top\mathbf{1} = n$, so
+
+$$
+\mathbf{P} = \frac{\mathbf{1}\mathbf{1}^\top}{n} = \frac{1}{n}\mathbf{J},
+\qquad
+\mathbf{J} = \mathbf{1}\mathbf{1}^\top
+= \begin{bmatrix} 1 & \cdots & 1\\ \vdots & \ddots & \vdots\\ 1 & \cdots & 1\end{bmatrix}.
+$$
+
+Check idempotence: $\mathbf{P}^2 = \dfrac{\mathbf{1}(\mathbf{1}^\top\mathbf{1})\mathbf{1}^\top}{n^2} = \dfrac{n\,\mathbf{1}\mathbf{1}^\top}{n^2} = \mathbf{P}$, and $\mathbf{P}$ is symmetric. $\checkmark$
+
+**Remarks.**
+
+> **Note.**
+Put (a) and (b) together: $\operatorname{tr}(\mathbf{P}) = \sum_i\lambda_i = r = \operatorname{Rank}(\mathbf{P})$. For projections, trace **is** rank --- which is why $\operatorname{tr}(\mathbf{H}) = p$ counts model degrees of freedom.
+
+> **Note.**
+$\mathbf{P}$ has rank 1, so by (a) and (b) $\operatorname{tr}(\mathbf{P}) = 1$ --- and indeed the diagonal holds $n$ copies of $1/n$. Applied to data, $\mathbf{P}\mathbf{y} = \bar{y}\,\mathbf{1}$: projecting onto $\mathbf{1}$ replaces every entry by the sample mean, and $\mathbf{I} - \mathbf{P}$ centers the data.
+
+
+# Positive Definiteness
+
+## 18. PSD and the spectral theorem
+
+*slide 66 · Bridge · Stage 1, Q8b--c*
+
+**Problem.**
+
+(a) Prove that $\mathbf{X}^\top\mathbf{X}$ is symmetric positive semi-definite for any real $\mathbf{X}$.
+(b) State the spectral theorem for symmetric $\mathbf{A}$ and use it to characterize when $\mathbf{A}$ is positive semi-definite.
+
+**Solution.**
+
+(a) Symmetry: $(\mathbf{X}^\top\mathbf{X})^\top = \mathbf{X}^\top\mathbf{X}$. PSD: $\mathbf{z}^\top\mathbf{X}^\top\mathbf{X}\mathbf{z} = \|\mathbf{X}\mathbf{z}\|^2\ge0$.
+
+(b) Write $\mathbf{A} = \mathbf{U}\boldsymbol\Lambda\mathbf{U}^\top$ with $\mathbf{U}$ orthogonal. Substituting $\mathbf{w} = \mathbf{U}^\top\mathbf{x}$ (a bijection of $\mathbb{R}^n$),
+$$
+\mathbf{x}^\top\mathbf{A}\mathbf{x} = \mathbf{w}^\top\boldsymbol\Lambda\mathbf{w} = \sum_{i=1}^n \lambda_i w_i^2 .
+$$
+This is $\ge 0$ for all $\mathbf{w}$ iff every $\lambda_i \ge 0$ (take $\mathbf{w} = \mathbf{e}_i$ for necessity). So **PSD $\iff$ all eigenvalues non-negative**.
+
+## 19. The covariance matrix is PSD
+
+*slides 67–71 · Bridge*
+
+**Problem.**
+
+Let $\mathbf{x} \in \mathbb{R}^p$ be a random vector with $\mathbb{E}[\mathbf{x}] = \boldsymbol\mu$.
+
+(a) Define $\operatorname{Cov}(\mathbf{x})$ two ways: as a single matrix expectation, and entry by entry.
+(b) Prove that $\operatorname{Cov}(\mathbf{x})$ is symmetric and positive semi-definite.
+
+**Solution.**
+
+(a) With $\mathbf{z} = \mathbf{x} - \boldsymbol\mu$,
+$$
+\boldsymbol\Sigma \;\triangleq\; \operatorname{Cov}(\mathbf{x}) = \mathbb{E}\!\left[\mathbf{z}\mathbf{z}^\top\right],
+\qquad
+\Sigma_{ij} = \operatorname{Cov}(x_i, x_j) = \mathbb{E}\!\left[(x_i - \mu_i)(x_j - \mu_j)\right].
+$$
+The diagonal holds the variances $\operatorname{Var}(x_i)$.
+
+**(b)** Symmetry is immediate:
+$\boldsymbol\Sigma^\top = \mathbb{E}\!\left[(\mathbf{z}\mathbf{z}^\top)^\top\right] = \mathbb{E}\!\left[\mathbf{z}\mathbf{z}^\top\right] = \boldsymbol\Sigma$.
+
+For positive semi-definiteness, fix an **arbitrary** $\mathbf{a}\in\mathbb{R}^p$ and use linearity of expectation to move it inside:
+
+$$
+\mathbf{a}^\top\boldsymbol\Sigma\mathbf{a}
+= \mathbf{a}^\top\,\mathbb{E}\!\left[\mathbf{z}\mathbf{z}^\top\right]\mathbf{a}
+= \mathbb{E}\!\left[\mathbf{a}^\top\mathbf{z}\mathbf{z}^\top\mathbf{a}\right].
+$$
+
+Now define the **scalar** random variable $Y = \mathbf{a}^\top\mathbf{z}$. Because a scalar equals its own transpose, $\mathbf{a}^\top\mathbf{z} = \mathbf{z}^\top\mathbf{a}$, so the quantity inside the expectation is $Y \cdot Y$:
+
+$$
+\mathbf{a}^\top\boldsymbol\Sigma\mathbf{a} = \mathbb{E}\!\left[Y^2\right].
+$$
+
+**(b, continued)** $Y^2 \ge 0$ for every outcome, and the expected value of a non-negative random variable is non-negative. Therefore
+
+$$
+\mathbf{a}^\top\boldsymbol\Sigma\mathbf{a} = \mathbb{E}\!\left[Y^2\right] \;\ge\; 0
+\qquad\text{for every } \mathbf{a}\in\mathbb{R}^p,
+$$
+
+which is exactly the statement $\boldsymbol\Sigma \succeq 0$. $\blacksquare$
+
+**Remarks.**
+
+> **Note.**
+Since $\mathbb{E}[Y] = \mathbf{a}^\top\mathbb{E}[\mathbf{z}] = 0$, we also have $\mathbb{E}[Y^2] = \operatorname{Var}(Y) = \operatorname{Var}(\mathbf{a}^\top\mathbf{x})$. So the quadratic form is not merely non-negative --- it **is** the variance of the scalar $\mathbf{a}^\top\mathbf{x}$.
+
+> **Note.**
+Same shape as the $\mathbf{X}^\top\mathbf{X}$ exercise: there $\mathbf{X}^\top\mathbf{X} \succeq 0$ because it is of the form $\mathbf{B}^\top\mathbf{B}$; here $\boldsymbol\Sigma \succeq 0$ because it is $\mathbb{E}[\mathbf{z}\mathbf{z}^\top]$ --- the population version of the same statement. Given $n$ observations, the sample covariance $\mathbf{S} = \tfrac{1}{n-1}\mathbf{X}_c^\top\mathbf{X}_c$ is *literally* of the form $\mathbf{B}^\top\mathbf{B}$, so it inherits PSD directly --- and like $\boldsymbol\Sigma$ it is $p\times p$.
+
+
+# Block Matrices
+
+## 20. Block-triangular determinant
+
+*slide 80 · Challenge · Companion review, Q22*
+
+**Problem.**
+
+Let $\mathbf{A}\in\mathbb{R}^{n\times n}$ and $\mathbf{B}\in\mathbb{R}^{n\times p}$ arbitrary, and
+$$
+\mathbf{Y} = \begin{bmatrix}\mathbf{A} & \mathbf{B}\\ \mathbf{0} & \mathbf{I}_p\end{bmatrix}.
+$$
+Prove $\det \mathbf{Y} = \det\mathbf{A}$.
+
+**Solution.**
+
+Fastest route: $\mathbf{D} = \mathbf{I}_p$ is invertible and $\mathbf{C} = \mathbf{0}$, so
+$$
+\det\mathbf{Y} = \det(\mathbf{I}_p)\det(\mathbf{A} - \mathbf{B}\mathbf{I}_p^{-1}\mathbf{0}) = \det\mathbf{A}.
+$$
+
+Without machinery: factor $\mathbf{Y} = \begin{bmatrix}\mathbf{A}&\mathbf{0}\\\mathbf{0}&\mathbf{I}_p\end{bmatrix}\begin{bmatrix}\mathbf{I}_n&\mathbf{A}^{-1}\mathbf{B}\\\mathbf{0}&\mathbf{I}_p\end{bmatrix}$ when $\mathbf{A}$ is invertible; the second factor is unit upper-triangular with determinant 1. Both sides are polynomials in the entries of $\mathbf{A}$, so equality extends to singular $\mathbf{A}$ by continuity.
+

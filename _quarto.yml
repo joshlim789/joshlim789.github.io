@@ -4,6 +4,8 @@ project:
   render:
     - "**/*.qmd"
     - "!**/README*.md"
+    # instructor solution manual: built on demand, never published
+    - "!slides/solutions.qmd"
   resources:
     - files/**
 
