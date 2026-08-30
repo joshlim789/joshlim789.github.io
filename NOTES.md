@@ -42,7 +42,22 @@ duplicate entries.
 - `teaching.qmd` has the STA 199 TA (Fall 2026) and M.S.S. Bootcamp TA
   (Summer 2026) roles that were missing from the CV; those are now on the CV.
 
-### 3. Small inconsistencies
+### 3. Course codes are wrong in four places
+
+Confirmed correct on the CV; the site has the bare numbers. Fix these:
+
+| File | Line | Currently | Should be |
+|---|---|---|---|
+| `index.qmd` | 37 | STA 199 | **STA 199L** |
+| `teaching.qmd` | 10 | STA 199 (Summer 2026, Instructor of Record) | **STA 199L** |
+| `teaching.qmd` | 21 | STA 721: Linear Models | **STA 721L: Linear Models** |
+| `teaching.qmd` | 28 | STA 199 (Fall 2026, Teaching Assistant) | **STA 199CCL** |
+
+Note the summer and fall entries take *different* codes — 199L for the course
+Josh taught as instructor of record, 199CCL for the fall section he TAs. They
+are not a typo for each other.
+
+### 4. Small inconsistencies
 
 - `index.qmd` says "third year Ph.D. candidate"; the CV says Ph.D. student.
   Pick one.
