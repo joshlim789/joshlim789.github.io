@@ -30,19 +30,16 @@ Fixed in that pass:
 - **Ph.D. candidate, not student.** The site had this right and the CV had it
   wrong; the CV was corrected on 2026-08-30. Do not change the site to
   "student."
+- **No resume is linked, by decision.** Two exist in the `cv` repo —
+  `resume-ds.tex` and `resume-rs.tex` — and Josh chose on 2026-08-30 to publish
+  neither. Publishing both side by side advertises that the targeting is
+  adjustable and puts a reader from one track in front of the version written
+  for the other; the resumes go out per application instead. Do not add a
+  resume link to the site.
 
 ## Still open
 
-### 1. Which resume, if any, goes on the site?
-
-There are now two: `resume-ds.tex` (data scientist) and `resume-rs.tex`
-(research scientist), both targeting summer 2027 internships. Publishing both
-side by side is a bad idea — it advertises that the targeting is adjustable,
-and a reader from one track sees the version written for the other. Either
-publish one, or publish neither and send them directly. Nothing is linked from
-the site today.
-
-### 2. The CV PDF is still a manual copy
+### 1. The CV PDF is still a manual copy
 
 `cv.qmd` embeds `files/Lim_Joshua_CV.pdf`, which has to be re-copied by hand
 after every CV change. The build in the `cv` repo publishes a rolling release,
