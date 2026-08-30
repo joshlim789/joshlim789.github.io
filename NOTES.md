@@ -27,17 +27,13 @@ Fixed in that pass:
 - **Research interest tags** on `index.qmd` widened to match the CV.
 - `files/Lim_Joshua_CV.pdf` replaced with a fresh build; `cv.qmd` date bumped
   to August 2026.
+- **Ph.D. candidate, not student.** The site had this right and the CV had it
+  wrong; the CV was corrected on 2026-08-30. Do not change the site to
+  "student."
 
 ## Still open
 
-### 1. "Ph.D. candidate" or "Ph.D. student"?
-
-`index.qmd` says **candidate** in both the subtitle and the opening line. The
-CV says **student**. These are not interchangeable — candidacy normally means
-quals are passed — so this was left alone rather than guessed at. Pick one and
-make both documents agree.
-
-### 2. Which resume, if any, goes on the site?
+### 1. Which resume, if any, goes on the site?
 
 There are now two: `resume-ds.tex` (data scientist) and `resume-rs.tex`
 (research scientist), both targeting summer 2027 internships. Publishing both
@@ -46,7 +42,7 @@ and a reader from one track sees the version written for the other. Either
 publish one, or publish neither and send them directly. Nothing is linked from
 the site today.
 
-### 3. The CV PDF is still a manual copy
+### 2. The CV PDF is still a manual copy
 
 `cv.qmd` embeds `files/Lim_Joshua_CV.pdf`, which has to be re-copied by hand
 after every CV change. The build in the `cv` repo publishes a rolling release,
