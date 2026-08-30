@@ -1,70 +1,60 @@
-# Site notes — pending updates
+# Site notes — pending decisions
 
-Working notes for things the site needs, kept out of the rendered site
-(`_quarto.yml` renders `**/*.qmd` only, so a `.md` file here is not published).
+Working notes, kept out of the rendered site (`_quarto.yml` renders `**/*.qmd`
+only, so a `.md` file here is not published).
 
-## The site and the CV disagree; the CV is right
+## Brought in line with the CV on 2026-08-30
 
-The CV (github.com/joshlim789/cv) was reorganized around the methods work, and
-`research.qmd` has not caught up. When you next touch the site, bring it in
-line with `cv.tex` rather than the other way around.
+The site had drifted from `github.com/joshlim789/cv`, which is authoritative.
+Fixed in that pass:
 
-### 1. Publications vs. conference abstracts — the important one
+- **Publications vs. conference abstracts.** `research.qmd` had listed the two
+  *JACI* supplement abstracts under Publications *and* again under Posters and
+  presentations — the same work counted twice. Publications now holds only the
+  peer-reviewed *AJNR* paper; everything else sits once under "Conference
+  abstracts and presentations." **Keep it that way.**
+- **Working papers** and **Software** sections added to `research.qmd`.
+- **Honors** section added to `index.qmd` (FutureBAProf, Dean's Graduate
+  Fellowship, summa cum laude).
+- **FutureBAProf** invited pitch added under conference abstracts.
+- **Course codes** corrected to STA 199L, STA 199CCL, STA 721L. Note the summer
+  and fall entries take *different* codes — 199L for the course Josh taught as
+  instructor of record, 199CCL for the fall section he TAs. Not a typo for each
+  other; do not find-and-replace them together.
+- **Johnson C. Smith workshop** moved out of "Mentoring and service" into its
+  own institution heading, matching the CV's placement under teaching, and
+  expanded with the NSF funding, the 12 students, and the base-R materials.
+- **Research interest tags** on `index.qmd` widened to match the CV.
+- `files/Lim_Joshua_CV.pdf` replaced with a fresh build; `cv.qmd` date bumped
+  to August 2026.
 
-`research.qmd` lists three items under **Publications**, but two of them are
-supplement abstracts, not peer-reviewed papers:
+## Still open
 
-- Tirumalasetty et al. (2025), *JACI* 155(2 Suppl.), AB309 — AAAAI/WAO abstract
-- Lim et al. (2023), *JACI* 151(2) — AAAAI abstract
+### 1. "Ph.D. candidate" or "Ph.D. student"?
 
-Both are *also* listed again under **Posters and presentations**, so the same
-work is counted twice on one page. The CV fixes this: one
-`Peer-Reviewed Publications` section holding only the *AJNR* paper, and a
-separate `Conference Abstracts and Presentations` section holding everything
-else, with each item appearing exactly once.
+`index.qmd` says **candidate** in both the subtitle and the opening line. The
+CV says **student**. These are not interchangeable — candidacy normally means
+quals are passed — so this was left alone rather than guessed at. Pick one and
+make both documents agree.
 
-Do the same here: leave only the *AJNR* paper under Publications, rename the
-other section to "Conference abstracts and presentations," and delete the
-duplicate entries.
+### 2. Which resume, if any, goes on the site?
 
-### 2. Missing since the site was last updated
+There are now two: `resume-ds.tex` (data scientist) and `resume-rs.tex`
+(research scientist), both targeting summer 2027 internships. Publishing both
+side by side is a bad idea — it advertises that the targeting is adjustable,
+and a reader from one track sees the version written for the other. Either
+publish one, or publish neither and send them directly. Nothing is linked from
+the site today.
 
-- **Working papers** — no section for them at all. Two are in preparation:
-  *Bayesian Treatment Imputation for CATE Estimation Under Missing Binary
-  Treatments* (with Reiter), and *Bayesian Causal Inference: A Practical Guide*
-  (with Li), targeted at *JSS*.
-- **Software** — no section. The `BayesCausal` R package belongs here once the
-  repo is public.
-- **FutureBAProf** (Tippie College of Business, Aug 2026) — selected from 117
-  applicants; the invited pitch is not listed under presentations.
-- **Honors** — no section for FutureBAProf, the Dean's Graduate Fellowship, or
-  summa cum laude.
-- `teaching.qmd` has the STA 199 TA (Fall 2026) and M.S.S. Bootcamp TA
-  (Summer 2026) roles that were missing from the CV; those are now on the CV.
+### 3. The CV PDF is still a manual copy
 
-### 3. Course codes are wrong in four places
+`cv.qmd` embeds `files/Lim_Joshua_CV.pdf`, which has to be re-copied by hand
+after every CV change. The build in the `cv` repo publishes a rolling release,
+so this could point at
 
-Confirmed correct on the CV; the site has the bare numbers. Fix these:
+```
+https://github.com/joshlim789/cv/releases/latest/download/cv.pdf
+```
 
-| File | Line | Currently | Should be |
-|---|---|---|---|
-| `index.qmd` | 37 | STA 199 | **STA 199L** |
-| `teaching.qmd` | 10 | STA 199 (Summer 2026, Instructor of Record) | **STA 199L** |
-| `teaching.qmd` | 21 | STA 721: Linear Models | **STA 721L: Linear Models** |
-| `teaching.qmd` | 28 | STA 199 (Fall 2026, Teaching Assistant) | **STA 199CCL** |
-
-Note the summer and fall entries take *different* codes — 199L for the course
-Josh taught as instructor of record, 199CCL for the fall section he TAs. They
-are not a typo for each other.
-
-### 4. Small inconsistencies
-
-- `index.qmd` says "third year Ph.D. candidate"; the CV says Ph.D. student.
-  Pick one.
-- `teaching.qmd` files the Johnson C. Smith workshop under "Mentoring and
-  service"; the CV has it under Teaching Experience, which fits better.
-- `cv.qmd` says "Last updated April 2026" and embeds `files/Lim_Joshua_CV.pdf`,
-  a stale copy. The build in the `cv` repo publishes a rolling release, so this
-  can point at
-  `https://github.com/joshlim789/cv/releases/latest/download/cv.pdf`
-  and stop going out of date — once that repo is public.
+and stop going stale — but that repo is **private**, so the URL 404s for
+visitors. Switch to it if and when the repo is made public.

@@ -7,7 +7,7 @@ toc-title: "On this page"
 ## Duke University
 
 ::: {.entry}
-[STA 199: Introduction to Data Science and Statistical Thinking]{.entry-title} [Summer 2026]{.entry-date}
+[STA 199L: Introduction to Data Science and Statistical Thinking]{.entry-title} [Summer 2026]{.entry-date}
 [Department of Statistical Science · *Instructor of Record*]{.entry-meta}
 
 Full responsibility for a core statistics course carrying Duke credit — hand-crafted lectures,
@@ -18,20 +18,32 @@ labs, homework, and exams. [Course site](https://sta199-su26-2.github.io/)
 [Ph.D. Bootcamp]{.entry-title} [Summer 2026]{.entry-date}
 [Department of Statistical Science · *Instructor*]{.entry-meta}
 
-A one-day linear algebra review preparing incoming Ph.D. students for STA 721: Linear Models,
+A one-day linear algebra review preparing incoming Ph.D. students for STA 721L: Linear Models,
 built around the geometry behind projection, the spectral theorem, and the SVD, with practice
 problems and worked solutions throughout.
 [Slides](slides/linear-algebra-bootcamp.html)
 :::
 
 ::: {.entry}
-[STA 199: Introduction to Data Science and Statistical Thinking]{.entry-title} [Fall 2026]{.entry-date}
+[STA 199CCL: Introduction to Data Science and Statistical Thinking]{.entry-title} [Fall 2026]{.entry-date}
 [Department of Statistical Science · *Teaching Assistant*]{.entry-meta}
 :::
 
 ::: {.entry}
 [M.S.S. Bootcamp]{.entry-title} [Summer 2026]{.entry-date}
 [Department of Statistical Science · *Teaching Assistant*]{.entry-meta}
+:::
+
+## Johnson C. Smith University
+
+::: {.entry}
+[Introduction to Statistics for Health Science Using R]{.entry-title} [May 2026]{.entry-date}
+[*Instructor* · NSF-funded workshop]{.entry-meta}
+
+Designed and taught a one-day workshop introducing statistics and R to 12 undergraduates with no
+prior programming experience, built around an NHANES public-health case study. Wrote six slide
+modules and paired instructor/student scripts in base R, so students needed no package
+installation to follow along.
 :::
 
 ## UCLA
@@ -46,14 +58,6 @@ and graded for sections of over 180 students.
 :::
 
 ## Mentoring and service
-
-::: {.entry}
-[Introduction to Statistics for Health Science Using R]{.entry-title} [May 2026]{.entry-date}
-[Johnson C. Smith University · *Workshop Instructor*]{.entry-meta}
-
-Designed and taught a one-day workshop introducing statistics and R to undergraduates with no
-prior programming experience, built around a public-health case study.
-:::
 
 ::: {.entry}
 [Introduction to Undergraduate Research Workshop Mentor]{.entry-title} [May 2025]{.entry-date}

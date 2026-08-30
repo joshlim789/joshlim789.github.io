@@ -34,7 +34,7 @@ Statistics and Data Science. Alongside my methods work I collaborate as a biosta
 Duke, UC San Diego, and previously Stanford University Schools of Medicine.
 
 I am highly passionate about teaching. In Summer 2026 I was instructor of record for
-[STA 199: Introduction to Data Science and Statistical Thinking](https://sta199-su26-2.github.io/).
+[STA 199L: Introduction to Data Science and Statistical Thinking](https://sta199-su26-2.github.io/).
 
 Outside the department you'll find me on the court with Duke Men's Club Volleyball, performing
 with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in
@@ -47,7 +47,8 @@ ACC country.
 
 ## Research interests
 
-[Causal inference]{.tag} [Missing data]{.tag} [Biostatistics]{.tag}
+[Causal inference]{.tag} [Heterogeneous treatment effects]{.tag} [Missing data]{.tag}
+[Statistical computing]{.tag} [Biostatistics]{.tag}
 
 ## Education
 
@@ -59,4 +60,21 @@ ACC country.
 ::: {.entry}
 [B.S. Applied Mathematics, Statistics and Data Science]{.entry-title} [2024]{.entry-date}
 [University of California, Los Angeles]{.entry-meta}
+:::
+
+## Honors
+
+::: {.entry}
+[Selected Participant, FutureBAProf Workshop]{.entry-title} [2026]{.entry-date}
+[Tippie College of Business, University of Iowa · one of 22 selected from 117 applicants]{.entry-meta}
+:::
+
+::: {.entry}
+[Dean's Graduate Fellowship]{.entry-title} [2024]{.entry-date}
+[Duke University · awarded to incoming Ph.D. students with a record of excellent leadership]{.entry-meta}
+:::
+
+::: {.entry}
+[Summa Cum Laude]{.entry-title} [2024]{.entry-date}
+[University of California, Los Angeles · Dean's Honor List, Fall 2020 – Spring 2024]{.entry-meta}
 :::

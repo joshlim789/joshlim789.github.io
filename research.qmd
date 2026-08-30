@@ -40,6 +40,26 @@ toc-title: "On this page"
 
 :::::
 
+## Working papers
+
+::: {.entry}
+[Bayesian Treatment Imputation for CATE Estimation Under Missing Binary Treatments]{.entry-title} [In preparation]{.entry-date}
+[**Lim, J.** & Reiter, J. P.]{.entry-meta}
+
+A fully Bayesian data augmentation Gibbs sampler that jointly updates a BART outcome model, a
+probit propensity model, and partially missing binary treatments in a single chain, propagating
+the parameter uncertainty that sequential multiple imputation discards.
+:::
+
+::: {.entry}
+[Bayesian Causal Inference: A Practical Guide]{.entry-title} [In preparation]{.entry-date}
+[**Lim, J.** & Li, F. · for the *Journal of Statistical Software*]{.entry-meta}
+
+Introduces **BayesCausal**, an R package for Bayesian estimation of average and heterogeneous
+treatment effects under unconfoundedness, instrumental variables, and panel designs behind a
+single formula interface, with Stan/HMC posterior inference.
+:::
+
 ## Publications
 
 ::: {.entry}
@@ -49,43 +69,44 @@ toc-title: "On this page"
 [DOI: 10.3174/ajnr.A8972](https://doi.org/10.3174/ajnr.A8972)
 :::
 
-::: {.entry}
-[Associations of Air Pollution and Heat with Asthma Healthcare Visits in California Counties – An Ecological Study]{.entry-title} [2025]{.entry-date}
-[Tirumalasetty, J., **Lim, J.**, Eggert, L., Arroyo, A., & Nassikas, N. · *Journal of Allergy and Clinical Immunology*, 155(2 Suppl.), AB309]{.entry-meta}
+## Conference abstracts and presentations
 
-[DOI: 10.1016/j.jaci.2024.12.309](https://doi.org/10.1016/j.jaci.2024.12.309)
+::: {.entry}
+[Heterogeneous treatment effect estimation with missing data]{.entry-title} [Aug 2026]{.entry-date}
+[FutureBAProf Workshop, Tippie College of Business, University of Iowa · invited research pitch]{.entry-meta}
 :::
 
 ::: {.entry}
-[The Impact of Persistent Gastrointestinal Symptoms on Completion of Oral Immunotherapy in Clinical Trials]{.entry-title} [2023]{.entry-date}
-[**Lim, J.**, Cao, S., Chinthrajah, S., & Sindher, S. · *Journal of Allergy and Clinical Immunology*, 151(2)]{.entry-meta}
-
-[DOI: 10.1016/j.jaci.2022.12.110](https://doi.org/10.1016/j.jaci.2022.12.110)
-:::
-
-## Posters and presentations
-
-::: {.entry}
-[Maximizing the Conspicuity of CSF-Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects]{.entry-title} [Nov–Dec 2025]{.entry-date}
+[Maximizing the Conspicuity of CSF–Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects]{.entry-title} [Dec 2025]{.entry-date}
 [Radiological Society of North America Annual Meeting]{.entry-meta}
 :::
 
 ::: {.entry}
-[Enhancing Conspicuity of CSF-Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects]{.entry-title} [Jun 2025]{.entry-date}
+[Enhancing Conspicuity of CSF–Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects]{.entry-title} [Jun 2025]{.entry-date}
 [2025 Intracranial Hypotension Conference]{.entry-meta}
 :::
 
 ::: {.entry}
 [Associations of Air Pollution and Heat with Asthma Healthcare Visits in California Counties – An Ecological Study]{.entry-title} [Mar 2025]{.entry-date}
-[2025 AAAAI/WAO Joint Congress]{.entry-meta}
+[Tirumalasetty, J., **Lim, J.**, Eggert, L., Arroyo, A., & Nassikas, N. · AAAAI/WAO Joint Congress; published in *Journal of Allergy and Clinical Immunology*, 155(2 Suppl.), AB309]{.entry-meta}
+
+[DOI: 10.1016/j.jaci.2024.12.309](https://doi.org/10.1016/j.jaci.2024.12.309)
 :::
 
 ::: {.entry}
-[Persistent gastrointestinal symptoms do not impact oral immunotherapy completion]{.entry-title} [Feb 2023]{.entry-date}
-[2023 AAAAI Annual Meeting]{.entry-meta}
+[The Impact of Persistent Gastrointestinal Symptoms on Completion of Oral Immunotherapy in Clinical Trials]{.entry-title} [Feb 2023]{.entry-date}
+[**Lim, J.**, Cao, S., Chinthrajah, S., & Sindher, S. · AAAAI Annual Meeting; published in *Journal of Allergy and Clinical Immunology*, 151(2). Also presented at GA²LEN ANACARE GAFA, Sep 2022]{.entry-meta}
+
+[DOI: 10.1016/j.jaci.2022.12.110](https://doi.org/10.1016/j.jaci.2022.12.110)
 :::
 
+## Software
+
 ::: {.entry}
-[The impact of persistent gastrointestinal symptoms on completion of oral immunotherapy in clinical trials]{.entry-title} [Sep 2022]{.entry-date}
-[GALEN Anacare GAFA 2022]{.entry-meta}
+[BayesCausal]{.entry-title} [R package]{.entry-date}
+[Bayesian causal inference under unconfounded, instrumental variable, and panel designs]{.entry-meta}
+
+One formula interface across three identification settings, with structured priors, a selectable
+estimator, and Stan/HMC posterior inference. Manuscript in preparation for the
+*Journal of Statistical Software*.
 :::
