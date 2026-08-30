@@ -4,14 +4,21 @@
     "href": "teaching.html",
     "title": "Teaching",
     "section": "",
-    "text": "STA 199: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site\n\n\nPh.D. Bootcamp Summer 2026 Department of Statistical Science · Instructor\nA one-day linear algebra review preparing incoming Ph.D. students for STA 721: Linear Models, built around the geometry behind projection, the spectral theorem, and the SVD, with practice problems and worked solutions throughout. Slides\n\n\nSTA 199: Introduction to Data Science and Statistical Thinking Fall 2026 Department of Statistical Science · Teaching Assistant\n\n\nM.S.S. Bootcamp Summer 2026 Department of Statistical Science · Teaching Assistant"
+    "text": "STA 199L: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site\n\n\nPh.D. Bootcamp Summer 2026 Department of Statistical Science · Instructor\nA one-day linear algebra review preparing incoming Ph.D. students for STA 721L: Linear Models, built around the geometry behind projection, the spectral theorem, and the SVD, with practice problems and worked solutions throughout. Slides\n\n\nSTA 199CCL: Introduction to Data Science and Statistical Thinking Fall 2026 Department of Statistical Science · Teaching Assistant\n\n\nM.S.S. Bootcamp Summer 2026 Department of Statistical Science · Teaching Assistant"
   },
   {
     "objectID": "teaching.html#duke-university",
     "href": "teaching.html#duke-university",
     "title": "Teaching",
     "section": "",
-    "text": "STA 199: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site\n\n\nPh.D. Bootcamp Summer 2026 Department of Statistical Science · Instructor\nA one-day linear algebra review preparing incoming Ph.D. students for STA 721: Linear Models, built around the geometry behind projection, the spectral theorem, and the SVD, with practice problems and worked solutions throughout. Slides\n\n\nSTA 199: Introduction to Data Science and Statistical Thinking Fall 2026 Department of Statistical Science · Teaching Assistant\n\n\nM.S.S. Bootcamp Summer 2026 Department of Statistical Science · Teaching Assistant"
+    "text": "STA 199L: Introduction to Data Science and Statistical Thinking Summer 2026 Department of Statistical Science · Instructor of Record\nFull responsibility for a core statistics course carrying Duke credit — hand-crafted lectures, labs, homework, and exams. Course site\n\n\nPh.D. Bootcamp Summer 2026 Department of Statistical Science · Instructor\nA one-day linear algebra review preparing incoming Ph.D. students for STA 721L: Linear Models, built around the geometry behind projection, the spectral theorem, and the SVD, with practice problems and worked solutions throughout. Slides\n\n\nSTA 199CCL: Introduction to Data Science and Statistical Thinking Fall 2026 Department of Statistical Science · Teaching Assistant\n\n\nM.S.S. Bootcamp Summer 2026 Department of Statistical Science · Teaching Assistant"
+  },
+  {
+    "objectID": "teaching.html#johnson-c.-smith-university",
+    "href": "teaching.html#johnson-c.-smith-university",
+    "title": "Teaching",
+    "section": "Johnson C. Smith University",
+    "text": "Johnson C. Smith University\n\nIntroduction to Statistics for Health Science Using R May 2026 Instructor · NSF-funded workshop\nDesigned and taught a one-day workshop introducing statistics and R to 12 undergraduates with no prior programming experience, built around an NHANES public-health case study. Wrote six slide modules and paired instructor/student scripts in base R, so students needed no package installation to follow along."
   },
   {
     "objectID": "teaching.html#ucla",
@@ -25,7 +32,7 @@
     "href": "teaching.html#mentoring-and-service",
     "title": "Teaching",
     "section": "Mentoring and service",
-    "text": "Mentoring and service\n\nIntroduction to Statistics for Health Science Using R May 2026 Johnson C. Smith University · Workshop Instructor\nDesigned and taught a one-day workshop introducing statistics and R to undergraduates with no prior programming experience, built around a public-health case study.\n\n\nIntroduction to Undergraduate Research Workshop Mentor May 2025 Duke University, Department of Statistical Science\nMentored a team of six undergraduates through a full applied statistical analysis of perceived quality of life in Durham, NC, and ran mini-workshops on research practice, coding, and collaboration for all 20+ participants. Completed additional mentoring training under Dr. Joan Combs Durso.\n\n\nGraduate Consultative Committee Aug 2024 – present Duke University, Department of Statistical Science\nWorking with the director of graduate studies and department chair on the academic and personal needs of more than 50 Ph.D. students; organizing admitted-student open houses and department community events."
+    "text": "Mentoring and service\n\nIntroduction to Undergraduate Research Workshop Mentor May 2025 Duke University, Department of Statistical Science\nMentored a team of six undergraduates through a full applied statistical analysis of perceived quality of life in Durham, NC, and ran mini-workshops on research practice, coding, and collaboration for all 20+ participants. Completed additional mentoring training under Dr. Joan Combs Durso.\n\n\nGraduate Consultative Committee Aug 2024 – present Duke University, Department of Statistical Science\nWorking with the director of graduate studies and department chair on the academic and personal needs of more than 50 Ph.D. students; organizing admitted-student open houses and department community events."
   },
   {
     "objectID": "teaching.html#earlier-teaching",
@@ -49,46 +56,60 @@
     "text": "Research Assistant May 2025 – present Duke University, Department of Statistical Science\n\n\nBiostatistician Dec 2025 – present UC San Diego School of Medicine\n\n\nBiostatistician May 2025 – present Duke University School of Medicine\n\n\nBiostatistician and Data Manager Jun 2024 – Mar 2025 Stanford University School of Medicine\n\n\nUndergraduate Researcher Feb 2023 – Jun 2024 Qing Zhou Research Group, UCLA\n\n\nBiostatistics Researcher Jun 2022 – May 2023 Stanford University School of Medicine"
   },
   {
+    "objectID": "research.html#working-papers",
+    "href": "research.html#working-papers",
+    "title": "Research",
+    "section": "Working papers",
+    "text": "Working papers\n\nBayesian Treatment Imputation for CATE Estimation Under Missing Binary Treatments In preparation Lim, J. & Reiter, J. P.\nA fully Bayesian data augmentation Gibbs sampler that jointly updates a BART outcome model, a probit propensity model, and partially missing binary treatments in a single chain, propagating the parameter uncertainty that sequential multiple imputation discards.\n\n\nBayesian Causal Inference: A Practical Guide In preparation Lim, J. & Li, F. · for the Journal of Statistical Software\nIntroduces BayesCausal, an R package for Bayesian estimation of average and heterogeneous treatment effects under unconfoundedness, instrumental variables, and panel designs behind a single formula interface, with Stan/HMC posterior inference."
+  },
+  {
     "objectID": "research.html#publications",
     "href": "research.html#publications",
     "title": "Research",
     "section": "Publications",
-    "text": "Publications\n\nMaximizing the Conspicuity of CSF–Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects 2025 Zhu, D., Kranz, P. G., Edelmuth, D. G. L., Lim, J., Christensen, S., Madhavan, A. A., & Amrhein, T. J. · American Journal of Neuroradiology\nDOI: 10.3174/ajnr.A8972\n\n\nAssociations of Air Pollution and Heat with Asthma Healthcare Visits in California Counties – An Ecological Study 2025 Tirumalasetty, J., Lim, J., Eggert, L., Arroyo, A., & Nassikas, N. · Journal of Allergy and Clinical Immunology, 155(2 Suppl.), AB309\nDOI: 10.1016/j.jaci.2024.12.309\n\n\nThe Impact of Persistent Gastrointestinal Symptoms on Completion of Oral Immunotherapy in Clinical Trials 2023 Lim, J., Cao, S., Chinthrajah, S., & Sindher, S. · Journal of Allergy and Clinical Immunology, 151(2)\nDOI: 10.1016/j.jaci.2022.12.110"
+    "text": "Publications\n\nMaximizing the Conspicuity of CSF–Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects 2025 Zhu, D., Kranz, P. G., Edelmuth, D. G. L., Lim, J., Christensen, S., Madhavan, A. A., & Amrhein, T. J. · American Journal of Neuroradiology\nDOI: 10.3174/ajnr.A8972"
   },
   {
-    "objectID": "research.html#posters-and-presentations",
-    "href": "research.html#posters-and-presentations",
+    "objectID": "research.html#conference-abstracts-and-presentations",
+    "href": "research.html#conference-abstracts-and-presentations",
     "title": "Research",
-    "section": "Posters and presentations",
-    "text": "Posters and presentations\n\nMaximizing the Conspicuity of CSF-Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects Nov–Dec 2025 Radiological Society of North America Annual Meeting\n\n\nEnhancing Conspicuity of CSF-Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects Jun 2025 2025 Intracranial Hypotension Conference\n\n\nAssociations of Air Pollution and Heat with Asthma Healthcare Visits in California Counties – An Ecological Study Mar 2025 2025 AAAAI/WAO Joint Congress\n\n\nPersistent gastrointestinal symptoms do not impact oral immunotherapy completion Feb 2023 2023 AAAAI Annual Meeting\n\n\nThe impact of persistent gastrointestinal symptoms on completion of oral immunotherapy in clinical trials Sep 2022 GALEN Anacare GAFA 2022"
+    "section": "Conference abstracts and presentations",
+    "text": "Conference abstracts and presentations\n\nHeterogeneous treatment effect estimation with missing data Aug 2026 FutureBAProf Workshop, Tippie College of Business, University of Iowa · invited research pitch\n\n\nMaximizing the Conspicuity of CSF–Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects Dec 2025 Radiological Society of North America Annual Meeting\n\n\nEnhancing Conspicuity of CSF–Venous Fistulas on CT Myelography: Assessment of Contrast Density and Timing Effects Jun 2025 2025 Intracranial Hypotension Conference\n\n\nAssociations of Air Pollution and Heat with Asthma Healthcare Visits in California Counties – An Ecological Study Mar 2025 Tirumalasetty, J., Lim, J., Eggert, L., Arroyo, A., & Nassikas, N. · AAAAI/WAO Joint Congress; published in Journal of Allergy and Clinical Immunology, 155(2 Suppl.), AB309\nDOI: 10.1016/j.jaci.2024.12.309\n\n\nThe Impact of Persistent Gastrointestinal Symptoms on Completion of Oral Immunotherapy in Clinical Trials Feb 2023 Lim, J., Cao, S., Chinthrajah, S., & Sindher, S. · AAAAI Annual Meeting; published in Journal of Allergy and Clinical Immunology, 151(2). Also presented at GA²LEN ANACARE GAFA, Sep 2022\nDOI: 10.1016/j.jaci.2022.12.110"
+  },
+  {
+    "objectID": "research.html#software",
+    "href": "research.html#software",
+    "title": "Research",
+    "section": "Software",
+    "text": "Software\n\nBayesCausal R package Bayesian causal inference under unconfounded, instrumental variable, and panel designs\nOne formula interface across three identification settings, with structured priors, a selectable estimator, and Stan/HMC posterior inference. Manuscript in preparation for the Journal of Statistical Software."
   },
   {
     "objectID": "cv.html",
     "href": "cv.html",
     "title": "Curriculum Vitae",
     "section": "",
-    "text": "Download PDF    Last updated April 2026.\n\n\nYour browser can’t display embedded PDFs. &lt;a href=\"files/Lim_Joshua_CV.pdf\"&gt;Download the CV instead&lt;/a&gt;."
+    "text": "Download PDF    Last updated August 2026.\n\n\nYour browser can’t display embedded PDFs. &lt;a href=\"files/Lim_Joshua_CV.pdf\"&gt;Download the CV instead&lt;/a&gt;."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Joshua Lim",
     "section": "",
-    "text": "I’m a third year Ph.D. candidate in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits at the intersection of causal inference and missing data. Specifically, I seek to develop Bayesian methodology that can estimate heterogeneous treatment effects in the presence of missing data.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke, UC San Diego, and previously Stanford University Schools of Medicine.\nI am highly passionate about teaching. In Summer 2026 I was instructor of record for STA 199: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
+    "text": "I’m a third year Ph.D. candidate in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits at the intersection of causal inference and missing data. Specifically, I seek to develop Bayesian methodology that can estimate heterogeneous treatment effects in the presence of missing data.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke, UC San Diego, and previously Stanford University Schools of Medicine.\nI am highly passionate about teaching. In Summer 2026 I was instructor of record for STA 199L: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
   },
   {
     "objectID": "index.html#hi-im-josh",
     "href": "index.html#hi-im-josh",
     "title": "Joshua Lim",
     "section": "",
-    "text": "I’m a third year Ph.D. candidate in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits at the intersection of causal inference and missing data. Specifically, I seek to develop Bayesian methodology that can estimate heterogeneous treatment effects in the presence of missing data.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke, UC San Diego, and previously Stanford University Schools of Medicine.\nI am highly passionate about teaching. In Summer 2026 I was instructor of record for STA 199: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
+    "text": "I’m a third year Ph.D. candidate in the Department of Statistical Science at Duke University, working with Jerry Reiter and Fan Li.\nMy research sits at the intersection of causal inference and missing data. Specifically, I seek to develop Bayesian methodology that can estimate heterogeneous treatment effects in the presence of missing data.\nBefore Duke I graduated summa cum laude from UCLA in 2024 with a B.S. in Applied Mathematics, Statistics and Data Science. Alongside my methods work I collaborate as a biostatistician with Duke, UC San Diego, and previously Stanford University Schools of Medicine.\nI am highly passionate about teaching. In Summer 2026 I was instructor of record for STA 199L: Introduction to Data Science and Statistical Thinking.\nOutside the department you’ll find me on the court with Duke Men’s Club Volleyball, performing with Duke Chinese Dance, flipping with Duke Gymnastics, or loudly defending UCLA sports deep in ACC country.\n  Download CV  See my research"
   },
   {
     "objectID": "index.html#research-interests",
     "href": "index.html#research-interests",
     "title": "Joshua Lim",
     "section": "Research interests",
-    "text": "Research interests\nCausal inference Missing data Biostatistics"
+    "text": "Research interests\nCausal inference Heterogeneous treatment effects Missing data Statistical computing Biostatistics"
   },
   {
     "objectID": "index.html#education",
@@ -96,5 +117,12 @@
     "title": "Joshua Lim",
     "section": "Education",
     "text": "Education\n\nPh.D. Statistical Science Expected 2029 Duke University · also a Certificate in College Teaching\n\n\nB.S. Applied Mathematics, Statistics and Data Science 2024 University of California, Los Angeles"
+  },
+  {
+    "objectID": "index.html#honors",
+    "href": "index.html#honors",
+    "title": "Joshua Lim",
+    "section": "Honors",
+    "text": "Honors\n\nSelected Participant, FutureBAProf Workshop 2026 Tippie College of Business, University of Iowa · one of 22 selected from 117 applicants\n\n\nDean’s Graduate Fellowship 2024 Duke University · awarded to incoming Ph.D. students with a record of excellent leadership\n\n\nSumma Cum Laude 2024 University of California, Los Angeles · Dean’s Honor List, Fall 2020 – Spring 2024"
   }
 ]
