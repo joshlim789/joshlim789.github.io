@@ -21,9 +21,11 @@ Your notes are now on the page. What I changed while transcribing them:
   school's actual name
 
 **Two things to check**
-- The LA Times link is attached to the phrase "UCLA gymnastics program." If
-  **you** are the superfan in that article, say so and I'll rewrite the
-  sentence to claim it — it's a much better detail than a bare link.
+- ~~The LA Times link~~ **Resolved.** Josh confirmed he is the superfan in the
+  article, so the line now claims it outright: "My fandom for UCLA gymnastics
+  got sufficiently out of hand that the LA Times wrote about it." The story is
+  paywalled, so if it contains a specific detail worth naming — a nickname, a
+  streak, something you were known for — add it here and I'll work it in.
 - I dropped the old "Elsewhere" section, since the UCLA fandom line now lives
   under Gymnastics. Say the word if you want it back.
 
