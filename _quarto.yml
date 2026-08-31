@@ -8,6 +8,8 @@ project:
     - "!slides/solutions.qmd"
   resources:
     - files/**
+    # anything dropped in here is published, referenced by a page or not
+    - img/other/**
 
 website:
   title: "Joshua Lim"
@@ -32,6 +34,8 @@ website:
         text: Teaching
       - href: cv.qmd
         text: CV
+      - href: other.qmd
+        text: Other
     right:
       - icon: github
         href: https://github.com/joshlim789

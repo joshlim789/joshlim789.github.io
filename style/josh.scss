@@ -262,5 +262,51 @@ main a:not(.btn):not(.nav-link) {
   a { color: #ffffff; text-decoration: underline; }
 }
 
+// --------------------------------------------------------------- photo grid
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.1rem;
+  margin: 1.3rem 0 2.2rem;
+}
+
+.gallery figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: $border-radius;
+  border: 1px solid rgba($duke-navy, 0.18);
+}
+
+// a portrait-orientation photo, so tall shots aren't cropped to ribbons
+.gallery figure.tall img { aspect-ratio: 3 / 4; }
+
+.gallery figcaption {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: $duke-graphite;
+}
+
+// one photo on its own, full width of the column
+.photo-wide img {
+  display: block;
+  width: 100%;
+  border-radius: $border-radius;
+  border: 1px solid rgba($duke-navy, 0.18);
+}
+.photo-wide figcaption {
+  font-size: 0.85rem;
+  color: $duke-graphite;
+  margin-top: 0.45rem;
+}
+
 // Wide content should scroll inside itself, never the page
 .table-responsive, pre { overflow-x: auto; }
