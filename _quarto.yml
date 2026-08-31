@@ -10,6 +10,9 @@ project:
     - files/**
     # anything dropped in here is published, referenced by a page or not
     - img/other/**
+    # ...except the folder's own notes and macOS cruft
+    - "!img/other/README.md"
+    - "!img/other/.DS_Store"
 
 website:
   title: "Joshua Lim"
