@@ -16,7 +16,7 @@ about:
       href: https://github.com/joshlim789
     - icon: linkedin
       text: LinkedIn
-      href: https://www.linkedin.com/in/joshua-lim-47619a229/
+      href: https://www.linkedin.com/in/joshua-lim789/
 ---
 
 ## Hi, I'm Josh
