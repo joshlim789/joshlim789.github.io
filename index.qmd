@@ -53,7 +53,7 @@ ACC country.
 ## Education
 
 ::: {.entry}
-[Ph.D. Statistical Science]{.entry-title} [Expected 2029]{.entry-date}
+[Ph.D. Statistical Science]{.entry-title} [Expected 2028]{.entry-date}
 [Duke University · also a Certificate in College Teaching]{.entry-meta}
 :::
 
