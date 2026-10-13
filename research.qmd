@@ -90,7 +90,7 @@ single formula interface, with Stan/HMC posterior inference.
 [Associations of Air Pollution and Heat with Asthma Healthcare Visits in California Counties – An Ecological Study]{.entry-title} [Mar 2025]{.entry-date}
 [Tirumalasetty, J., **Lim, J.**, Eggert, L., Arroyo, A., & Nassikas, N. · AAAAI/WAO Joint Congress; published in *Journal of Allergy and Clinical Immunology*, 155(2 Suppl.), AB309]{.entry-meta}
 
-[DOI: 10.1016/j.jaci.2024.12.309](https://doi.org/10.1016/j.jaci.2024.12.309)
+[DOI: 10.1016/j.jaci.2024.12.951](https://doi.org/10.1016/j.jaci.2024.12.951)
 :::
 
 ::: {.entry}
